@@ -8,6 +8,7 @@ import Search from './Search'
 import Landing from './Landing'
 import Admin_Report from './Admin_Report'
 import Navbar1 from '../Navbar1'
+import Signup from './Signup'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Admin_Requests from './Admin_Requests'
 
@@ -25,6 +26,7 @@ const Pages = () => {
             <Route path ='/pages/landing' element={<Landing/>}/>
             <Route path ='/pages/admin_report' element={<Admin_Report/>}/>
             <Route path ='/pages/admin_requests' element={<Admin_Requests/>}/>
+            <Route path='/pages/signup'element={<Signup/>}></Route>
 
 
 

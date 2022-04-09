@@ -1,0 +1,11 @@
+.Gradd {
+    justify-content:center;
+    /* align-content: center; */
+    /* bg-light */
+    align-items: center;
+    flex-direction: column;
+    height:100vh;
+    /* color: aqua; */
+    /* background-color: aqua; */
+    background-image: linear-gradient(#3aafa0, white,white,white,white,white,white,white);
+}
