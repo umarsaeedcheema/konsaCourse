@@ -4,11 +4,11 @@ import ForgotPassword from './pages/ForgotPassword'
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import SearchBar from './components/SearchBar';
-import Compare from './pages/Compare';
+// import Compare from './pages/Compare';
 function App() {
   return (
-      <Compare />
-    // <Pages></Pages>
+      // <Compare />
+    <Pages></Pages>
 
 );
 }
