@@ -4,7 +4,7 @@ const Homepage = ()=>{
     return (
         <div>
             <h1>
-                Hellooo
+                Home Page
             </h1>
         </div>
     )
