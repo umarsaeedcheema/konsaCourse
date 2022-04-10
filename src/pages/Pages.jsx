@@ -13,6 +13,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Admin_Requests from './Admin_Requests'
 import ErrorPage from './ErrorPage'
 import ForgotPassword from './ForgotPassword'
+import Homepage from './Homepage'
 
 const Pages = () => {
   return (
@@ -29,11 +30,9 @@ const Pages = () => {
             <Route path ='/pages/admin_report' element={<Admin_Report/>}/>
             <Route path ='/pages/admin_requests' element={<Admin_Requests/>}/>
             <Route path='/pages/signup'element={<Signup/>}></Route>
-            <Route path='/pages/errorpagge' element={<ErrorPage/>}></Route>
+            <Route path='/*' element={<ErrorPage/>}></Route>
             <Route path ='pages/forgotpassword' element={<ForgotPassword/>}/>
-
-
-
+            <Route path='/pages/homepage' element={<Homepage/>}></Route>
         </Routes>
     </Router>
   )

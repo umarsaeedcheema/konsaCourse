@@ -1,13 +1,13 @@
 import styles from "./styles.module.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import IconButton from "@material-ui/core/IconButton";
 // import Visibility from "@material-ui/icons/Visibility";
 // import VisibilityOff from "@material-ui/icons/VisibilityOff";
 // import InputAdornment from "@material-ui/core/InputAdornment";
 
-const Signup = ()=>{
-	const [data, setData] = useState({ fname: "", lname: "" ,question:"", answer:"",email:"",password:""});
+const Signup = () => {
+	const [data, setData] = useState({ fname: "", lname: "", question: "", answer: "", email: "", password: "" });
 	const [error, setError] = useState("");
 
 	const handleChange = ({ currentTarget: input }) => {
@@ -18,7 +18,7 @@ const Signup = ()=>{
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-        // console.log(e.target.value)
+		// console.log(e.target.value)
 		// console.log(data.email)
 		// console.log(data.password)
 		// try {
@@ -38,107 +38,114 @@ const Signup = ()=>{
 	};
 
 
+	let navigate = useNavigate()
+	return (
+		// <div className={styles.login_container}>
+		//{/* // <div> */}
+		<div className={styles.login_form_container}>
 
-    return (
-        // <div className={styles.login_container}>
-        //{/* // <div> */}
-        <div className={styles.login_form_container}>
-       
-        {/* <div className={styles.rightSupreme}>  add another encapsulation*/}
-        <div className={styles.right}>
-		{/* <Link href='./pages/Homepage'> */}
-		<div className="d-flex align-items-start flex-column" style={{flex:1}}> 
-		<text style={{color:"black", fontSize:"20px", paddingTop:"20px", paddingLeft:"20px" }}>
-		KonsaCourse
-		</text>
-		</div>
- 		{/* </Link> className={styles.form_container}		 */}
-		 <div className="d-flex align-items-center justify-content-center felx-column" style={{flex:9}}>
-		 {/* <div style={{alignContent:"center",height:"100%",width:"100%",justifyContent:"center",flexDirection:"column",borderTopLeftRadius:"10px",backgroundColor:"white"}}> */}
-			<form className={styles.form_container} onSubmit={handleSubmit}>
-						 <h1 style={{color:"black"}}>Signup</h1>
-                         <div className="d-flex justify-content-center" style={{marginRight:"5%%"}}>
-                        <div className="d-flex flex-column" style={{marginRight:"2.5%"}}>
-                        <input
-							type="text"
-							placeholder="First Name"
-							name="fname"
-							onChange={handleChange}
-							value={data.fname}
-							required
-							className={styles.input}
-						/>
-						<input
-							type="text"
-							placeholder="Security Question"
-							name="question"
-							onChange={handleChange}
-							value={data.question}
-							required
-							className={styles.input}
-						/>
-                        <input
-							type="email"
-							placeholder="Email"
-							name="email"
-							onChange={handleChange}
-							value={data.email}
-							required
-							className={styles.input}
-						/>
-                        </div>
-                        <div  className="d-flex flex-column" style={{marginLeft:"2.5%"}}>
-                        <input
-							type="text"
-							placeholder="Last Name"
-							name="lnmae"
-							onChange={handleChange}
-							value={data.lname}
-							required
-							className={styles.input}
-						/>
-						<input
-							type="text"
-							placeholder="Answer"
-							name="answer"
-							onChange={handleChange}
-							value={data.answer}
-							required
-							className={styles.input}
-						/>
-                        <input
-							type="password"
-							placeholder="Password"
-							name="password"
-							onChange={handleChange}
-							value={data.password}
-							required
-							className={styles.input}
-						/>
-                        </div>
-                        </div>
-						{error && <div className={styles.error_msg}>{error}</div>}						
+			{/* <div className={styles.rightSupreme}>  add another encapsulation*/}
+			<div className={styles.right}>
+				{/* <Link href='./pages/Homepage'> */}
+				<div className="d-flex align-items-start flex-column" style={{ flex: 1 }}>
+					<text style={{ color: "black", fontSize: "20px", paddingTop: "20px", paddingLeft: "20px", cursor:"pointer" }}
+					onClick={()=>{
+						navigate('/pages/homepage')
+					}}>
+						KonsaCourse
+					</text>
+				</div>
+				{/* </Link> className={styles.form_container}		 */}
+				<div className="d-flex align-items-center justify-content-center felx-column" style={{ flex: 9 }}>
+					{/* <div style={{alignContent:"center",height:"100%",width:"100%",justifyContent:"center",flexDirection:"column",borderTopLeftRadius:"10px",backgroundColor:"white"}}> */}
+					<form className={styles.form_container} onSubmit={handleSubmit}>
+						<h1 style={{ color: "black" }}>Signup</h1>
+						<div className="d-flex justify-content-center" style={{ marginRight: "5%%" }}>
+							<div className="d-flex flex-column" style={{ marginRight: "2.5%" }}>
+								<input
+									type="text"
+									placeholder="First Name"
+									name="fname"
+									onChange={handleChange}
+									value={data.fname}
+									required
+									className={styles.input}
+								/>
+								<input
+									type="text"
+									placeholder="Security Question"
+									name="question"
+									onChange={handleChange}
+									value={data.question}
+									required
+									className={styles.input}
+								/>
+								<input
+									type="email"
+									placeholder="Email"
+									name="email"
+									onChange={handleChange}
+									value={data.email}
+									required
+									className={styles.input}
+								/>
+							</div>
+							<div className="d-flex flex-column" style={{ marginLeft: "2.5%" }}>
+								<input
+									type="text"
+									placeholder="Last Name"
+									name="lnmae"
+									onChange={handleChange}
+									value={data.lname}
+									required
+									className={styles.input}
+								/>
+								<input
+									type="text"
+									placeholder="Answer"
+									name="answer"
+									onChange={handleChange}
+									value={data.answer}
+									required
+									className={styles.input}
+								/>
+								<input
+									type="password"
+									placeholder="Password"
+									name="password"
+									onChange={handleChange}
+									value={data.password}
+									required
+									className={styles.input}
+								/>
+							</div>
+						</div>
+						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
-                        Sign Up
+							Sign Up
 						</button>
 						{/* Update Pass */}
 					</form>
-					</div>
-          {/* </div> */}
-          </div>
-          <div className={styles.left}>
- 					<h1>Go To Home</h1>
- 					<h2 >
-                         {/* <Link to="./pages/Login"> */}
- 						<button type="button" className={styles.white_btn}>
- 							Home
- 						</button>
-                         {/* </Link> */}
- 					</h2>
- 			</div>
-         </div>
-        //   </div>
-        )
+				</div>
+				{/* </div> */}
+			</div>
+			<div className={styles.left}>
+				<h1>Go To Home</h1>
+				<h2 >
+
+					<button type="button" className={styles.white_btn}
+					onClick={()=>{
+						navigate('/pages/homepage')
+
+					}}>
+						Home
+					</button>
+
+				</h2>
+			</div>
+		</div>
+		//   </div>
+	)
 }
 
 // import React from 'react'
