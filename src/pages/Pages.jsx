@@ -18,7 +18,7 @@ import Homepage from './Homepage'
 const Pages = () => {
   return (
     <Router>
-        <Navbar1/>
+        {/* <Navbar1/> */}
         <Routes >
             <Route path='/pages/compare' element={<Comapre/>} />
             <Route path ='/pages/course' element={<Course/>}/>
