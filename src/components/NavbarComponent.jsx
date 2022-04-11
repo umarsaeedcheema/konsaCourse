@@ -49,7 +49,6 @@ const GetButtons = (props) => {
                         navigate('/pages/login')
                     }}
                     > SignIn
-                    {console.log(props.isLoggedIn)}
                 </button>
                 <button className="btn btn-dark rounded-pill"
                     onClick={() => {

@@ -2,7 +2,7 @@ import React from 'react'
 import { Divider, Grid } from '@mui/material';
 import CardHeader from '@mui/material/CardHeader';
 import CompCard from '../components/ComparisonCard.jsx'
-import Header from '../components/Header.jsx';
+// import Header from '../components/Header.jsx';
 
 
 const instructor1 = "Shafay Ismail";
@@ -71,7 +71,7 @@ export const CompareFinal = () => {
     <div>
         <Grid container direction='column'>
             <Grid item>
-                <Header/>
+                {/* <Header/> */}
             </Grid>
             <Grid item container>
                 <Grid item xs={0} sm={2} />
