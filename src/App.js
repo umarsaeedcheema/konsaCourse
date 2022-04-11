@@ -20,10 +20,9 @@ import Signup from './pages/Signup';
 // import Compare from './pages/Compare';
 function App() {
   return (
-      // <Compare />
     <>
-
-    <Pages></Pages>      
+      
+      <Pages></Pages>
     </>
   );
 }

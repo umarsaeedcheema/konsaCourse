@@ -16,8 +16,12 @@ const ReportCard = (props) => {
 
             <CardContent>
                 
-                <h4>{props.coursename}</h4>
-                <p>({props.coursecode})</p>
+                <div className='d-flex flex-row'>
+                    <div><Typography>{props.coursename}</Typography></div>
+                    <div><Typography>({props.coursecode})</Typography></div>
+                </div>
+                
+                
                 <p>{props.username}</p>
                 <p>{props.description}</p>
                 
