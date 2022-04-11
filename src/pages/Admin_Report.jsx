@@ -12,15 +12,11 @@ const Admin_Report = () => {
   ["Artificial Intelligence", "CS 300", "Saifullah Khan", "Ye kya ajeeb course tha kuch samajh nahin aya"],
   ["Software Engineering", "CS 412", "Mustafa Arshad", "Kamal course 10/10 would take again"]];
 
-  const tags = ["test1", "test2", "test3", "test4"];
 
-
-  const arrlen = reviews.length;
   
   
   return (
     <>
-        <p>{arrlen}</p>
         <Grid container direction={'column'} spacing = {4}>
             
           {/* <Grid item container>   */}

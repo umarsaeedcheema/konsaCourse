@@ -9,7 +9,7 @@ import styles from '../pages/styles.module.css'
 
 
 
-const ReportCard = (props) => {
+const RequestCard = (props) => {
     
     return (
         <Card sx={{ minWidth: 275 }} style={{ backgroundColor: "#319FA025", borderRadius: "15px" }}>
@@ -22,21 +22,22 @@ const ReportCard = (props) => {
                 </div>
                 
                 
-                <p>{props.username}</p>
-                <p>{props.description}</p>
+                <p>{props.profname}</p>
                 
             </CardContent>
 
-            <button type="submit" className={styles.green_btn}>
-				Restore
+            <button type="button" className={styles.green_btn}>
+				Approve
 			</button>
 
-            <button type="submit" className={styles.black_btn}>
-				Remove
+            <button type="button" className={styles.black_btn}>
+				Decline
 			</button>
+
+
 
 
         </Card>
     );
 }
-export default ReportCard
+export default RequestCard
