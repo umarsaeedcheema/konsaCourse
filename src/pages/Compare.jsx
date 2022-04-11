@@ -1,19 +1,34 @@
 import React from 'react'
+import NavbarComponent from '../components/NavbarComponent'
 import SearchBar from '../components/SearchBar'
 import Data from '../Data.json'
-// ,backgroundImage:"linearGradient(red,white)"
-// import './Gradd.css'
-// style={{flex:"1"}}
+import { useState } from 'react'
+
+
+
+
+
+
 const Compare = () => {
+  const [data,setData]=useState({'course':'',
+  'instructor1':'',
+  'instructor2':''
+}) 
+
   return (
-    <div className="Gradd">
-     {/* <div className='d-flex bg-dark' style={{height:"100vh",flexDirection:"column"}}> */}
-      {/* <div className="Gradd" >Navbarr</div> */}
-      <div className='d-flex justify-content-center flex-1 ' style={{backgroundColor:"#00ffff00"}} > Navbarrr  </div>
-      <div className='d-flex  justify-content-center ' style={{flex:"9",backgroundColor:"#00ffff00"}}>
-      <SearchBar placeholder={"abcd"} data={Data} />
+    <>
+      <NavbarComponent
+        isLoggedIn={false}
+        isAdmin={false}
+      ></NavbarComponent>
+      <div
+        style={{ position: 'relative', marginTop: '-50%', marginLeft: '37%' }}
+      >
+        <SearchBar
+          placeholder={"Choose Course"} data={Data} />
+        
       </div>
-    </div>
+    </>
   )
 }
 

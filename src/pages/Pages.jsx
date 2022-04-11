@@ -17,11 +17,12 @@ import ForgotPassword from './ForgotPassword'
 import Homepage from './Homepage'
 import ChangePassword from './ChangePassword'
 import ProfessorScreen from './ProfessorScreen'
+import NavbarComponent from '../components/NavbarComponent'
 
 const Pages = () => {
   return (
     <Router>
-        {/* <Navbar1/> */}
+        {/* <NavbarComponent/> */}
         <Routes >
             <Route path='/pages/compare' element={<Compare/>} />
             <Route path='/pages/comparefinal' element={<CompareFinal/>}></Route>

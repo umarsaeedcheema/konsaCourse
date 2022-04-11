@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button';
 import NavbarComponent from '../components/NavbarComponent';
 import SearchBar from '../components/SearchBar';
 import Data from '../Data.json'
@@ -20,7 +19,9 @@ const Landing = () => {
               <div class="d-flex ">
                 <div class="col-8" style={{ marginTop:"-20%"}}>
                 <SearchBar placeholder={"Search Course"} data={Data} />
-                <span style={{color:'#3AAFA0'}}  > Search Instructor Instead</span>
+                <span style={{color:'#3AAFA0',cursor:'pointer'}} 
+               
+                > Search Instructor Instead</span>
                 </div>
               </div>
             </div>
