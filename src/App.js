@@ -21,11 +21,10 @@ import NavbarComponentAdmin from './components/NavbarComponentAdmin';
 // import Compare from './pages/Compare';
 function App() {
   return (
-      // <Compare />
     <>
-
-      <div>Checking</div>
       
+      <Pages></Pages>
+
     </>
   );
 }

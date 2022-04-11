@@ -1,5 +1,6 @@
 import React from 'react'
 import Compare from './Compare'
+import CompareFinal from './CompareFinal'
 import Course from './Course'
 import Instructor from './Instructor'
 import Login from './Login'
@@ -21,6 +22,7 @@ const Pages = () => {
         {/* <Navbar1/> */}
         <Routes >
             <Route path='/pages/compare' element={<Compare/>} />
+            <Route path='/pages/comparefinal' element={<CompareFinal/>}></Route>
             <Route path ='/pages/course' element={<Course/>}/>
             <Route path ='/pages/instructor' element={<Instructor/>}/>
             <Route path ='/pages/login' element={<Login/>}/>

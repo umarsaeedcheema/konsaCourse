@@ -5,8 +5,6 @@ import Typography from '@mui/material/Typography';
 import styles from './styles.module.css'
 
 const ProfessorScreen = () => {
-  
-    
 
     const labels = ["F","C-","C","C+","B-","B","B+","A-","A","A+"];
     const rating = 2.5;
