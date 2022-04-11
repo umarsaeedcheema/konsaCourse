@@ -27,7 +27,7 @@ const Pages = () => {
             <Route path='/pages/compare' element={<Compare/>} />
             <Route path='/pages/comparefinal' element={<CompareFinal/>}></Route>
             <Route path ='/pages/course' element={<Course/>}/>
-            <Route path ='/pages/instructor' element={<ProfessorScreen/>}/>
+            <Route path ='/pages/professorscreen' element={<ProfessorScreen/>}/>
             <Route path ='/pages/login' element={<Login/>}/>
             <Route path ='/pages/rate' element={<Rate/>}/>
             <Route path ='/pages/search' element={<Search/>}/>
