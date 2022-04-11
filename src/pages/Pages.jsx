@@ -15,10 +15,11 @@ import ErrorPage from './ErrorPage'
 import ForgotPassword from './ForgotPassword'
 import Homepage from './Homepage'
 import ChangePassword from './ChangePassword'
+import NavbarComponent from '../components/NavbarComponent'
 const Pages = () => {
   return (
     <Router>
-        {/* <Navbar1/> */}
+        {/* <NavbarComponent/> */}
         <Routes >
             <Route path='/pages/compare' element={<Compare/>} />
             <Route path ='/pages/course' element={<Course/>}/>
