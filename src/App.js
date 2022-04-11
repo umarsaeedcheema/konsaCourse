@@ -5,6 +5,11 @@ import BasicMenu from './components/BasicMenu'
 import Header from './components/Header'
 import ComparisonCard from './components/ComparisonCard';
 import ProfessorScreen from './pages/ProfessorScreen'
+import Admin_Report from './pages/Admin_Report';
+import NavbarComponentGuest from './components/NavbarComponentGuest.jsx'
+import CompareFinal from './pages/CompareFinal';
+import Landing from './pages/Landing';
+import Login from './pages/Login';
 // import Compare from './pages/Compare';
 function App() {
   return (
@@ -16,6 +21,13 @@ function App() {
     {/* <Header></Header> */}
     {/* <ResponsiveAppBar/> */}
     {/* <ComparisonCard></ComparisonCard> */}
+    {/* <Admin_Report></Admin_Report> */}
+    {/* <NavbarComponentGuest></NavbarComponentGuest> */}
+    {/* <Landing></Landing> */}
+    {/* <Login></Login> */}
+
+    {/* <ProfessorScreen></ProfessorScreen> */}
+    {/* <CompareFinal></CompareFinal> */}
     </>
 
   );

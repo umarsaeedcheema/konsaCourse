@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
-import NavbarComponent from '../components/NavbarComponentGuest';
+import NavbarComponentGuest from '../components/NavbarComponentGuest';
 import SearchBar from '../components/SearchBar';
 import Data from '../../src/Data.json'
 
@@ -8,10 +8,9 @@ import Data from '../../src/Data.json'
 const Landing = () => {
   return (
     <>
-      <NavbarComponent></NavbarComponent>
-      <div className=' ml-20' 
-      style={{position:'relative', top:-450}}
-      >
+      <NavbarComponentGuest></NavbarComponentGuest>
+      
+      <div>
         <div >
           <h1>Let's find the perfect <br />course for you !</h1>
           <form >
@@ -29,7 +28,8 @@ const Landing = () => {
         </div>
       </div>
 
-    </>
+    </>    
+
   )
 }
 

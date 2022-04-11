@@ -1,5 +1,5 @@
 import React from 'react'
-import Comapre from './Compare'
+import Compare from './Compare'
 import Course from './Course'
 import Instructor from './Instructor'
 import Login from './Login'
@@ -20,7 +20,7 @@ const Pages = () => {
     <Router>
         {/* <Navbar1/> */}
         <Routes >
-            <Route path='/pages/compare' element={<Comapre/>} />
+            <Route path='/pages/compare' element={<Compare/>} />
             <Route path ='/pages/course' element={<Course/>}/>
             <Route path ='/pages/instructor' element={<Instructor/>}/>
             <Route path ='/pages/login' element={<Login/>}/>
@@ -30,7 +30,7 @@ const Pages = () => {
             <Route path ='/pages/admin_report' element={<Admin_Report/>}/>
             <Route path ='/pages/admin_requests' element={<Admin_Requests/>}/>
             <Route path='/pages/signup'element={<Signup/>}></Route>
-            <Route path='/*' element={<ErrorPage/>}></Route>
+            {/* <Route path='/*' element={<ErrorPage/>}></Route> */}
             <Route path ='pages/forgotpassword' element={<ForgotPassword/>}/>
             <Route path='/pages/homepage' element={<Homepage/>}></Route>
         </Routes>
