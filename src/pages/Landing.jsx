@@ -1,11 +1,11 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
-import NavbarComponent from '../components/NavbarComponentGuest';
+import NavbarComponentGuest from '../components/NavbarComponentGuest';
 
 const Landing = () => {
   return (
     <div>
-      <NavbarComponent></NavbarComponent>
+      <NavbarComponentGuest></NavbarComponentGuest>
       <div className='d-flex align-items-center justify-content-start ml-20 ' style={{ width: '50%', height: "100%" }} >
         <div style={{ width: "50%", height: "20%" }}>
           <h2>Let's find the perfect <br />course for you !</h2>
@@ -20,7 +20,6 @@ const Landing = () => {
           </form>
         </div>
       </div>
-
     </div>
   )
 }

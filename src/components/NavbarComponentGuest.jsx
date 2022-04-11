@@ -4,7 +4,7 @@ import styles from '../pages/styles.module.css'
 
 const NavbarComponentGuest = () => {
 
-    let navigate = useNavigate()
+    const navigate = useNavigate()
     return (
         <div className={styles.gradient}>
             <div className='d-flex justify-content-center flex-1 ' style={{ backgroundColor: "#00ffff00" }} >   </div>
@@ -13,7 +13,7 @@ const NavbarComponentGuest = () => {
                 <nav class="navbar navbar-expand-lg ">
                     <div class="container-fluid" style={{ backgroundColor: "#00FF0000" }}>
                         <div className="row justify-content-start pl-20">
-                            <a class="navbar-brand" href="./Landing"
+                            <a class="navbar-brand" href="./landing"
                                 style={{ color: 'white' }}
                             >KONSACOURSE</a>
                         </div>
@@ -22,10 +22,10 @@ const NavbarComponentGuest = () => {
                         </button> */}
                         <div class="collapse navbar-collapse justify-content-center ">
                             <div class="navbar-nav" >
-                                <u><a class="nav-link active mr-5" aria-current="page" href="./Landing" style={{ color: "#000000" }}>Home</a></u>
-                                <a class="nav-link mr-5" href="./Search" style={{ color: "#000000" }} >Search</a>
-                                <a class="nav-link mr-5" href="./Rate" style={{ color: "#000000" }}>Rate</a>
-                                <a class="nav-link mr-5" href="./Compare" style={{ color: "#000000" }}>Compare</a>
+                                <u><a class="nav-link active mr-5" aria-current="page" href="./landing" style={{ color: "#000000" }}>Home</a></u>
+                                <a class="nav-link mr-5" href="./search" style={{ color: "#000000" }} >Search</a>
+                                <a class="nav-link mr-5" href="./rate" style={{ color: "#000000" }}>Rate</a>
+                                <a class="nav-link mr-5" href="./compare" style={{ color: "#000000" }}>Compare</a>
                             </div>
                         </div>
                         <div className="justify-content-end pr-20">
@@ -42,7 +42,6 @@ const NavbarComponentGuest = () => {
                         </div>
                     </div>
                 </nav>
-
             </div>
         </div>
     )

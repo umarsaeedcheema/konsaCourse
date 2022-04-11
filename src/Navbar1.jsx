@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 
 const Nav = () => {
   return (
+    <>
+       <h1> Hello</h1>
     <nav>
-        Logo
         <ul className='nav-links'>
             <Link to='/pages/compare'>
             <li>Compare</li>
@@ -32,6 +33,7 @@ const Nav = () => {
             </Link>
         </ul>
     </nav>
+    </>
   )
 }
 
