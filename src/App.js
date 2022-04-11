@@ -7,7 +7,7 @@ import ComparisonCard from './components/ComparisonCard';
 import ProfessorScreen from './pages/ProfessorScreen'
 import Landing from './pages/Landing';
 import Homepage from './pages/Homepage';
-import NavbarComponentGuest from './components/NavbarComponentGuest.jsx';
+import NavbarComponent from './components/NavbarComponent.jsx';
 import Compare from './pages/Compare';
 import CompareFinal from './pages/CompareFinal'
 import Course from './pages/Course';
@@ -17,14 +17,12 @@ import Login from './pages/Login'
 import Rate from './pages/Rate';
 import Search from '@mui/icons-material/Search';
 import Signup from './pages/Signup';
-import NavbarComponentAdmin from './components/NavbarComponentAdmin';
 // import Compare from './pages/Compare';
 function App() {
   return (
     <>
       
       <Pages></Pages>
-
     </>
   );
 }
