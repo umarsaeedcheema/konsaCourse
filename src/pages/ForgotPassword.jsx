@@ -1,5 +1,6 @@
 import styles from "./styles.module.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 
@@ -35,6 +36,7 @@ const ForgotPassword = ()=>{
 		// }
 	};
 
+	const navigate = useNavigate()
 
 
     return (
@@ -60,7 +62,12 @@ const ForgotPassword = ()=>{
       </Link> */}
 		{/* <Link href='./pages/Homepage'> */}
 		<div className="d-flex align-items-end flex-column" style={{flex:1}}> 
-		<text style={{color:"black", fontSize:"20px", paddingTop:"20px", paddingRight:"20px" }}>
+		<text style={{color:"black", fontSize:"20px", paddingTop:"20px", paddingRight:"20px", cursor:'pointer' }}
+		onClick={()=>{
+			navigate('/pages/landing')
+		}}
+		
+		>
 		KonsaCourse
 		</text>
 		{/* <text>KonsaCourse</text> */}
