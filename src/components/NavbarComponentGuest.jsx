@@ -9,7 +9,7 @@ const NavbarComponentGuest = () => {
         <div className={styles.gradient}>
             <div className='d-flex justify-content-center flex-1 ' style={{ backgroundColor: "#00ffff00" }} >   </div>
             <div className='d-flex  justify-content-center ' style={{ flex: "9", backgroundColor: "#00ffff00" }}></div>
-            <div>
+            <div style={{ height: '100vh' }}>
                 <nav class="navbar navbar-expand-lg ">
                     <div class="container-fluid" style={{ backgroundColor: "#00FF0000" }}>
                         <div className="row justify-content-start pl-20">
@@ -42,6 +42,7 @@ const NavbarComponentGuest = () => {
                         </div>
                     </div>
                 </nav>
+
             </div>
         </div>
     )
