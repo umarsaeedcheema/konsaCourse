@@ -135,7 +135,7 @@ const Signup = () => {
 
 					<button type="button" className={styles.white_btn}
 					onClick={()=>{
-						navigate('/pages/homepage')
+						navigate('/pages/landing')
 
 					}}>
 						Home
