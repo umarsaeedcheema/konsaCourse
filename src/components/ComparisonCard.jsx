@@ -6,7 +6,6 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Divider, Grid } from '@mui/material';
-import CardHeader from '@mui/material/CardHeader';
 import Rating from '@mui/material/Rating';
 import styles from '../pages/styles.module.css'
 
