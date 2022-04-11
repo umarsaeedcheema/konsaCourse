@@ -2,7 +2,6 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import styles from '../pages/styles.module.css'
 
-
 const NavbarComponentGuest = () => {
 
     let navigate = useNavigate()
@@ -36,7 +35,6 @@ const NavbarComponentGuest = () => {
                                 }}
                             > SignIn </button>
                             <button className="btn btn-dark rounded-pill"
-                                style={{ colorBackground: '#3AAFA0' }}
                                 onClick={() => {
                                     navigate('/pages/signup')
                                 }}

@@ -5,7 +5,6 @@ import BasicMenu from './components/BasicMenu'
 import Header from './components/Header'
 import ComparisonCard from './components/ComparisonCard';
 import ProfessorScreen from './pages/ProfessorScreen'
-import NavbarComponentGuest from './components/NavbarComponentGuest';
 // import Compare from './pages/Compare';
 function App() {
   return (
@@ -13,12 +12,10 @@ function App() {
     // <ErrorPage></ErrorPage>
     <>
     {/* <BasicMenu></BasicMenu> */}
-    {/* <Pages></Pages> */}
+    <Pages></Pages>
     {/* <Header></Header> */}
     {/* <ResponsiveAppBar/> */}
     {/* <ComparisonCard></ComparisonCard> */}
-    {/* <BasicMenu></BasicMenu> */}
-    <NavbarComponentGuest></NavbarComponentGuest>
     </>
 
   );
