@@ -16,6 +16,8 @@ import ErrorPage from './ErrorPage'
 import ForgotPassword from './ForgotPassword'
 import Homepage from './Homepage'
 import ChangePassword from './ChangePassword'
+import ProfessorScreen from './ProfessorScreen'
+
 const Pages = () => {
   return (
     <Router>
@@ -24,7 +26,7 @@ const Pages = () => {
             <Route path='/pages/compare' element={<Compare/>} />
             <Route path='/pages/comparefinal' element={<CompareFinal/>}></Route>
             <Route path ='/pages/course' element={<Course/>}/>
-            <Route path ='/pages/instructor' element={<Instructor/>}/>
+            <Route path ='/pages/instructor' element={<ProfessorScreen/>}/>
             <Route path ='/pages/login' element={<Login/>}/>
             <Route path ='/pages/rate' element={<Rate/>}/>
             <Route path ='/pages/search' element={<Search/>}/>

@@ -2,7 +2,10 @@ import React, {useState} from 'react'
 import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import styles from './styles.module.css'
+import styles from './styles.module.css';
+import { Divider, Grid } from '@mui/material';
+import ReviewCard from '../components/ReviewCard';
+
 
 const ProfessorScreen = () => {
 
@@ -13,11 +16,14 @@ const ProfessorScreen = () => {
     const firstname = "Suleman";
     const lastname = "Shahid";
     const tags = ["Lenient", "Accomodating", "Punctual", "Inspirational", "Interactive"];
+
+
+    const reviews = [["Software Engineering CS 360", 4, "Yes", "No", "Yes", "Amazing course! loved it, was beauutiful", ["Lenient", "Accomodating", "Punctual"]],
+    ["Software Engineering CS 360", 4, "Yes", "No", "Yes", "Amazing course! loved it, was beauutiful", ["Lenient", "Accomodating", "Punctual"]]];
     
     
 
     return (
-    <div className='ProfessorScreen'>
 
         
         <div className="d-flex justify-content-center align-items-start flex-column">
@@ -27,7 +33,6 @@ const ProfessorScreen = () => {
 
             <div class="d-flex align-items-center">
 
-                <div>
                 <Rating
 
                     name="profStars"
@@ -37,7 +42,6 @@ const ProfessorScreen = () => {
                     
                     readOnly
                 />
-                </div>
                 
                 <div className={styles.rubber}>{labels[labnum]}</div>
                 
@@ -64,9 +68,42 @@ const ProfessorScreen = () => {
 
             </div>
 
+
+            <Grid container direction={'column'} spacing = {4}>
+                
+
+                {reviews.map((value,key) => {
+
+                return (
+                    <>
+                    <Grid item container>  
+                    <Grid item xs={0} sm={2} />
+                    <Grid item xs={12} sm={8}>
+
+                        <ReviewCard 
+                        title = {value[0]}
+                        rating = {value[1]}
+                        attendance = {value[2]}
+                        cp = {value[3]}
+                        takeagain = {value[4]}
+                        description = {value[5]}
+                        tags = {value[6]}
+                        />
+
+                    </Grid>
+                    <Grid item xs={0} sm={2} />
+
+                    </Grid>
+                    </>
+                )
+
+                })}
+
+                
+            </Grid>
+
         </div>
         
-    </div>
   )
 }
 //A commmit to check branch
