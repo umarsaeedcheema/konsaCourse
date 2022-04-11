@@ -1,28 +1,91 @@
 import React from 'react'
-import Grid from '@mui/material/Grid';
-import Header from './Header';
-import Content from './Content';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { Divider, Grid } from '@mui/material';
+import CardHeader from '@mui/material/CardHeader';
+import Rating from '@mui/material/Rating';
+import styles from '../pages/styles.module.css'
+
+const labels =  ["F","C-","C","C+","B-","B","B+","A-","A","A+"];
 
 
 
-const ComparisonCard = () => {
-
+const  CompCard = (props) => {
+    
+    const gradnum = ((props.overall)*2)-1;
     return (
-        <div>
-            <Grid container direction='column'>
-                <Grid item>
-                    <Header />
-                </Grid>
-                <Grid item container>
-                    <Grid item xs={0} sm={2} />
-                    <Grid item xs={12} sm={8}>
-                        <Content></Content>
-                    </Grid>
-                    <Grid item xs={0} sm={2} />
-                </Grid>
-            </Grid>
-        </div>
-    )
-}
+        <Card sx={{ minWidth: 275 }} style={{ backgroundColor: "#319FA025", borderRadius: "15px" }}>
 
-export default ComparisonCard
+            <CardContent>
+                <Typography gutterBottom variant='h5'>
+                    Overall Rating
+                </Typography>
+
+                <Rating
+                    value={props.overall}
+                    size="large"                    
+                    readOnly
+                />
+
+                
+                <div className={styles.rubber}>{labels[gradnum]}</div>
+
+                <Typography > Teaching Rating </Typography>
+
+                <Rating 
+                    value={props.teaching}
+                    size="small"
+                    readOnly
+                />
+                
+                <Typography >
+                    Quality1 Rating:
+                </Typography>
+                <Rating 
+                    value={props.quality1}
+                    size="small"
+                    readOnly
+                />
+                <Typography >
+                    Quality2 Rating:
+                </Typography>
+                <Rating 
+                    value={props.quality2}
+                    size="small"
+                    readOnly
+                />
+                <Typography >
+                    Quality3 Rating:
+                </Typography>
+                <Rating 
+                    value={props.quality3}
+                    size="small"
+                    readOnly
+                />
+            </CardContent>
+            <div>
+                <Typography style={{ paddingLeft: 15, fontSize: 20 }}>
+                    Top Five Tags:
+                </Typography>
+                <div className = "d-flex justify-content-start">
+                    {(props.tags).map((value,key) => {
+
+                        return (<button className={styles.tag_btn} disabled="true">
+
+                            {value}
+
+                        </button>)
+
+                    })}
+
+                </div>
+            </div>
+
+        </Card>
+    );
+}
+export default CompCard

@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '/Users/umar/Desktop/konsa/konsaCourse/src/pages/styles.module.css'
+import styles from '../pages/styles.module.css'
 
 const NavbarComponent = () => {
 

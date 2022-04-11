@@ -1,6 +1,6 @@
 import React from 'react'
 import SearchBar from '../components/SearchBar'
-import Data from '/Users/umar/Desktop/konsa/konsaCourse/src/Data.json'
+import Data from '../Data.json'
 // ,backgroundImage:"linearGradient(red,white)"
 // import './Gradd.css'
 // style={{flex:"1"}}
