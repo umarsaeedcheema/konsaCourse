@@ -16,7 +16,7 @@ const ReportCard = (props) => {
 
             <CardContent>
                 
-                <p>{props.coursename}</p>
+                <h4>{props.coursename}</h4>
                 <p>({props.coursecode})</p>
                 <p>{props.username}</p>
                 <p>{props.description}</p>
