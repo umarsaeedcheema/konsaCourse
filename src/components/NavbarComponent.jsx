@@ -1,8 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import styles from '../pages/styles.module.css'
+import BasicMenu from './BasicMenu'
 
-const NavbarComponentGuest = () => {
+const NavbarComponent = (props) => {
 
     const navigate = useNavigate()
     return (
@@ -24,22 +25,13 @@ const NavbarComponentGuest = () => {
                             <div class="navbar-nav" >
                                 <u><a class="nav-link active mr-5" aria-current="page" href="./landing" style={{ color: "#000000" }}>Home</a></u>
                                 <a class="nav-link mr-5" href="./search" style={{ color: "#000000" }} >Search</a>
-                                <a class="nav-link mr-5" href="./rate" style={{ color: "#000000" }}>Rate</a>
-                                <a class="nav-link mr-5" href="./compare" style={{ color: "#000000" }}>Compare</a>
+                                {!props.isAdmin && <a class="nav-link mr-5" href="./rate" style={{ color: "#000000" }}>Rate</a>}
+                                {!props.isAdmin && <a class="nav-link mr-5" href="./compare" style={{ color: "#000000" }}>Compare</a>}
+                                {props.isAdmin && <a class="nav-link mr-5" href="./rate" style={{ color: "#000000" }}>Requests</a>}
+                                {props.isAdmin && <a class="nav-link mr-5" href="./rate" style={{ color: "#000000" }}>Reports</a>}
                             </div>
                         </div>
-                        <div className="justify-content-end pr-20">
-                            <button className="btn btn-success mr-5 rounded-pill"
-                                onClick={() => {
-                                    navigate('/pages/login')
-                                }}
-                            > SignIn </button>
-                            <button className="btn btn-dark rounded-pill"
-                                onClick={() => {
-                                    navigate('/pages/signup')
-                                }}
-                            > SignUp </button>
-                        </div>
+                        <GetButtons isLoggedIn={props.isLoggedIn} />
                     </div>
                 </nav>
             </div>
@@ -47,4 +39,33 @@ const NavbarComponentGuest = () => {
     )
 }
 
-export default NavbarComponentGuest
+const GetButtons = (props) => {
+    const navigate = useNavigate()
+    if (props.isLoggedIn === false) {
+        return (
+            <div className="justify-content-end mr-20">
+                <button className="btn btn-success mr-5 rounded-pill"
+                    onClick={() => {
+                        navigate('/pages/login')
+                    }}
+                    > SignIn
+                    {console.log(props.isLoggedIn)}
+                </button>
+                <button className="btn btn-dark rounded-pill"
+                    onClick={() => {
+                        navigate('/pages/signup')
+                    }}
+                > SignUp </button>
+            </div>
+        )
+    }
+    else {
+        return (
+            <>
+                <BasicMenu />
+                {console.log(props.isLoggedIn)}
+            </>
+        )}
+}
+
+export default NavbarComponent

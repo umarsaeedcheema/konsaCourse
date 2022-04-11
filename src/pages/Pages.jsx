@@ -15,7 +15,7 @@ import Admin_Requests from './Admin_Requests'
 import ErrorPage from './ErrorPage'
 import ForgotPassword from './ForgotPassword'
 import Homepage from './Homepage'
-
+import ChangePassword from './ChangePassword'
 const Pages = () => {
   return (
     <Router>
@@ -29,10 +29,11 @@ const Pages = () => {
             <Route path ='/pages/rate' element={<Rate/>}/>
             <Route path ='/pages/search' element={<Search/>}/>
             <Route path ='/pages/landing' element={<Landing/>}/>
+            <Route path = '/pages/changepassword' element={<ChangePassword/>} />
             <Route path ='/pages/admin_report' element={<Admin_Report/>}/>
             <Route path ='/pages/admin_requests' element={<Admin_Requests/>}/>
             <Route path='/pages/signup'element={<Signup/>}></Route>
-            {/* <Route path='/*' element={<ErrorPage/>}></Route> */}
+            <Route path='/*' element={<ErrorPage/>}></Route>
             <Route path ='pages/forgotpassword' element={<ForgotPassword/>}/>
             <Route path='/pages/homepage' element={<Homepage/>}></Route>
         </Routes>
