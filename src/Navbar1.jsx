@@ -28,7 +28,7 @@ const Navbar1 = () => {
             <Link to ={'./pages/search'} >
             <li>Search </li>
             </Link>
-            <Link to ={'./'} >
+            <Link to ={'./pages/homepage'} >
             <li>Home</li>
             </Link>
         </ul>

@@ -1,12 +1,24 @@
 import React from 'react'
+import ReportCard from '../components/ReportCard.jsx'
+
 
 const Admin_Report = () => {
   
-  const coursedetails = [("Sociology", "SOC 100", "Usama Hameed")];
+  const reviews = [["Sociology", "SOC 100", "Usama Hameed", "This was a bad course"]];
   
   
   return (
-    <div>course_details[0][1]</div>
+    <>
+        
+
+        <ReportCard
+          coursename = {reviews[0][0]}
+          coursecode = {reviews[0][1]}
+          username = {reviews[0][2]}
+          description = {reviews[0][3]}
+             
+        />
+    </>
   )
 }
 

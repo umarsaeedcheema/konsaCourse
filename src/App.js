@@ -22,30 +22,10 @@ import NavbarComponentAdmin from './components/NavbarComponentAdmin';
 function App() {
   return (
       // <Compare />
-      <>
-      {/* <Compare></Compare> */}
-      {/* <CompareFinal></CompareFinal> */}
-      {/* <Course></Course> */}
-      {/* <ForgotPassword></ForgotPassword> */}
-      {/* <Homepage></Homepage> */}
-      {/* <Instructor></Instructor> */}
-      {/* <Landing></Landing> */}
-      <Pages></Pages>
-      {/* <NavbarComponentAdmin></NavbarComponentAdmin> */}
-      {/* <Login></Login> */}
-      {/* <ProfessorScreen></ProfessorScreen> */}
-      {/* <Rate></Rate> */}
-      {/* <Search></Search> */}
-      {/* <Signup></Signup> */}
-    {/* <BasicMenu></BasicMenu> */}
-    {/* <Landing></Landing> */}
-    {/* <ErrorPage></ErrorPage> */}
-    {/* <Homepage></Homepage> */}
-    {/* <NavbarComponentGuest></NavbarComponentGuest> */}
-    {/* <Search></Search> */}
-    {/* <Header></Header> */}
-    {/* <ResponsiveAppBar/> */}
-    {/* <ComparisonCard></ComparisonCard> */}
+    <>
+
+      <div>Checking</div>
+      
     </>
   );
 }
