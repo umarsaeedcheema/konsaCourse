@@ -30,9 +30,9 @@ function App() {
       {/* <Homepage></Homepage> */}
       {/* <Instructor></Instructor> */}
       {/* <Landing></Landing> */}
-      {/* <Pages></Pages> */}
+      <Pages></Pages>
       {/* <NavbarComponentAdmin></NavbarComponentAdmin> */}
-      <Login></Login>
+      {/* <Login></Login> */}
       {/* <ProfessorScreen></ProfessorScreen> */}
       {/* <Rate></Rate> */}
       {/* <Search></Search> */}
