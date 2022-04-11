@@ -4,20 +4,18 @@ import ErrorPage from './pages/ErrorPage';
 import BasicMenu from './components/BasicMenu'
 import Header from './components/Header'
 import ComparisonCard from './components/ComparisonCard';
-import Admin_Report from './pages/Admin_Report';
-import CompareFinal from './pages/CompareFinal';
+import ProfessorScreen from './pages/ProfessorScreen'
 // import Compare from './pages/Compare';
 function App() {
   return (
       // <Compare />
     // <ErrorPage></ErrorPage>
-    // <Pages></Pages>
     <>
     {/* <BasicMenu></BasicMenu> */}
-    <Header></Header>
+    <Pages></Pages>
+    {/* <Header></Header> */}
     {/* <ResponsiveAppBar/> */}
     {/* <ComparisonCard></ComparisonCard> */}
-    <CompareFinal></CompareFinal>
     </>
 
   );
