@@ -1,8 +1,12 @@
 import React from 'react'
 
 const Admin_Report = () => {
+  
+  const coursedetails = [("Sociology", "SOC 100", "Usama Hameed")];
+  
+  
   return (
-    <div>Admin_Report</div>
+    <div>course_details[0][1]</div>
   )
 }
 
