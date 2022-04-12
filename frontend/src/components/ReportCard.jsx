@@ -17,16 +17,18 @@ const ReportCard = (props) => {
             <CardContent>
                 
                 <div className='d-flex flex-row'>
-                    <div><Typography>{props.coursename}</Typography></div>
-                    <div><Typography>({props.coursecode})</Typography></div>
+                    <div><Typography variant='h5'className={styles.report_card}>{props.coursename}</Typography></div>
+                    <div><Typography variant='h5' className={styles.report_card}>({props.coursecode})</Typography> </div>
+                    <Typography variant='h5' className={styles.wordspace}>-</Typography>
+                    <Typography variant='h5'> {props.username}</Typography>
                 </div>
-                
-                
-                <p>{props.username}</p>
-                <p>{props.description}</p>
-                
+                <Typography variant='h6' className={styles.report_card_description}>{props.description}</Typography>
             </CardContent>
-
+            <div
+            style={{
+                float:'right'
+            }}
+            >
             <button type="submit" className={styles.green_btn}>
 				Restore
 			</button>
@@ -34,6 +36,7 @@ const ReportCard = (props) => {
             <button type="submit" className={styles.black_btn}>
 				Remove
 			</button>
+            </div>
 
 
         </Card>
