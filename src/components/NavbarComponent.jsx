@@ -21,7 +21,7 @@ const NavbarComponent = (props) => {
                         {/* <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button> */}
-                        <div class="collapse navbar-collapse justify-content-center ">
+                        <div class="collapse navbar-collapse justify-center ">
                             <div class="navbar-nav" >
                                 <a class="nav-link active mr-5" aria-current="page" href="./landing" style={{ color: "#000000" }}>Home</a>
                                 <a class="nav-link mr-5" href="./search" style={{ color: "#000000" }} >Search</a>
@@ -60,9 +60,18 @@ const GetButtons = (props) => {
     }
     else {
         return (
+
             <>
+            <div
+            style={{
+                paddingRight:40
+            }}
+            >
+
                 <BasicMenu />
-                {console.log(props.isLoggedIn)}
+            </div>
+                
+            
             </>
         )}
 }

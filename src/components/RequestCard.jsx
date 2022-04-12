@@ -17,7 +17,7 @@ const RequestCard = (props) => {
             <CardContent>
                 
                 <div className='d-flex flex-row'>
-                    <div><Typography>{props.coursename}</Typography></div>
+                    <div><Typography className='boldText'   >{props.coursename}</Typography></div>
                     <div><Typography>({props.coursecode})</Typography></div>
                 </div>
                 
