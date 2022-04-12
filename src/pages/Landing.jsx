@@ -3,16 +3,17 @@ import NavbarComponent from '../components/NavbarComponent';
 import SearchBar from '../components/SearchBar';
 import Data from '../Data.json'
 import bgImage from '../assets/Design.png'
+import styles from './styles.module.css'
 const Landing = () => {
   return (
-    <div>
+    <div className={styles.gradient} style={{flex:"column"}}>
 
       <NavbarComponent
       isLoggedIn={false}
-      isAdmin={false} />
+      isAdmin={false} style={{backgroundColor:"#00ff0000",flex:1}} />
 
-      <div className='d-flex align-items-center justify-content-start ml-20 ' style={{ width: '50%', height: "100%" }} >
-        <div style={{ position:'relative', width: "60%", marginTop: "-90%" }}>
+      <div className='d-flex flex-column align-items-start justify-content-center mt-30 ml-20 ' style={{ width: '50%',flex:9 }} >
+        <div style={{ position:'relative', width: "60%" }}>
           <h1>Let's find the perfect <br />course for you !</h1>
           <form >
             <div class="container">

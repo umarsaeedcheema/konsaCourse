@@ -2,6 +2,7 @@ import React from 'react'
 import NavbarComponent from '../components/NavbarComponent'
 import SearchBar from '../components/SearchBar'
 import Data from '../Data.json'
+import styles from "./styles.module.css";
 import { useState } from 'react'
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
@@ -40,25 +41,28 @@ const Compare = () => {
 
 
   return (
-    <>
+    <div className={styles.gradient}>
 
       <NavbarComponent
         isLoggedIn={false}
         isAdmin={false}
+        style={{backgroundColor:"#00000000",flex:1}}
       ></NavbarComponent>
       <div
-        style={{ position: 'relative', marginTop: '-50%', marginLeft: '37%' }}
+      className='d-flex flex-column flex-9 justify-content-center align-content-center'
+        style={{backgroundColor:"#000000000" }}
       >
-        <div className="searchInputs">
-          <input style={{ height: "50%" }}
+        <div className="searchInputs" style={{backgroundColor:"#000fff00", justifyContent:"center",alignContent:"center"}}>
+          <input style={{backgroundColor:"#ff000000",justifyContent:"center" }}
             type="text"
             placeholder='Choose Course'
             value={wordEntered}
+            
             onChange={handleFilter}
           />
           <div className="searchIcon">
-            {data.course.length === 0 ? (
-              <SearchIcon style={{ height: "45%" }} />
+            {filteredData.length === 0 ? (
+              <SearchIcon />
             ) : (
               <CloseIcon id="clearBtn" onClick={clearInput} />
             )}
@@ -80,7 +84,7 @@ const Compare = () => {
 
       </div>
 
-    </>
+    </div>
   )
 }
 
