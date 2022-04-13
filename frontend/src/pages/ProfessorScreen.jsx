@@ -6,6 +6,7 @@ import styles from './styles.module.css';
 import { Divider, Grid } from '@mui/material';
 import ReviewCard from '../components/ReviewCard';
 import NavbarComponent from '../components/NavbarComponent';
+// import styles from './styles.module.css'
 
 
 const ProfessorScreen = () => {
@@ -26,23 +27,26 @@ const ProfessorScreen = () => {
 
     return (
 
-        <>
-            <NavbarComponent
+        //<div className='d-flex flex-column justify-column-start'  >
+        <div className={styles.gradient}>
+        <NavbarComponent
                 isAdmin={false}
                 isLoggedIn={true}
+                style={{flex:1}}
             />
 
-            <div className="flex-column">
+            <div className="flex-column align-content-start justify-content-start" style={{backgroundColor:"#00000000",flex:9}}>
                 <div style={{
                     position: 'sticky',
                     marginLeft: '5%',
-                    marginTop: '-40%'
+                    marginTop: "10%",
+                    backgroundColor:"#00000000"
                 }}>
 
                     <h1>{firstname} {lastname}</h1>
                     <p size="large">Professor in the Computer Science Department</p>
 
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center ">
 
                         <Rating
 
@@ -54,13 +58,13 @@ const ProfessorScreen = () => {
                             readOnly
                         />
 
-                        <div className={styles.rubber}>{labels[labnum]}</div>
+                        <div className={styles.rubber} style={{marginLeft:"10%"}}>{labels[labnum]}</div>
 
                     </div>
 
-                    <div style={{ fontSize: "small" }}>Based on {numrating} ratings</div>
+                    <div style={{ fontSize: "small", alignContent:"end" }}>Based on {numrating} ratings</div>
 
-                    <button type="submit" className={styles.green_btn}>
+                    <button type="submit" className={styles.green_btn} style={{fontSize:"20px"}}>
                         Rate Professor
                     </button>
 
@@ -84,7 +88,7 @@ const ProfessorScreen = () => {
                 <div
                 
                 style={{
-                    position:'absolute',
+                    position:'relative',
                     marginLeft:'-1%',
                     marginTop:'5%'
                 }}
@@ -126,7 +130,7 @@ const ProfessorScreen = () => {
                 </div>
             </div>
 
-        </>
+        </div>
     )
 }
 //A commmit to check branch
