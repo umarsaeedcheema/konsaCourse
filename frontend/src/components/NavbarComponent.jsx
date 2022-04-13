@@ -3,20 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import styles from '../pages/styles.module.css'
 import BasicMenu from './BasicMenu'
 
+// <div className={styles.gradient}>
+// {/* <div className='d-flex justify-content-center flex-1 ' style={{ backgroundColor: "#00ffff00" }} >  </div> */}
+// {/* <div className='d-flex  justify-content-center ' style={{ flex: "9", backgroundColor: "#00ffff00" }}></div> */}
+
 const NavbarComponent = (props) => {
 
     const navigate = useNavigate()
     return (
-        <div className={styles.gradient}>
-            <div className='d-flex justify-content-center flex-1 ' style={{ backgroundColor: "#00ffff00" }} >   </div>
-            <div className='d-flex  justify-content-center ' style={{ flex: "9", backgroundColor: "#00ffff00" }}></div>
+
             <div >
                 <nav class="navbar navbar-expand-lg ">
                     <div class="container-fluid" style={{ backgroundColor: "#00FF0000" }}>
-                        <div className="row justify-content-start pl-20">
-                            <a class="navbar-brand" href="./landing"
-                                style={{ color: 'white' }}
-                            >KONSACOURSE</a>
+                        <div className="d-flex flex-row justify-content-start pl-20">
+                            <div className="d-flex align-content-end" onClick={()=>{navigate('/pages/landing')}}
+                                style={{ color: '#319fa0' }} >KONSA</div>
+                            <div className="d-flex align-content-end" onClick={()=>{navigate('/pages/landing')}}
+                                style={{ color: '#000000' }}
+                            >COURSE</div>
                         </div>
                         {/* <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -35,7 +39,7 @@ const NavbarComponent = (props) => {
                     </div>
                 </nav>
             </div>
-        </div>
+        //  </div>
     )
 }
 
