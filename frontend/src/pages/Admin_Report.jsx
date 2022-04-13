@@ -19,9 +19,9 @@ const Admin_Report = () => {
   return (
     <>
       <div
-      style={{
-        position:'relative'
-      }}
+        style={{
+          position: 'relative'
+        }}
       >
         <NavbarComponent />
       </div>
@@ -31,17 +31,17 @@ const Admin_Report = () => {
           top: -500
         }}
       >
-      
-          <h1
+
+        <h1
           style={{
-            position:'relative',
-            left:550,
-            top:-50
+            position: 'relative',
+            left: 550,
+            top: -50
           }}
-          >
-            Reported Ratings
-          </h1>
-        
+        >
+          Reported Ratings
+        </h1>
+
 
         <Grid container direction={'column'} spacing={4}>
 

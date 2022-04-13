@@ -5,12 +5,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Divider, Grid } from '@mui/material';
 import Rating from '@mui/material/Rating';
-import styles from '../pages/styles.module.css'
+import styles from '../pages/styles.module.css';
+import { useState } from "react";
 
 
 
 const ReportCard = (props) => {
-    
+
+
+
     return (
         <Card sx={{ minWidth: 275 }} style={{ backgroundColor: "#319FA025", borderRadius: "15px" }}>
 
@@ -29,7 +32,13 @@ const ReportCard = (props) => {
                 float:'right'
             }}
             >
-            <button type="submit" className={styles.green_btn}>
+            <button type="submit" className={styles.green_btn}
+            onClick={()=>{
+                
+                console.log("Hello")
+                
+            }}
+            >
 				Restore
 			</button>
 
