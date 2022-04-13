@@ -25,6 +25,12 @@ const RequestCard = (props) => {
                 <p>{props.profname}</p>
                 
             </CardContent>
+            <div
+            style={{
+                display:'flex',
+                justifyContent:'end'
+            }}
+            >
 
             <button type="button" className={styles.green_btn}>
 				Approve
@@ -33,6 +39,9 @@ const RequestCard = (props) => {
             <button type="button" className={styles.black_btn}>
 				Decline
 			</button>
+
+            </div>
+
 
 
 
