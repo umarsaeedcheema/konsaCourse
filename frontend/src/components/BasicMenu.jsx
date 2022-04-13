@@ -8,7 +8,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
+import Person from '@mui/icons-material/Person';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
@@ -23,11 +23,10 @@ export default function AccountMenu() {
     setAnchorEl(null);
   };
   const navigate = useNavigate()
+ const name='Umar'
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        {/* <Typography sx={{ minWidth: 100 }}>Contact</Typography>
-        <Typography sx={{ minWidth: 100 }}>Profile</Typography> */}
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
@@ -76,18 +75,16 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        {/* <MenuItem>
-          <Avatar /> Profile
-        </MenuItem> */}
-        {/* <MenuItem>
-          <Avatar /> My account
-        </MenuItem> */}
-        {/* <Divider /> */}
-        <MenuItem>
+
+        <MenuItem
+        style={{
+          backgroundColor:'white'
+        }}
+        >
           <ListItemIcon>
-            {/* <PersonAdd fontSize="small" /> */}
+            <Person fontSize="small" />
           </ListItemIcon>
-          Name
+          {name} 
         </MenuItem>
         <MenuItem onClick={()=>{
           navigate("/pages/changepassword")

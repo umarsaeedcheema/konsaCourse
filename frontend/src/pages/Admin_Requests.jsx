@@ -21,61 +21,71 @@ const Admin_Requests = () => {
 
   return (
     <div style={{
-      width:'auto'
+      width: 'auto'
     }} >
       <div style={{
-        height:100, 
+        height: 100,
       }}>
         <NavbarComponent />
       </div>
 
       <h1
+        style={{
+          display: 'flex',
+          justifyContent: 'center'
+        }}
+      >
+        Requests
+      </h1>
+
+
+      <div
       style={{
-        display:'flex',
-        justifyContent:'center'
+        marginTop:'50px'
       }}
       >
-        Request
-      </h1>
-      <Grid container direction={'column'} spacing={4}>
+        <Grid container direction={'column'} spacing={4}
+          
+        >
 
-        {/* <Grid item container>   */}
-
-
-
-        {reviews.map((value, key) => {
-
-          return (
-            <>
+          {/* <Grid item container>   */}
 
 
 
-              <Grid item container>
-                <Grid item xs={0} sm={2} />
-                <Grid item xs={12} sm={8}>
+          {reviews.map((value, key) => {
 
-                  <RequestCard
-                    coursename={value[0]}
-                    coursecode={value[1]}
-                    profname={value[2]}
-                  />
+            return (
+              <>
+
+
+
+                <Grid item container>
+                  <Grid item xs={0} sm={2} />
+                  <Grid item xs={12} sm={8}>
+
+                    <RequestCard
+                      coursename={value[0]}
+                      coursecode={value[1]}
+                      profname={value[2]}
+                    />
+
+                  </Grid>
+                  <Grid item xs={0} sm={2} />
 
                 </Grid>
-                <Grid item xs={0} sm={2} />
+              </>
+            )
 
-              </Grid>
-            </>
-          )
-
-        })}
+          })}
 
 
 
-        {/* </Grid> */}
+          {/* </Grid> */}
 
-      </Grid>
+        </Grid>
 
 
+      </div>
     </div>
   )
 }
