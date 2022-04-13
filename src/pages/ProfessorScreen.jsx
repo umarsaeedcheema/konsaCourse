@@ -46,7 +46,7 @@ const ProfessorScreen = () => {
                     <h1>{firstname} {lastname}</h1>
                     <p size="large">Professor in the Computer Science Department</p>
 
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center ">
 
                         <Rating
 
@@ -58,13 +58,13 @@ const ProfessorScreen = () => {
                             readOnly
                         />
 
-                        <div className={styles.rubber}>{labels[labnum]}</div>
+                        <div className={styles.rubber} style={{marginLeft:"10%"}}>{labels[labnum]}</div>
 
                     </div>
 
-                    <div style={{ fontSize: "small" }}>Based on {numrating} ratings</div>
+                    <div style={{ fontSize: "small", alignContent:"end" }}>Based on {numrating} ratings</div>
 
-                    <button type="submit" className={styles.green_btn}>
+                    <button type="submit" className={styles.green_btn} style={{fontSize:"20px"}}>
                         Rate Professor
                     </button>
 

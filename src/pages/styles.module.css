@@ -149,7 +149,7 @@
 
   .gradient {
     justify-content:center;
-    /* align-content: center; */
+    align-content: center;
     /* bg-light */
     align-items: center;
     flex-direction: column;

@@ -2,7 +2,7 @@ import React from 'react'
 import NavbarComponent from '../components/NavbarComponent';
 import SearchBar from '../components/SearchBar';
 import Data from '../Data.json'
-import bgImage from '../assets/Design.png'
+// import bgImage from '../assets/Design.png'
 import styles from './styles.module.css'
 const Landing = () => {
   return (
