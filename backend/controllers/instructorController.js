@@ -2,12 +2,14 @@ const { response } = require("express");
 const asyncHandler = require("express-async-handler");
 const Instructor = require("../models/instructorModels");
 // const User = require("../models/userModels");
+const Course = require("../models/courseModels");
+
 
 const addInstructor = asyncHandler(async (req, res) => {
   const {
     firstName,
     lastName,
-    courses,
+    course,
     overallRating,
     teachRating,
     commRating,
@@ -20,7 +22,7 @@ const addInstructor = asyncHandler(async (req, res) => {
     firstName,
     lastName,
     fullName,
-    courses,
+    course,
     overallRating,
     teachRating,
     commRating,
@@ -33,7 +35,7 @@ const addInstructor = asyncHandler(async (req, res) => {
       firstName: instructor.firstName,
       lastName: instructor.lastName,
       fullName: instructor.fullname,
-      courses: instructor.courses,
+      course: instructor.course,
       overallRating: instructor.overallRating,
       teachRating: instructor.teachRating,
       commRating: instructor.commRating,
@@ -47,10 +49,19 @@ const addInstructor = asyncHandler(async (req, res) => {
 });
 
 const searchInstructor = asyncHandler(async (req, res) => {
-  // console.log("hello jee");course
   var regex = new RegExp(req.params.n, "i");
   Instructor.find({ fullName: regex }).then((result) => {
     res.status(200).json(result);
   });
 });
-module.exports = { addInstructor, searchInstructor };
+
+const allCourses = asyncHandler(async (req, res) => {
+  var regex = new RegExp(req.params.n, "i");
+  await Instructor.find({ fullName: regex }, {course:1, _id:0}).then((result) => {
+    res.status(200).json(result)
+  });
+
+
+
+})
+module.exports = { addInstructor, searchInstructor, allCourses };
