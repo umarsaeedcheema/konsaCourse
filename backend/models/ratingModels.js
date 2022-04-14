@@ -17,8 +17,8 @@ const ratingSchema = mongoose.Schema({
     type: String,
     require: true,
   },
-  username: {
-    type: Array,
+  rollNumber: {
+    type: String,
     require: true,
   },
   comment: {

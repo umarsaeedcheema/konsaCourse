@@ -3,22 +3,22 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/userModels");
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { username, firstName, lastName, email, password, Squestion, Sanswer } =
+  const { rollNumber, firstName, lastName, email, password, Squestion, Sanswer } =
     req.body;
   fullName = firstName + " " + lastName;
   const emailExists = await User.findOne({ email });
-  const userExists = await User.findOne({ username });
+  const userExists = await User.findOne({ rollNumber });
   if (emailExists) {
     res.status(400);
     throw new Error("User with provided email exists");
   } else if (userExists) {
     res.status(400);
-    throw new Error("Username is already taken");
+    throw new Error("rollNumber is already taken");
   }
   //   const { fullName } = req.body.fullName;
   console.log(fullName);
   const user = await User.create({
-    username,
+    rollNumber,
     firstName,
     lastName,
     fullName,
@@ -26,13 +26,13 @@ const registerUser = asyncHandler(async (req, res) => {
     password,
     Squestion,
     Sanswer,
-    // status,
-    // reportCount,
+
+    reportCount,
   });
   if (user) {
     res.status(201).json({
       _id: user._id,
-      username: user.username,
+      rollNumber: user.rollNumber,
       firstName: user.firstName,
       lastName: user.lastName,
       fullName: user.fullname,
@@ -56,7 +56,7 @@ const login = asyncHandler(async (req, res) => {
   if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
-      username: user.username,
+      rollNumber: user.rollNumber,
       firstName: user.firstName,
       lastName: user.lastName,
       fullName: user.fullName,

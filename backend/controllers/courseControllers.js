@@ -57,11 +57,20 @@ const searchCourse = asyncHandler(async (req, res) => {
 });
 
 
-// const courseByInstructor = asyncHandler (async (req,res) => {
-//   var regex = new RegExp(req.params.n, "i");
-//   console.log(regex)
-//   Course.find({fullCourse:regex, instructorName:regex}).then((result)=> {
-//     res.status(200).json(result)
-//   });
-// });
-module.exports = { addCourse, searchCourse};
+const allInstructors = asyncHandler(async (req, res) => {
+  var regex = new RegExp(req.params.n, "i");
+  await Course.find({ courseName: regex }, { instructorName: 1, _id: 0 }).then((result) => {
+    res.status(200).json(result)
+  });
+});
+
+
+  const courseByInstructor = asyncHandler (async (req,res) => {
+    var regex1 = new RegExp(req.params.n, "i");
+    var regex2 = new RegExp(req.params.m, "i");
+    Course.find({courseName:regex1, instructorName:regex2}).then((result)=> {
+      res.status(200).json(result)
+    });
+  });
+  module.exports = { addCourse, searchCourse, allInstructors, courseByInstructor};
+  

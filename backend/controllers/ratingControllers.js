@@ -11,7 +11,7 @@ const addRating = asyncHandler(async (req, res) => {
     instructorName,
     courseName,
     courseCode,
-    username,
+    rollNumber,
     comment,
     likes,
     dislikes,
@@ -30,11 +30,11 @@ const addRating = asyncHandler(async (req, res) => {
   } = req.body;
   const instructorExists = await Instructor.findOne({ instructorName });
   const courseExists = await Course.findOne({ courseCode });
-  const usernameExists = await Rating.findOne({
-    username: username,
+  const rollNumberExists = await Rating.findOne({
+    rollNumber: rollNumber,
     courseCode: courseCode,
   });
-  if (usernameExists) {
+  if (rollNumberExists) {
     res.status(400);
     throw new Error("You have already rated this course");
   }
@@ -46,7 +46,7 @@ const addRating = asyncHandler(async (req, res) => {
       courseName,
       courseCode,
       fullCourse,
-      username,
+      rollNumber,
       comment,
       likes,
       dislikes,
@@ -69,7 +69,7 @@ const addRating = asyncHandler(async (req, res) => {
         instructorName: rating.instructorName,
         courseName: rating.courseName,
         courseCode: rating.courseCode,
-        userName: rating.userName,
+        rollNumber: rating.rollNumber,
         comment: rating.comment,
         likes: rating.likes,
         dislikes: rating.dislikes,
@@ -97,7 +97,7 @@ const addRating = asyncHandler(async (req, res) => {
       courseName,
       courseCode,
       fullCourse,
-      username,
+      rollNumber,
       comment,
       likes,
       dislikes,
@@ -120,7 +120,7 @@ const addRating = asyncHandler(async (req, res) => {
         instructorName: rating.instructorName,
         courseName: rating.courseName,
         courseCode: rating.courseCode,
-        userName: rating.userName,
+        rollNumber: rating.rollNumber,
         comment: rating.comment,
         likes: rating.likes,
         dislikes: rating.dislikes,
@@ -148,7 +148,7 @@ const addRating = asyncHandler(async (req, res) => {
       instructorName: rating.instructorName,
       courseName: rating.courseName,
       courseCode: rating.courseCode,
-      userName: rating.userName,
+      rollNumber: rating.rollNumber,
       comment: rating.comment,
       likes: rating.likes,
       dislikes: rating.dislikes,
@@ -171,57 +171,66 @@ const addRating = asyncHandler(async (req, res) => {
   }
 });
 
-const deleteRating = asyncHandler(async(req,res)=>{
-  await Rating.deleteOne({ratingID: req.params.n}).then((result)=>{
+const deleteRating = asyncHandler(async (req, res) => {
+  await Rating.deleteOne({ ratingID: req.params.n }).then((result) => {
     res.status(200).json(result)
   });
-  
-  // const ratingExists = await Rating.findOne({hello});
-  // if(ratingExists){
-  //   res.status(400);
-  //   throw new Error("Error");
-  // }
-  // console.log("NCINFEF")
 
 });
 
-const addLike = asyncHandler(async (req,res) => {
-  
-  await Rating.updateOne({ratingID: req.params.n}, 
-    {$inc: {likes: 1}}).then((result)=>{
-    res.status(200).json(result)
-  });
+const addLike = asyncHandler(async (req, res) => {
+
+  await Rating.updateOne({ ratingID: req.params.n },
+    { $inc: { likes: 1 } }).then((result) => {
+      res.status(200).json(result)
+    });
 });
 
 // const removeLike = asyncHandler(async (req,res) => {
-  
+
 //   await Rating.updateOne({ratingID: req.params.n}, 
 //     {$inc: {likes: -1}}).then((result)=>{
 //     res.status(200).json(result)
 //   });
 // });
 
-const addDislike = asyncHandler(async (req,res) => {
-  
-  await Rating.updateOne({ratingID: req.params.n}, 
-    {$inc: {dislikes: 1}}).then((result)=>{
-    res.status(200).json(result)
-  });
+const addDislike = asyncHandler(async (req, res) => {
+
+  await Rating.updateOne({ ratingID: req.params.n },
+    { $inc: { dislikes: 1 } }).then((result) => {
+      res.status(200).json(result)
+    });
 });
 
 // const removedisLike = asyncHandler(async (req,res) => {
-  
+
 //   await Rating.updateOne({ratingID: req.params.n}, 
 //     {$inc: {dislikes: -1}}).then((result)=>{
 //     res.status(200).json(result)
 //   });
 // });
 
-const filterReviewsAdmin = asyncHandler(async (req,res) => {
-await Rating.find({status: false}).then((result)=>{
-  res.status(200).json(result)
-});
+const filterReviewsAdmin = asyncHandler(async (req, res) => {
+  await Rating.find({ status: false }).then((result) => {
+    res.status(200).json(result)
+  });
 
 });
 
-module.exports = {addRating, deleteRating, addLike, addDislike, filterReviewsAdmin};
+const showRatings = asyncHandler(async (req, res) => {
+  await Rating.find({ status: true }).then((result) => {
+    res.status(200).json(result)
+  });
+
+});
+
+const approve = asyncHandler(async(req,res) => {
+  await Rating.updateOne({ ratingID: req.params.n },
+    { $set: { status: true } }).then((result) => {
+      res.status(200).json(result)
+    });
+
+})
+
+
+module.exports = { addRating, deleteRating, addLike, addDislike, filterReviewsAdmin, showRatings, approve};
