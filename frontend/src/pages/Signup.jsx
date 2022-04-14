@@ -52,32 +52,28 @@ const Signup = () => {
 		//{/* // <div> */}
 		<div className={styles.login_form_container}>
 
-			{/* <div className={styles.rightSupreme}>  add another encapsulation*/}
+
 			<div className={styles.right}>
-				{/* <Link href='./pages/Homepage'> */}
-				<div className="d-flex align-items-start ml-10 mt-2" 
-				style={{
-					cursor:'pointer'
-				}}
-				>
+
+				<div className="d-flex justify-content-start ml-20 mt-4 ">
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
-						style={{ color: '#319fa0' }} >KONSA</div>
+						style={{ color: '#319fa0' , cursor:'pointer'}} >KONSA</div>
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
-						style={{ color: '#000000' }}
+						style={{ color: '#000000' ,cursor:'pointer'}}
 					>COURSE</div>
 				</div>
-				{/* </Link> className={styles.form_container}		 */}
-				<div className="d-flex align-items-center justify-content-center flex-column" style={{ flex: 9 }}>
-					{/* <div style={{alignContent:"center",height:"100%",width:"100%",justifyContent:"center",flexDirection:"column",borderTopLeftRadius:"10px",backgroundColor:"white"}}> */}
+				<div className="d-flex align-items-center justify-content-center flex-column flex-1"  >
+
 					<form className={styles.form_container} onSubmit={handleSubmit}
-					style={{
-						backgroundColor: 'rgba(58, 175, 160, 0.05)',
-						width: '800px',
-						borderRadius:' 25px',
-						height: '350px'
-					}}
+						style={{
+							margin: 'auto',
+							backgroundColor: 'rgba(58, 175, 160, 0.05)',
+							width: '800px',
+							borderRadius: ' 25px',
+							height: '350px'
+						}}
 					>
-						<h1 className="pb-5" style={{ color: "black" }}>Create an Account</h1>
+						<h1 className="pb-4" style={{ color: "black" }}>Create an Account</h1>
 						<div className="d-flex justify-content-center" style={{ marginRight: "5%%" }}>
 							<div className="d-flex flex-column" style={{ marginRight: "2.5%" }}>
 								<input
@@ -145,7 +141,7 @@ const Signup = () => {
 						{/* Update Pass */}
 					</form>
 				</div>
-				{/* </div> */}
+
 			</div>
 			<div className={styles.left}>
 				<h1>Go To Home</h1>
@@ -153,7 +149,7 @@ const Signup = () => {
 
 					<button type="button" className={styles.white_btn}
 						onClick={() => {
-							navigate('/pages/homepage')
+							navigate('/pages/landing')
 
 						}}>
 						Home
@@ -162,7 +158,7 @@ const Signup = () => {
 				</h2>
 			</div>
 		</div>
-		//   </div>
+
 	)
 }
 
