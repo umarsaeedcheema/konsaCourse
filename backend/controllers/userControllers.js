@@ -1,6 +1,7 @@
 const { response } = require("express");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModels");
+const bcrypt = require('bcryptjs');
 
 const registerUser = asyncHandler(async (req, res) => {
   const { rollNumber, firstName, lastName, email, password, Squestion, Sanswer } =
@@ -74,4 +75,22 @@ const login = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { registerUser, login };
+const changePass = asyncHandler(async (req, res)=>{
+  const {email, currentPassword, newPassword} = req.body;
+  const user = await User.findOne({email});
+  if(user && await user.matchPassword(currentPassword)){
+    const salt = await bcrypt.genSalt(10);
+    const pass = await bcrypt.hash(newPassword, salt);
+    await User.updateOne(user, {$set:{password:pass}}).then((result)=>res.status(200).json(result));
+    // console.log("yo bro")
+  }
+  else
+  {
+    res.status(400);
+    throw new Error('Error Occured')
+  }
+});
+
+
+
+module.exports = { registerUser, login, changePass, };

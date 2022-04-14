@@ -26,7 +26,7 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log("HELLO");
+		// axios.get("http://localhost:5000/login").then((RESP)=>console.log(RESP));
 		
 	};
 
