@@ -56,4 +56,12 @@ const searchCourse = asyncHandler(async (req, res) => {
   });
 });
 
-module.exports = { addCourse, searchCourse };
+
+// const courseByInstructor = asyncHandler (async (req,res) => {
+//   var regex = new RegExp(req.params.n, "i");
+//   console.log(regex)
+//   Course.find({fullCourse:regex, instructorName:regex}).then((result)=> {
+//     res.status(200).json(result)
+//   });
+// });
+module.exports = { addCourse, searchCourse};

@@ -3,6 +3,7 @@ const asyncHandler = require("express-async-handler");
 const Rating = require("../models/ratingModels");
 const Instructor = require("../models/instructorModels");
 const Course = require("../models/courseModels");
+const { status } = require("express/lib/response");
 
 const addRating = asyncHandler(async (req, res) => {
   const {
@@ -170,4 +171,57 @@ const addRating = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = addRating;
+const deleteRating = asyncHandler(async(req,res)=>{
+  await Rating.deleteOne({ratingID: req.params.n}).then((result)=>{
+    res.status(200).json(result)
+  });
+  
+  // const ratingExists = await Rating.findOne({hello});
+  // if(ratingExists){
+  //   res.status(400);
+  //   throw new Error("Error");
+  // }
+  // console.log("NCINFEF")
+
+});
+
+const addLike = asyncHandler(async (req,res) => {
+  
+  await Rating.updateOne({ratingID: req.params.n}, 
+    {$inc: {likes: 1}}).then((result)=>{
+    res.status(200).json(result)
+  });
+});
+
+// const removeLike = asyncHandler(async (req,res) => {
+  
+//   await Rating.updateOne({ratingID: req.params.n}, 
+//     {$inc: {likes: -1}}).then((result)=>{
+//     res.status(200).json(result)
+//   });
+// });
+
+const addDislike = asyncHandler(async (req,res) => {
+  
+  await Rating.updateOne({ratingID: req.params.n}, 
+    {$inc: {dislikes: 1}}).then((result)=>{
+    res.status(200).json(result)
+  });
+});
+
+// const removedisLike = asyncHandler(async (req,res) => {
+  
+//   await Rating.updateOne({ratingID: req.params.n}, 
+//     {$inc: {dislikes: -1}}).then((result)=>{
+//     res.status(200).json(result)
+//   });
+// });
+
+const filterReviewsAdmin = asyncHandler(async (req,res) => {
+await Rating.find({status: false}).then((result)=>{
+  res.status(200).json(result)
+});
+
+});
+
+module.exports = {addRating, deleteRating, addLike, addDislike, filterReviewsAdmin};
