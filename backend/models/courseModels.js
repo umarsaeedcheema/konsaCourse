@@ -14,7 +14,7 @@ const courseSchema = mongoose.Schema({
     require: true,
   },
   instructorName: {
-    type: Array,
+    type: String,
     require: true,
   },
   courseRating: {
@@ -45,6 +45,7 @@ const courseSchema = mongoose.Schema({
   numReviews: {
     type: Number,
     require: true,
+    defualt : 0,
   },
 });
 
