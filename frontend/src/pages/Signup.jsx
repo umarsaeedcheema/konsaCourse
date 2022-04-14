@@ -23,12 +23,12 @@ const Signup = () => {
 		e.preventDefault();
 
 		console.log(e.target.value);
-		console.log(data.username);
-		console.log(data.fullName);
+		console.log(data.fname);
+		console.log(data.lname);
 		console.log(data.email);
 		console.log(data.password);
-		console.log(data.Squestion);
-		console.log(data.Sanswer);
+		console.log(data.question);
+		console.log(data.answer);
 		try {
 			const url = `http://localhost:"${process.env.PORT}"/signup`;
 			const { data: res } = await axios.post(url, data);
