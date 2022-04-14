@@ -55,19 +55,29 @@ const Signup = () => {
 			{/* <div className={styles.rightSupreme}>  add another encapsulation*/}
 			<div className={styles.right}>
 				{/* <Link href='./pages/Homepage'> */}
-				<div className="d-flex align-items-start flex-column" style={{ flex: 1 }}>
-					<text style={{ color: "black", fontSize: "20px", paddingTop: "20px", paddingLeft: "20px", cursor:"pointer" }}
-					onClick={()=>{
-						navigate('/pages/homepage')
-					}}>
-						KonsaCourse
-					</text>
+				<div className="d-flex align-items-start ml-10 mt-2" 
+				style={{
+					cursor:'pointer'
+				}}
+				>
+					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
+						style={{ color: '#319fa0' }} >KONSA</div>
+					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
+						style={{ color: '#000000' }}
+					>COURSE</div>
 				</div>
 				{/* </Link> className={styles.form_container}		 */}
-				<div className="d-flex align-items-center justify-content-center felx-column" style={{ flex: 9 }}>
+				<div className="d-flex align-items-center justify-content-center flex-column" style={{ flex: 9 }}>
 					{/* <div style={{alignContent:"center",height:"100%",width:"100%",justifyContent:"center",flexDirection:"column",borderTopLeftRadius:"10px",backgroundColor:"white"}}> */}
-					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1 style={{ color: "black" }}>Signup</h1>
+					<form className={styles.form_container} onSubmit={handleSubmit}
+					style={{
+						backgroundColor: 'rgba(58, 175, 160, 0.05)',
+						width: '800px',
+						borderRadius:' 25px',
+						height: '350px'
+					}}
+					>
+						<h1 className="pb-5" style={{ color: "black" }}>Create an Account</h1>
 						<div className="d-flex justify-content-center" style={{ marginRight: "5%%" }}>
 							<div className="d-flex flex-column" style={{ marginRight: "2.5%" }}>
 								<input
@@ -142,10 +152,10 @@ const Signup = () => {
 				<h2 >
 
 					<button type="button" className={styles.white_btn}
-					onClick={()=>{
-						navigate('/pages/homepage')
+						onClick={() => {
+							navigate('/pages/homepage')
 
-					}}>
+						}}>
 						Home
 					</button>
 
