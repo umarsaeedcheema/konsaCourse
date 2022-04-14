@@ -29,7 +29,7 @@ function SearchBar({ placeholder, data }) {
   return (
     <div className="search">
       <div className="searchInputs">
-        <input style={{height:"50%"}}
+        <input style={{height:"50%",backgroundColor:"#3aafa020",paddingLeft:8, borderRadius:15}}
           type="text"
           placeholder={placeholder}
           value={wordEntered}
