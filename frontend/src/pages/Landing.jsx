@@ -1,15 +1,15 @@
 import React from 'react'
 import NavbarComponent from '../components/NavbarComponent';
 import SearchBar from '../components/SearchBar';
-import Data from '../Data.json'
-// import bgImage from '../assets/Design.png'
+// import Data from '../Data.json'
+import {useState,useEffect } from 'react'
 import styles from './styles.module.css'
-import { useState, useEffect } from "react";
 
 const Landing = () => {
   
   const [user, setUser] = useState();
 
+  const url = 'darhiman';
   
 
   useEffect(() => {
@@ -58,8 +58,8 @@ const Landing = () => {
           >
             <div class="container">
               <div class="d-flex ">
-                <div class="col-8">
-                  <SearchBar placeholder={"Search Course"} data={Data} style={{ backgroundColor: "#3aafa020" }} />
+                <div class="col-8" style={{ marginTop: "-20%" }}>
+                  <SearchBar placeholder={"Instructor"} url={url} style={{backgroundColor:"#3aafa020"}} />
                   <span style={{ color: '#3AAFA0', cursor: 'pointer' }}
 
                   > Search Instructor Instead</span>
