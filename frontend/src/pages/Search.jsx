@@ -7,6 +7,7 @@ import Data from '../Data.json'
 const Search = () => {
   return (
     <>
+    <NavbarComponent/>
      
     </>
   )

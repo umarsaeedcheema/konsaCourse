@@ -77,8 +77,8 @@ import { useNavigate } from "react-router-dom";
 // 	);
 // };
 
-const ChangePassword = ()=>{
-	const [data, setData] = useState({ old: "", new: "" ,cnew:""});
+const ChangePassword = () => {
+	const [data, setData] = useState({ old: "", new: "", cnew: "" });
 	const [error, setError] = useState("");
 
 	const handleChange = ({ currentTarget: input }) => {
@@ -89,7 +89,7 @@ const ChangePassword = ()=>{
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-        // console.log(e.target.value)
+		// console.log(e.target.value)
 		// console.log(data.email)
 		// console.log(data.password)
 		// try {
@@ -110,35 +110,33 @@ const ChangePassword = ()=>{
 
 
 	const navigate = useNavigate()
-    return (
-        // <div className={styles.login_container}>
-        //{/* // <div> */}
-        <div className={styles.login_form_container}>
-       
-        {/* <div className={styles.rightSupreme}>  add another encapsulation*/}
-        <div className={styles.right}>
-        {/* <Link
-        href="http://geeksforgeeks.org/"
-        onClick={() => {
-          alert("Redirecting to GeeksforGeeks");
-        }}>
-        Click GeeksforGeeks
-      </Link> */}
-		{/* <Link href='./pages/Homepage'> */}
-		<div className="d-flex align-items-start flex-column" style={{flex:1}}> 
-		<text style={{color:"black", fontSize:"20px", paddingTop:"20px", paddingLeft:"20px", cursor:'pointer' }}
-		onClick={()=>{
-			navigate('/pages/landing')
-		}}
-		>
-		KonsaCourse
-		</text>
-		</div>
- 		{/* </Link> className={styles.form_container}		 */}
-		 <div className="d-flex align-items-center justify-content-center felx-column" style={{flex:9}}>
-		 {/* <div style={{alignContent:"center",height:"100%",width:"100%",justifyContent:"center",flexDirection:"column",borderTopLeftRadius:"10px",backgroundColor:"white"}}> */}
-			<form className={styles.form_container} onSubmit={handleSubmit}>
-						 <h1 style={{color:"black"}}>Change Password</h1>
+	return (
+		<div className={styles.login_form_container}>
+
+
+			<div className={styles.right}>
+
+				<div className="d-flex justify-content-start ml-20 mt-4 ">
+					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
+						style={{ color: '#319fa0', cursor: 'pointer' }} >KONSA</div>
+					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
+						style={{ color: '#000000', cursor: 'pointer' }}
+					>COURSE</div>
+				</div>
+
+				<div className="d-flex align-items-center justify-content-center flex-column"
+					style={{
+						backgroundColor: 'rgba(58, 175, 160, 0.05)',
+						margin: 'auto',
+						width: '435px',
+						height: '350px',
+						borderRadius: '5%'
+					}}
+
+				>
+
+					<form className={styles.form_container} onSubmit={handleSubmit}>
+						<h1 className="mb-10"  style={{ color: "black" }}>Change Password</h1>
 						<input
 							type="password"
 							placeholder="Current Password"
@@ -157,7 +155,7 @@ const ChangePassword = ()=>{
 							required
 							className={styles.input}
 						/>
-                        <input
+						<input
 							type="password"
 							placeholder="Confirm New Password"
 							name="cnew"
@@ -166,26 +164,26 @@ const ChangePassword = ()=>{
 							required
 							className={styles.input}
 						/>
-						{error && <div className={styles.error_msg}>{error}</div>}						
+						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.green_btn}>
-						Update Password
+							Update Password
 						</button>
-						{/* Update Pass */}
+
 					</form>
-					</div>
-          {/* </div> */}
-          </div>
-          <div className={styles.left}>
- 					<h1>Go To Home</h1>
- 					<h2 >
- 						<button type="button" className={styles.white_btn}>
- 							Home
- 						</button>
- 					</h2>
- 			</div>
-         </div>
-        //   </div>
-        )
+				</div>
+
+			</div>
+			<div className={styles.left}>
+				<h1>Go To Home</h1>
+				<h2 >
+					<button type="button" className={styles.white_btn}>
+						Home
+					</button>
+				</h2>
+			</div>
+		</div>
+
+	)
 }
 
 export default ChangePassword;

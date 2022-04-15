@@ -36,38 +36,55 @@ const Login = () => {
 
 	let navigate = useNavigate()
 	return (
-		
+
 		< div className={styles.login_form_container} >
 			<div className={styles.left}>
-				<h1 >New Here ?</h1>
+				<h1 >New Here?</h1>
 				<h2 >
-					<button type="button" className={styles.white_btn}
+					<button type="button ml-10" className={styles.white_btn}
 						onClick={() => {
 							navigate('/pages/signup')
-						}}>
+						}}
+					>
 						Sign Up
 					</button>
 				</h2>
 			</div>
-			{/* <div className={styles.rightSupreme}>  add another encapsulation*/}
 			<div className={styles.right} >
-				<div className="d-flex align-items-end flex-column" style={{ flex: 1 }}>
-					<text style={{ color: "black", fontSize: "20px", paddingTop: "20px", paddingRight: "20px",cursor: 'pointer' }}
-					onClick={()=>{
-						navigate('/pages/landing')
-					}}>
-						KonsaCourse
-
-					</text>
+				<div className="d-flex justify-content-end pr-20 mt-4">
+					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
+						style={{ color: '#319fa0', cursor:'pointer' }} >KONSA</div>
+					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
+						style={{ color: '#000000',cursor:'pointer' }}
+					>COURSE</div>
 
 				</div>
 
-				<div className="d-flex align-items-center justify-content-center felx-column" style={{ flex: 9 }}>
-
-					<form className={styles.form_container} onSubmit={handleSubmit}>
-
-						<h1 style={{ color: "black", fontSize: "120%" }}>Sign in to Your Account</h1>
+				<div className="d-flex align-items-center justify-content-center flex-column"
+					style={{
+						margin: 'auto',
+						backgroundColor: 'rgba(58, 175, 160, 0.05)',
+						borderRadius: '5%',
+						width: '500px',
+						height: '320px',
 						
+					}}
+				>
+
+					<form className={styles.form_container} onSubmit={handleSubmit}
+						style={{
+
+							height: '100 %',
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: ' center',
+							justifyContent: 'center'
+
+						}}
+					>
+
+						<h1 className="mb-5" style={{ color: "black"}}>Sign in to Your Account</h1>
+
 						<input
 							type="email"
 							placeholder="Email"
@@ -85,13 +102,13 @@ const Login = () => {
 							value={data.password}
 							required
 							className={styles.input}
-						
+
 						/>
-						
+
 						{error && <div className={styles.error_msg}>{error}</div>}
 
 						<span className="d-flex justify-content-end"
-							style={{ width: "100%", marginRight: "2%", fontSize: "15px", cursor: 'pointer' }}
+							style={{ width: "100%", marginRight: "8%", fontSize: "15px", cursor: 'pointer' }}
 							onClick={() => {
 								navigate('/pages/forgotpassword')
 							}}>

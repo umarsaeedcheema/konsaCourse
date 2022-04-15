@@ -39,7 +39,7 @@ const ProfessorScreen = () => {
                 <div style={{
                     position: 'sticky',
                     marginLeft: '5%',
-                    marginTop: "10%",
+                    marginTop: "5%",
                     backgroundColor:"#00000000"
                 }}>
 
@@ -89,7 +89,7 @@ const ProfessorScreen = () => {
                 
                 style={{
                     position:'relative',
-                    marginLeft:'-1%',
+                    marginLeft:'-15%',
                     marginTop:'5%'
                 }}
                 >
