@@ -2,12 +2,23 @@ import styles from "./styles.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+//const dotenv = require("dotenv");
+//dotenv.config();
 // const dotenv = require("dotenv");
 // dotenv.config();
 // import IconButton from "@material-ui/core/IconButton";
 // import Visibility from "@material-ui/icons/Visibility";
 // import VisibilityOff from "@material-ui/icons/VisibilityOff";
 // import InputAdornment from "@material-ui/core/InputAdornment";
+
+function checkLums(mail) {
+	 
+	if (mail.endsWith("lums.edu.pk")) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
 const Signup = () => {
 	const [data, setData] = useState({ fname: "", lname: "", question: "", answer: "", email: "", password: "" });
@@ -21,29 +32,57 @@ const Signup = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		
+		if (checkLums(data.email)) {
+			const signupobject = {
+				rollNumber: 20210,
+				firstName: data.fname,
+				lastName: data.lname,
+				email: data.email,
+				password: data.password,
+				Squestion: data.question,
+				Sanswer: data.answer,
+				reportCount: 0
+			};
+	
+			const url = `/signup`;
+			await axios.post(url, signupobject).then((res)=>{
+				console.log("Hello");
+				console.log(res);
+	
+				const userData = res.data;
+				localStorage.setItem('user', JSON.stringify(userData));
+				
+				navigate('/pages/homepage');
+	
+			})		
+			.catch(function (error) {
+	
+				if (error.response) {
+					if (
+						error.response &&
+						error.response.status >= 400 &&
+						error.response.status <= 500
+					) {
+						setError(error.response.data.message);
+						console.log("Error 1");
+					}
+				} else if (error.request) {
+					console.log("Error 2");
+					console.log(error.request);
+				} else {
+					console.log("Error 3");
+					console.log('Error', error.message);
+				}
+	
+			});
 
-		console.log(e.target.value);
-		console.log(data.username);
-		console.log(data.fullName);
-		console.log(data.email);
-		console.log(data.password);
-		console.log(data.Squestion);
-		console.log(data.Sanswer);
-		try {
-			const url = `http://localhost:"${process.env.PORT}"/signup`;
-			const { data: res } = await axios.post(url, data);
-			// localStorage.setItem("token", res.data);
-			window.location = "/";
-		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				setError(error.response.data.message);
-			}
+		} else {
+			setError("Please use a LUMS email address");
 		}
+		
 	};
+		
 
 
 	let navigate = useNavigate()

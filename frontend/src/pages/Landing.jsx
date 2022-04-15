@@ -4,7 +4,42 @@ import SearchBar from '../components/SearchBar';
 import Data from '../Data.json'
 // import bgImage from '../assets/Design.png'
 import styles from './styles.module.css'
+import { useState, useEffect } from "react";
+
 const Landing = () => {
+  
+  const [user, setUser] = useState();
+  const [admin, setAdmin] = useState();
+
+  
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    const loggedInAdmin = localStorage.getItem("admin");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+      console.log("Logged in User");
+    } else if (loggedInAdmin) {
+      const foundAdmin = JSON.parse(loggedInAdmin);
+      setAdmin(foundAdmin);
+    }
+  }, []);
+
+  let loggedin = false;
+  let adminin = false;
+  
+  if (user) {
+    loggedin = true;
+  }
+  
+  if (admin) {
+    adminin = true;
+  }
+  
+  
+  
+  
   return (
     <div className={styles.gradient}
     // style={{
@@ -16,8 +51,8 @@ const Landing = () => {
       <div>
         <NavbarComponent
           // style={{backgroundColor:"#000fff00",flex:1}}
-          isLoggedIn={false}
-          isAdmin={false} />
+          isLoggedIn={loggedin}
+          isAdmin={adminin} />
       </div>
       <div className=' align-items-center justify-content-start ml-20 pt-40' style={{ width: '50%', height: "100%" }} >
         <div style={{ width: "80%" }}>
