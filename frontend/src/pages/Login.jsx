@@ -88,15 +88,11 @@ const Login = () => {
 				</h2>
 			</div>
 			<div className={styles.right} >
-				<div className="d-flex justify-content-end pr-20 "
-					style={{
-						cursor: 'pointer'
-					}}
-				>
+				<div className="d-flex justify-content-end pr-20 mt-4">
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
-						style={{ color: '#319fa0' }} >KONSA</div>
+						style={{ color: '#319fa0', cursor:'pointer' }} >KONSA</div>
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
-						style={{ color: '#000000' }}
+						style={{ color: '#000000',cursor:'pointer' }}
 					>COURSE</div>
 
 				</div>
@@ -104,14 +100,11 @@ const Login = () => {
 				<div className="d-flex align-items-center justify-content-center flex-column"
 					style={{
 						margin: 'auto',
-						display: 'flex',
 						backgroundColor: 'rgba(58, 175, 160, 0.05)',
 						borderRadius: '5%',
-						// width:'50%',
-						// maxWidth:'50%',
 						width: '500px',
 						height: '320px',
-						justifyContent: 'center'
+						
 					}}
 				>
 
