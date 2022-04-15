@@ -2,12 +2,23 @@ import styles from "./styles.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+//const dotenv = require("dotenv");
+//dotenv.config();
 // const dotenv = require("dotenv");
 // dotenv.config();
 // import IconButton from "@material-ui/core/IconButton";
 // import Visibility from "@material-ui/icons/Visibility";
 // import VisibilityOff from "@material-ui/icons/VisibilityOff";
 // import InputAdornment from "@material-ui/core/InputAdornment";
+
+function checkLums(mail) {
+	 
+	if (mail.endsWith("lums.edu.pk")) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
 const Signup = () => {
 	const [data, setData] = useState({ fname: "", lname: "", question: "", answer: "", email: "", password: "" });
@@ -21,29 +32,59 @@ const Signup = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		
+		if (checkLums(data.email)) {
+			const signupobject = {
+				firstName: data.fname,
+				lastName: data.lname,
+				email: data.email,
+				password: data.password,
+				Squestion: data.question,
+				Sanswer: data.answer,
+				reportCount: 0
+			};
+	
+			const url = `/signup`;
+			await axios.post(url, signupobject).then((res)=>{
+				console.log("Hello");
+				console.log(res);
+	
+				const userData = res.data;
+				localStorage.setItem('user', JSON.stringify(userData));
+				
+				navigate('/pages/homepage');
+	
+			})		
+			.catch(function (error) {
+	
+				if (error.response) {
+					if (
+						error.response &&
+						error.response.status >= 400 &&
+						error.response.status <= 500
+					) {
+						setError(error.response.data.message);
+						console.log("Error 1");
+						setError("There was an error");
+					}
+				} else if (error.request) {
+					console.log("Error 2");
+					console.log(error.request);
+					setError("There was an error");
+				} else {
+					console.log("Error 3");
+					console.log('Error', error.message);
+					setError("There was an error");
+				}
+	
+			});
 
-		console.log(e.target.value);
-		console.log(data.username);
-		console.log(data.fullName);
-		console.log(data.email);
-		console.log(data.password);
-		console.log(data.Squestion);
-		console.log(data.Sanswer);
-		try {
-			const url = `http://localhost:"${process.env.PORT}"/signup`;
-			const { data: res } = await axios.post(url, data);
-			// localStorage.setItem("token", res.data);
-			window.location = "/";
-		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
-				setError(error.response.data.message);
-			}
+		} else {
+			setError("Please use a LUMS email address");
 		}
+		
 	};
+		
 
 
 	let navigate = useNavigate()
@@ -52,32 +93,28 @@ const Signup = () => {
 		//{/* // <div> */}
 		<div className={styles.login_form_container}>
 
-			{/* <div className={styles.rightSupreme}>  add another encapsulation*/}
+
 			<div className={styles.right}>
-				{/* <Link href='./pages/Homepage'> */}
-				<div className="d-flex align-items-start ml-10 mt-2" 
-				style={{
-					cursor:'pointer'
-				}}
-				>
+
+				<div className="d-flex justify-content-start ml-20 mt-4 ">
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
-						style={{ color: '#319fa0' }} >KONSA</div>
+						style={{ color: '#319fa0' , cursor:'pointer'}} >KONSA</div>
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
-						style={{ color: '#000000' }}
+						style={{ color: '#000000' ,cursor:'pointer'}}
 					>COURSE</div>
 				</div>
-				{/* </Link> className={styles.form_container}		 */}
-				<div className="d-flex align-items-center justify-content-center flex-column" style={{ flex: 9 }}>
-					{/* <div style={{alignContent:"center",height:"100%",width:"100%",justifyContent:"center",flexDirection:"column",borderTopLeftRadius:"10px",backgroundColor:"white"}}> */}
+				<div className="d-flex align-items-center justify-content-center flex-column flex-1"  >
+
 					<form className={styles.form_container} onSubmit={handleSubmit}
-					style={{
-						backgroundColor: 'rgba(58, 175, 160, 0.05)',
-						width: '800px',
-						borderRadius:' 25px',
-						height: '350px'
-					}}
+						style={{
+							margin: 'auto',
+							backgroundColor: 'rgba(58, 175, 160, 0.05)',
+							width: '800px',
+							borderRadius: ' 25px',
+							height: '350px'
+						}}
 					>
-						<h1 className="pb-5" style={{ color: "black" }}>Create an Account</h1>
+						<h1 className="pb-4" style={{ color: "black" }}>Create an Account</h1>
 						<div className="d-flex justify-content-center" style={{ marginRight: "5%%" }}>
 							<div className="d-flex flex-column" style={{ marginRight: "2.5%" }}>
 								<input
@@ -145,7 +182,7 @@ const Signup = () => {
 						{/* Update Pass */}
 					</form>
 				</div>
-				{/* </div> */}
+
 			</div>
 			<div className={styles.left}>
 				<h1>Go To Home</h1>
@@ -153,7 +190,7 @@ const Signup = () => {
 
 					<button type="button" className={styles.white_btn}
 						onClick={() => {
-							navigate('/pages/homepage')
+							navigate('/pages/landing')
 
 						}}>
 						Home
@@ -162,7 +199,7 @@ const Signup = () => {
 				</h2>
 			</div>
 		</div>
-		//   </div>
+
 	)
 }
 

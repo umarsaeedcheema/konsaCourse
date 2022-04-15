@@ -26,7 +26,47 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// axios.get("http://localhost:5000/login").then((RESP)=>console.log(RESP));
+
+		const logindetails = {
+			email: data.email,
+			password: data.password
+		};
+
+		const url = `/login`;
+		
+		await axios.post(url, logindetails).then((res)=>{
+			console.log("Hello");
+			console.log(res);
+
+			const userData = res.data;
+			localStorage.setItem('user', JSON.stringify(userData));
+			
+			navigate('/pages/homepage');
+
+		})		
+		.catch(function (error) {
+
+			if (error.response) {
+				if (
+					error.response &&
+					error.response.status >= 400 &&
+					error.response.status <= 500
+				) {
+					setError(error.response.data.message);
+					console.log("Error 1");
+					setError("There was an error");
+				}
+			} else if (error.request) {
+				console.log("Error 2");
+				console.log(error.request);
+				setError("There was an error");
+			} else {
+				console.log("Error 3");
+				console.log('Error', error.message);
+				setError("There was an error");
+			}
+
+		});
 		
 	};
 
@@ -48,15 +88,11 @@ const Login = () => {
 				</h2>
 			</div>
 			<div className={styles.right} >
-				<div className="d-flex justify-content-end pr-20 "
-					style={{
-						cursor: 'pointer'
-					}}
-				>
+				<div className="d-flex justify-content-end pr-20 mt-4">
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
-						style={{ color: '#319fa0' }} >KONSA</div>
+						style={{ color: '#319fa0', cursor:'pointer' }} >KONSA</div>
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
-						style={{ color: '#000000' }}
+						style={{ color: '#000000',cursor:'pointer' }}
 					>COURSE</div>
 
 				</div>
@@ -64,14 +100,11 @@ const Login = () => {
 				<div className="d-flex align-items-center justify-content-center flex-column"
 					style={{
 						margin: 'auto',
-						display: 'flex',
 						backgroundColor: 'rgba(58, 175, 160, 0.05)',
 						borderRadius: '5%',
-						// width:'50%',
-						// maxWidth:'50%',
 						width: '500px',
 						height: '320px',
-						justifyContent: 'center'
+						
 					}}
 				>
 
