@@ -17,7 +17,7 @@ const ratingSchema = mongoose.Schema({
     type: String,
     require: true,
   },
-  rollNumber: {
+  email: {
     type: String,
     require: true,
   },

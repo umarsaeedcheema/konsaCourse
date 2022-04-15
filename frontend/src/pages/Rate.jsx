@@ -10,7 +10,7 @@ const Rate = () => {
                 style={{flex:1}}
             />
     <div className="d-flex border-radius-10 flex-cloumn" style={{ height:"90vh",backgroundColor:"#319fa020"}}>
-      OOLALALALAL
+    OOLALALALAL
 
     </div>
     </div>
