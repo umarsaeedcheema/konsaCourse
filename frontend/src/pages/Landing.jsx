@@ -4,14 +4,35 @@ import SearchBar from '../components/SearchBar';
 // import Data from '../Data.json'
 import {useState,useEffect } from 'react'
 import styles from './styles.module.css'
-const axios = require('axios')
-
-// import bgImage from '../assets/Design.png'
-
-
 
 const Landing = () => {
-  const url = 'shfk'
+  
+  const [user, setUser] = useState();
+
+  const url = 'darhiman';
+  
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+      console.log("Logged in User");
+    }
+  }, []);
+
+  let loggedin = false;
+  let adminin = false;
+  
+  if (user) {
+    if (user.isAdmin) {
+      adminin = true;
+    } else {
+      loggedin = true;
+    }
+  }
+
+  
   return (
     <div className={styles.gradient}
     // style={{
@@ -23,13 +44,18 @@ const Landing = () => {
       <div>
         <NavbarComponent
           // style={{backgroundColor:"#000fff00",flex:1}}
-          isLoggedIn={false}
-          isAdmin={false} />
+          isLoggedIn={loggedin}
+          isAdmin={adminin} />
       </div>
-      <div className='align-items-center justify-content-start ml-20 mt-20' style={{ width: '50%', height: "100%" }} >
-        <div style={{ width: "80%"}}>
+      <div className=' align-items-center justify-content-start ml-20 pt-40' style={{ width: '50%', height: "100%" }} >
+        <div style={{ width: "80%" }}>
           <h1>Let's find the perfect <br />course for you!</h1>
-          <form >
+          <form
+            style={{
+              display: 'block',
+              marginTop: '-60px'
+            }}
+          >
             <div class="container">
               <div class="d-flex ">
                 <div class="col-8" style={{ marginTop: "-20%" }}>

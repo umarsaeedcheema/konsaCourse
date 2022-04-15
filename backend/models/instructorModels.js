@@ -13,7 +13,7 @@ const instructorSchema = mongoose.Schema({
     type: String,
     require: true,
   },
-  courses: {
+  course: {
     type: Array,
     require: true,
   },

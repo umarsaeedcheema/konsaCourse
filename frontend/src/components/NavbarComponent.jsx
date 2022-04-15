@@ -8,17 +8,23 @@ import BasicMenu from './BasicMenu'
 // {/* <div className='d-flex  justify-content-center ' style={{ flex: "9", backgroundColor: "#00ffff00" }}></div> */}
 
 const NavbarComponent = (props) => {
-
     const navigate = useNavigate()
     return (
 
             <div >
                 <nav class="navbar navbar-expand-lg ">
                     <div class="container-fluid" style={{ backgroundColor: "#00FF0000" }}>
-                        <div className="d-flex flex-row justify-content-start pl-20">
-                            <div className="d-flex align-content-end" onClick={()=>{navigate('/pages/landing')}}
+                        <div className="d-flex flex-row justify-content-start pl-20"
+                        onClick={()=>{
+                            navigate('/pages/landing')
+                        }}
+                        style={{
+                            cursor:'pointer'
+                        }}
+                        >
+                            <div className="d-flex align-content-end fw-bold" onClick={()=>{navigate('/pages/landing')}}
                                 style={{ color: '#319fa0' }} >KONSA</div>
-                            <div className="d-flex align-content-end" onClick={()=>{navigate('/pages/landing')}}
+                            <div className="d-flex align-content-end fw-bold" onClick={()=>{navigate('/pages/landing')}}
                                 style={{ color: '#000000' }}
                             >COURSE</div>
                         </div>

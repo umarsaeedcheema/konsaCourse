@@ -77,6 +77,8 @@ export default function AccountMenu() {
       >
 
         <MenuItem
+
+        onClick={()=>null}
         style={{
           backgroundColor:'white'
         }}
