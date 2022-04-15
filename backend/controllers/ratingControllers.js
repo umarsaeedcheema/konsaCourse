@@ -254,6 +254,7 @@ const showRatings = asyncHandler(async (req, res) => {
 
 });
 
+
 const approve = asyncHandler(async(req,res) => {
   await Rating.updateOne({ ratingID: req.params.n },
     { $set: { status: true } }).then((result) => {

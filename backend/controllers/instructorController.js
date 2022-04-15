@@ -6,6 +6,7 @@ const Course = require("../models/courseModels");
 
 
 const addInstructor = asyncHandler(async (req, res) => {
+  
   const {
     firstName,
     lastName,
@@ -18,6 +19,19 @@ const addInstructor = asyncHandler(async (req, res) => {
   } = req.body;
   let fullName = firstName + " " + lastName;
   console.log(fullName);
+const instructorExists = await Instructor.findOne({ fullName });
+
+  if(instructorExists)
+  {
+    Instructor.updateOne(
+      { fullName: firstName + " " + lastName },
+      { $push: { course: course } }
+   )
+   res.status(201)
+  }
+  else
+  {
+    
   const instructor = await Instructor.create({
     firstName,
     lastName,
@@ -46,11 +60,12 @@ const addInstructor = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Error occured");
   }
+}
 });
 
 const searchInstructor = asyncHandler(async (req, res) => {
   var regex = new RegExp(req.params.n, "i");
-  Instructor.find({ fullName: regex }).then((result) => {
+  await Instructor.find({ fullName: regex }).then((result) => {
     res.status(200).json(result);
   });
 });
@@ -60,8 +75,12 @@ const allCourses = asyncHandler(async (req, res) => {
   await Instructor.find({ fullName: regex }, {course:1, _id:0}).then((result) => {
     res.status(200).json(result)
   });
-
-
-
 })
-module.exports = { addInstructor, searchInstructor, allCourses };
+
+
+const allNames = asyncHandler(async (req, res) => {
+  await Instructor.find({}, {fullName:1, _id:0}).then((result) => {
+    res.status(200).json(result)
+  })
+})
+module.exports = { addInstructor, searchInstructor, allCourses, allNames};
