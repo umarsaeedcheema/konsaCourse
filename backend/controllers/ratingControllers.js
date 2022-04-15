@@ -30,6 +30,7 @@ const addRating = asyncHandler(async (req, res) => {
   } = req.body;
   const instructorExists = await Instructor.findOne({ instructorName });
   const courseExists = await Course.findOne({ courseCode });
+
   const rollNumberExists = await Rating.findOne({
     rollNumber: rollNumber,
     courseCode: courseCode,
@@ -40,6 +41,7 @@ const addRating = asyncHandler(async (req, res) => {
   }
   let fullCourse = courseCode + " " + courseName;
   if (instructorExists && courseExists) {
+
     const rating = await Rating.create({
       ratingID,
       instructorName,
@@ -62,6 +64,23 @@ const addRating = asyncHandler(async (req, res) => {
       status,
       semester,
       year,
+    });
+    
+    naam = rating.instructorName.split()
+    thisCourse = rating.courseName
+    console.log("NAME:",naam)
+    first = naam[0]
+    second = naam[1]
+    const instructor = await Instructor.create({
+      // firstName: first,
+      // lastName : second,
+      instructorName : first,
+      thisCourse,
+      instructorRating,
+      individualTeachRating,
+      individualCommRating,
+      individualAccommRating,
+      numReviews : 0,
     });
     if (rating) {
       res.status(201).json({
