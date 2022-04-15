@@ -9,20 +9,15 @@ import { useState, useEffect } from "react";
 const Landing = () => {
   
   const [user, setUser] = useState();
-  const [admin, setAdmin] = useState();
 
   
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
-    const loggedInAdmin = localStorage.getItem("admin");
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
       setUser(foundUser);
       console.log("Logged in User");
-    } else if (loggedInAdmin) {
-      const foundAdmin = JSON.parse(loggedInAdmin);
-      setAdmin(foundAdmin);
     }
   }, []);
 
@@ -30,15 +25,13 @@ const Landing = () => {
   let adminin = false;
   
   if (user) {
-    loggedin = true;
+    if (user.isAdmin) {
+      adminin = true;
+    } else {
+      loggedin = true;
+    }
   }
-  
-  if (admin) {
-    adminin = true;
-  }
-  
-  
-  
+
   
   return (
     <div className={styles.gradient}
