@@ -4,8 +4,9 @@ const User = require("../models/userModels");
 const bcrypt = require('bcryptjs');
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { rollNumber, firstName, lastName, email, password, Squestion, Sanswer } =
+  const { rollNumber, firstName, lastName, email, password, Squestion, Sanswer, reportCount } =
     req.body;
+  console.log(req.body);
   fullName = firstName + " " + lastName;
   const emailExists = await User.findOne({ email });
   const userExists = await User.findOne({ rollNumber });
