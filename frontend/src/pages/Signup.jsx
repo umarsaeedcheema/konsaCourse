@@ -35,7 +35,6 @@ const Signup = () => {
 		
 		if (checkLums(data.email)) {
 			const signupobject = {
-				rollNumber: 20210,
 				firstName: data.fname,
 				lastName: data.lname,
 				email: data.email,
@@ -66,13 +65,16 @@ const Signup = () => {
 					) {
 						setError(error.response.data.message);
 						console.log("Error 1");
+						setError("There was an error");
 					}
 				} else if (error.request) {
 					console.log("Error 2");
 					console.log(error.request);
+					setError("There was an error");
 				} else {
 					console.log("Error 3");
 					console.log('Error', error.message);
+					setError("There was an error");
 				}
 	
 			});
