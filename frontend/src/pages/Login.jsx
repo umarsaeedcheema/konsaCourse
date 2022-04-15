@@ -26,7 +26,10 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// axios.get("http://localhost:5000/login").then((RESP)=>console.log(RESP));
+		await axios.post("http://localhost:5000/login", {email:data.email, password:data.password}).then((response)=>{
+			console.log(response)
+		});
+		// console.log(response.data);	 
 		
 	};
 
