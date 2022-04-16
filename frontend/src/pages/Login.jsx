@@ -37,7 +37,7 @@ const Login = () => {
 		await axios.post(url, logindetails).then((res)=>{
 			console.log("Hello");
 			console.log(res);
-
+			
 			const userData = res.data;
 			localStorage.setItem('user', JSON.stringify(userData));
 			
@@ -59,11 +59,11 @@ const Login = () => {
 			} else if (error.request) {
 				// console.log("Error 2");
 				// console.log(error.request);
-				setError(error.response.data.error);
+				setError(error.request.data.error);
 			} else {
 				// console.log("Error 3");
 				// console.log('Error', error.message);
-				setError(error.response.data.error);
+				setError(error.request.data.error);
 			}
 
 		});

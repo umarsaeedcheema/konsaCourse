@@ -25,13 +25,10 @@ export default function AccountMenu() {
   const navigate = useNavigate()
 //  const name='Umar'
   const localObject = JSON.parse(localStorage.getItem("user"));
+  const fchar = localObject.firstName[0];
+  const fname = localObject.firstName;
 
-  const [fname, setFname] = React.useState();
-  const [fchar, setFchar] = React.useState();
-  if (localObject) {
-    setFchar(localObject.firstName[0]);
-    setFname(localObject.firstName);
-  }
+
 
   return (
     <React.Fragment>
