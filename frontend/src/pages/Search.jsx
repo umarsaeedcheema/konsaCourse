@@ -1,7 +1,7 @@
 import React from 'react'
 import NavbarComponent from '../components/NavbarComponent'
 import SearchBar from '../components/SearchBar'
-import Data from '../Data.json'
+// import Data from '../Data.json'
 import styles from './styles.module.css';
 
 const Search = () => {

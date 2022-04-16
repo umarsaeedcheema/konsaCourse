@@ -44,13 +44,43 @@ const Rate = () => {
         alignItems={'center'}
         justifyContent={'center'}>
 
-        <h1>Search Instructor</h1>
-        <SearchBar placeholder={"Instructor"} />
-        <h1>Search Course Code</h1>
-        <SearchBar placeholder={'Search Course Code'} />
-      
+        <div
+          style={{
+            marginTop: '5%'
+          }}
+        >
 
+          <h4
+            style={{
+              marginLeft: '5%'
+            }}
+          >Search Instructor</h4>
+          <SearchBar placeholder={"Instructor"} />
+          <h4
+            style={{
+              marginLeft: '5%'
+            }}
 
+          >Search Course Code</h4>
+          <SearchBar placeholder={'Search Course Code'} />
+          <h4
+            style={{
+              marginLeft: '5%'
+            }}
+          >Search Course Name</h4>
+          <SearchBar placeholder={'Search Course Name'} />
+        </div>
+
+        <div
+        style={{
+          marginLeft:'-8%'
+        }}
+        >
+            <h4>Rate Professor</h4>
+            {/* insert stars component */}
+            
+
+        </div>
       </Grid>
 
 
