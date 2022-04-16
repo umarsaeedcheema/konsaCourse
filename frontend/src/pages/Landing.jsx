@@ -21,11 +21,11 @@ const Landing = () => {
 
   const clickspan1 = () => {
     let temp = placer;
-    //let tempurl = url;
+    let tempurl = url;
     setPlacer(altern);
     setAltern(temp);
-    //setUrl(alturl);
-    //setAlturl(url);
+    setUrl(alturl);
+    setAlturl(tempurl);
   }
 
   const [user, setUser] = useState();
