@@ -9,7 +9,7 @@ import NavbarComponent from '../components/NavbarComponent';
 // import styles from './styles.module.css'
 
 
-const ProfessorScreen = () => {
+const ProfessorScreen = (proff) => {
 
     const labels = ["F", "C-", "C", "C+", "B-", "B", "B+", "A-", "A", "A+"];
     const rating = 2.5;
@@ -23,6 +23,9 @@ const ProfessorScreen = () => {
     const reviews = [["Software Engineering CS 360", 4, "Yes", "No", "Yes", "Amazing course! loved it, was beauutiful", ["Lenient", "Accomodating", "Punctual"]],
     ["Software Engineering CS 360", 4, "Yes", "No", "Yes", "Amazing course! loved it, was beauutiful", ["Lenient", "Accomodating", "Punctual"]]];
 
+
+    
+    
 
 
     return (

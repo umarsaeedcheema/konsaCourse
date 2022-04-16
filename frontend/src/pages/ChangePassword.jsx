@@ -1,6 +1,7 @@
 import styles from "./styles.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 // import { Link } from "react-router-dom";
 // import IconButton from "@material-ui/core/IconButton";
 // import Visibility from "@material-ui/icons/Visibility";
@@ -89,23 +90,35 @@ const ChangePassword = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// console.log(e.target.value)
-		// console.log(data.email)
-		// console.log(data.password)
-		// try {
-		// 	const url = "http://localhost:8080/api/auth";
-		// 	const { data: res } = await axios.post(url, data);
-		// 	localStorage.setItem("token", res.data);
-		// 	window.location = "/";
-		// } catch (error) {
-		// 	if (
-		// 		error.response &&
-		// 		error.response.status >= 400 &&
-		// 		error.response.status <= 500
-		// 	) {
-		// 		setError(error.response.data.message);
-		// 	}
-		// }
+		const localuser = JSON.parse(localStorage.getItem("user"))
+		const changeObject = {
+			email: localuser.email,
+			currentPassword: data.old,
+			newPassword: data.cnew,
+		}
+		const url = `/changePassword`;
+		await axios.post(url, changeObject).then((res)=>{
+			console.log("hello from inside")
+			console.log(res);
+			alert("Your password has been changed")
+			navigate('/pages/homepage');
+		})
+		.catch((error)=>{
+			
+			// if (error.response) {
+			// 	if (
+			// 		error.response &&
+			// 		error.response.status >= 400 &&
+			// 		error.response.status <= 500
+			// 	) {
+			// 		setError(error.response.data.error);
+			// 		// setError(error.response.data.message);
+			// 		// console.log(error.response.data.error);
+			// 	}	
+			// console.log("hello");
+			setError(error.response.data.error);
+		})
+
 	};
 
 
@@ -176,7 +189,7 @@ const ChangePassword = () => {
 			<div className={styles.left}>
 				<h1>Go To Home</h1>
 				<h2 >
-					<button type="button" className={styles.white_btn}>
+					<button type="button" className={styles.white_btn} onClick={() => { navigate('/pages/landing') }}>
 						Home
 					</button>
 				</h2>

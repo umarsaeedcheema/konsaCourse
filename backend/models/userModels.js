@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
 const userSchema = mongoose.Schema({
-  rollNumber: {
-    type: String,
-    require: true,
-  },
   firstName: {
     type: String,
     require: true,

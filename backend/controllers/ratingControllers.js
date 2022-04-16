@@ -11,7 +11,7 @@ const addRating = asyncHandler(async (req, res) => {
     instructorName,
     courseName,
     courseCode,
-    rollNumber,
+    email,
     comment,
     likes,
     dislikes,
@@ -30,23 +30,24 @@ const addRating = asyncHandler(async (req, res) => {
   } = req.body;
   const instructorExists = await Instructor.findOne({ instructorName });
   const courseExists = await Course.findOne({ courseCode });
-  const rollNumberExists = await Rating.findOne({
-    rollNumber: rollNumber,
+  const emailExists = await Rating.findOne({
+    email: email,
     courseCode: courseCode,
   });
-  if (rollNumberExists) {
+  if (emailExists) {
     res.status(400);
     throw new Error("You have already rated this course");
   }
   let fullCourse = courseCode + " " + courseName;
   if (instructorExists && courseExists) {
+
     const rating = await Rating.create({
       ratingID,
       instructorName,
       courseName,
       courseCode,
       fullCourse,
-      rollNumber,
+      email,
       comment,
       likes,
       dislikes,
@@ -63,13 +64,42 @@ const addRating = asyncHandler(async (req, res) => {
       semester,
       year,
     });
+    
+    naam = instructorName.split(" ")
+    console.log("NAAM:",naam)
+    first = naam[0]
+    second = naam[1]
+    const instructor = await Instructor.create({
+    firstName: first,
+    lastName: second,
+    course: courseName,
+    overallRating: instructorRating,
+    teachRating: individualTeachRating,
+    commRating: individualCommRating,
+    accommRating: individualAccommRating,
+    numReviews:1,
+    });
+
+    const course = await Course.create({
+      courseName: courseName,
+      courseCode: courseCode,
+      fullCourse: courseName + " " + courseCode,
+      instructorName: instructorName,
+      courseRating: courseRating,
+      workRating: individualWorkLoadRating,
+      gradeRating: individualGradeRating,
+      learnRating: individualLearnRating,
+      tags: [],
+      numReviews: 1,
+    });
+
     if (rating) {
       res.status(201).json({
         ratingID: rating.ratingID,
         instructorName: rating.instructorName,
         courseName: rating.courseName,
         courseCode: rating.courseCode,
-        rollNumber: rating.rollNumber,
+        email: rating.email,
         comment: rating.comment,
         likes: rating.likes,
         dislikes: rating.dislikes,
@@ -97,7 +127,7 @@ const addRating = asyncHandler(async (req, res) => {
       courseName,
       courseCode,
       fullCourse,
-      rollNumber,
+      email,
       comment,
       likes,
       dislikes,
@@ -120,7 +150,7 @@ const addRating = asyncHandler(async (req, res) => {
         instructorName: rating.instructorName,
         courseName: rating.courseName,
         courseCode: rating.courseCode,
-        rollNumber: rating.rollNumber,
+        email: rating.email,
         comment: rating.comment,
         likes: rating.likes,
         dislikes: rating.dislikes,
@@ -148,7 +178,7 @@ const addRating = asyncHandler(async (req, res) => {
       instructorName: rating.instructorName,
       courseName: rating.courseName,
       courseCode: rating.courseCode,
-      rollNumber: rating.rollNumber,
+      email: rating.email,
       comment: rating.comment,
       likes: rating.likes,
       dislikes: rating.dislikes,
@@ -223,6 +253,7 @@ const showRatings = asyncHandler(async (req, res) => {
   });
 
 });
+
 
 const approve = asyncHandler(async(req,res) => {
   await Rating.updateOne({ ratingID: req.params.n },

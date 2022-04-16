@@ -8,7 +8,7 @@ const Rate = () => {
                 isAdmin={false}
                 isLoggedIn={true}
                 style={{flex:1}}
-            />
+    ></NavbarComponent>
     </div>
   )
 }

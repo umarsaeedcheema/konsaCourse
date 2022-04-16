@@ -26,7 +26,47 @@ const Login = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// axios.get("http://localhost:5000/login").then((RESP)=>console.log(RESP));
+
+		const logindetails = {
+			email: data.email,
+			password: data.password
+		};
+
+		const url = `/login`;
+		
+		await axios.post(url, logindetails).then((res)=>{
+			console.log("Hello");
+			console.log(res);
+
+			const userData = res.data;
+			localStorage.setItem('user', JSON.stringify(userData));
+			
+			navigate('/pages/homepage');
+
+		})		
+		.catch(function (error) {
+
+			if (error.response) {
+				if (
+					error.response &&
+					error.response.status >= 400 &&
+					error.response.status <= 500
+				) {
+					setError(error.response.data.error);
+					// setError(error.response.data.message);
+					// console.log(error.response.data.error);
+				}	
+			} else if (error.request) {
+				// console.log("Error 2");
+				// console.log(error.request);
+				setError(error.response.data.error);
+			} else {
+				// console.log("Error 3");
+				// console.log('Error', error.message);
+				setError(error.response.data.error);
+			}
+
+		});
 		
 	};
 
