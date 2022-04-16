@@ -39,6 +39,8 @@ export default function AccountMenu() {
             aria-expanded={open ? 'true' : undefined}
           >
             <Avatar sx={{ width: 32, height: 32 }}>{localObject.firstName[0]}</Avatar>
+            {/* <Avatar sx={{ width: 32, height: 32 }}>{}</Avatar> */}
+
           </IconButton>
         </Tooltip>
       </Box>
@@ -89,6 +91,7 @@ export default function AccountMenu() {
             <Person fontSize="small" />
           </ListItemIcon>
           {localObject.firstName} 
+          {/* Umar */}
         </MenuItem>
         <MenuItem onClick={()=>{
           navigate("/pages/changepassword")

@@ -50,17 +50,12 @@ const Landing = () => {
       <div className=' align-items-center justify-content-start ml-20 pt-40' style={{ width: '50%', height: "100%" }} >
         <div style={{ width: "80%" }}>
           <h1>Let's find the perfect <br />course for you!</h1>
-          <form
-            style={{
-              display: 'block',
-              marginTop: '-60px'
-            }}
-          >
-            <div class="container">
+          <form>
+            <div >
               <div class="d-flex ">
                 <div class="col-8" style={{ marginTop: "-20%" }}>
                   <SearchBar placeholder={"Instructor"} url={url} style={{backgroundColor:"#3aafa020"}} />
-                  <span style={{ color: '#3AAFA0', cursor: 'pointer' }}
+                  <span style={{ color: '#3AAFA0', cursor: 'pointer', display:'flex' }}
 
                   > Search Instructor Instead</span>
                 </div>
