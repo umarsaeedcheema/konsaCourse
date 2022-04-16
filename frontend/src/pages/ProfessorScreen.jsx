@@ -24,6 +24,9 @@ const ProfessorScreen = (proff) => {
     ["Software Engineering CS 360", 4, "Yes", "No", "Yes", "Amazing course! loved it, was beauutiful", ["Lenient", "Accomodating", "Punctual"]]];
 
 
+    
+    
+
 
     return (
 

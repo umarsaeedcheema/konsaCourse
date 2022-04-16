@@ -52,18 +52,18 @@ const Login = () => {
 					error.response.status >= 400 &&
 					error.response.status <= 500
 				) {
-					setError(error.response.data.message);
-					console.log("Error 1");
-					setError("There was an error");
-				}
+					setError(error.response.data.error);
+					// setError(error.response.data.message);
+					// console.log(error.response.data.error);
+				}	
 			} else if (error.request) {
-				console.log("Error 2");
-				console.log(error.request);
-				setError("There was an error");
+				// console.log("Error 2");
+				// console.log(error.request);
+				setError(error.response.data.error);
 			} else {
-				console.log("Error 3");
-				console.log('Error', error.message);
-				setError("There was an error");
+				// console.log("Error 3");
+				// console.log('Error', error.message);
+				setError(error.response.data.error);
 			}
 
 		});
