@@ -69,9 +69,9 @@ const login = asyncHandler(async (req, res) => {
       isAdmin: user.isAdmin,
     });
   } else {
-    res.status(400);
+    res.status(400).json({error:"Invalid Email or Password"});
     throw new Error("Invalid email or password");
-  }
+  } 
 });
 
 const changePass = asyncHandler(async (req, res)=>{
@@ -85,7 +85,10 @@ const changePass = asyncHandler(async (req, res)=>{
   }
   else
   {
-    res.status(400);
+    if(!await user.matchPassword(currentPassword)){
+      res.status(400).json({error:"Incorrect Current Password"})
+    }
+    // res.status(400);
     throw new Error('Error Occured')
   }
 });
