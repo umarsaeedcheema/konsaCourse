@@ -21,7 +21,6 @@ const Search = () => {
                 <div class="col-8">
                   <SearchBar placeholder={"Instructor"} url={url} style={{backgroundColor:"#3aafa020"}} />
                   <span style={{ color: '#3AAFA0', cursor: 'pointer' }}
-
                   > Search Course Instead</span>
                 </div>
               </div>

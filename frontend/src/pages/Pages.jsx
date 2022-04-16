@@ -18,7 +18,7 @@ import Homepage from './Homepage'
 import ChangePassword from './ChangePassword'
 import ProfessorScreen from './ProfessorScreen'
 import NavbarComponent from '../components/NavbarComponent'
-import InstructorLanding from './InstructorLanding'
+// import InstructorLanding from './InstructorLanding'
 import { useState, useEffect } from "react"
 
 
@@ -48,7 +48,7 @@ const Pages = () => {
             <Route path ='pages/forgotpassword' element={<ForgotPassword/>}/>
             <Route path='/pages/homepage' element={<Landing/>}></Route>
             <Route path='/pages/landing' element={<Landing/>}></Route>
-            <Route path='/pages/instructorlanding' element={<InstructorLanding/>}></Route>
+            {/* <Route path='/pages/instructorlanding' element={<InstructorLanding/>}></Route> */}
         </Routes>
     </Router>
   )
