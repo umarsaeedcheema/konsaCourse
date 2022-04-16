@@ -4,7 +4,6 @@ import SearchBar from '../components/SearchBar';
 // import Data from '../Data.json'
 import {useState,useEffect } from 'react'
 import styles from './styles.module.css'
-import axios from 'axios';
 
 
 
