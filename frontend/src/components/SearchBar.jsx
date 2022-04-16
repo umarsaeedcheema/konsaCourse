@@ -8,19 +8,33 @@ const axios = require('axios')
 
 function SearchBar({ placeholder, url }) {
   const [data,setData] = useState([])
+
   
-  const getData = async()=>{
-    const temp = await axios.get(url)
-    if(temp.length !==0)
-    {
-      setData(temp)
+  const getData = async(e)=>{
+    //e.preventDefault();
+    try{
+      const temp = await axios.get(url);
+      const names = temp.data;
+      console.log(names);
+      setData(names);
+      console.log("Here and there");
+      console.log(temp);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+      console.log("Again");
     }
   }
 
   useEffect( () => {
-    getData()
+    
+    
+    getData();
+
+    console.log("Effect Used");
       
   },[])
+
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
   const typ = "Search "+placeholder
