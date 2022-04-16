@@ -7,20 +7,50 @@ const axios = require('axios')
 
 
 function SearchBar({ placeholder, url }) {
-  const [data,setData] = useState([])
+
+
+  const [data,setData] = useState(null);
+
   
-  const getData = async()=>{
-    const temp = await axios.get(url)
-    if(temp.length !==0)
-    {
-      setData(temp)
-    }
-  }
+  // const getData = async()=>{
+  //   //e.preventDefault();
+  //   try{
+  //     const temp = await axios.get(`/instructor/allNames`);
+  //     const names = temp.data;
+  //     console.log("1", names);
+  //     setData(names);
+      
+  //     console.log("2", temp);
+  //     console.log("3", data);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //     console.log("Again");
+  //   }
+  // }
 
   useEffect( () => {
-    getData()
+    
+    async function getData()  {
+      //e.preventDefault();
+      try{
+        const temp = await axios.get(`/instructor/allNames`);
+        const names = temp.data;
+        console.log("1", names);
+        setData(names);
+        
+        console.log("2", temp);
+      } catch (error) {
+        console.log(error.message);
+        console.log("Again");
+      }
+    }
+
+    getData(); 
       
-  },[])
+  }, []);
+
+  console.log("Data", data);
+
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
   const typ = "Search "+placeholder
@@ -28,7 +58,7 @@ function SearchBar({ placeholder, url }) {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
     const newFilter = data.filter((value) => {
-      return value.title.toLowerCase().includes(searchWord.toLowerCase());
+      return value.fullName.toLowerCase().includes(searchWord.toLowerCase());
     });
 
     if (searchWord === "") {
@@ -77,7 +107,7 @@ function SearchBar({ placeholder, url }) {
                   {
                     nav('/pages/professorscreen',value)
                   }
-                }}>{value.title} </div>
+                }}>{value.fullName} </div>
             );
           })}
         </div>
