@@ -1,11 +1,13 @@
 import React from 'react'
 import styles from './styles.module.css'
 import NavbarComponent from '../components/NavbarComponent'
-import {useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { Grid } from '@mui/material'
+import SearchBar from '../components/SearchBar'
 
 
 const Rate = () => {
-  
+
   const [user, setUser] = useState();
 
   useEffect(() => {
@@ -19,7 +21,7 @@ const Rate = () => {
 
   let loggedin = false;
   let adminin = false;
-  
+
   if (user) {
     if (user.isAdmin) {
       adminin = true;
@@ -27,21 +29,32 @@ const Rate = () => {
       loggedin = true;
     }
   }
-  
-  
-  
+
+
+
   return (
     <div className={styles.gradient}>
-        <NavbarComponent
-                isAdmin={adminin}
-                isLoggedIn={loggedin}
-            />
+      <NavbarComponent
+        isAdmin={adminin}
+        isLoggedIn={loggedin}
+      />
+
+      <Grid container
+        direction={'column'}
+        alignItems={'center'}
+        justifyContent={'center'}>
+
+        <h1>Search Instructor</h1>
+        <SearchBar placeholder={"Instructor"} />
+        <h1>Search Course Code</h1>
+        <SearchBar placeholder={'Search Course Code'} />
+      
 
 
-    <div className="d-flex border-radius-10 flex-cloumn" style={{ height:"90vh",backgroundColor:"#319fa020"}}>
-    OOLALALALAL
+      </Grid>
 
-    </div>
+
+
 
     </div>
   )
