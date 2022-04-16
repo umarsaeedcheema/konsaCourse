@@ -4,22 +4,23 @@ const User = require("../models/userModels");
 const bcrypt = require('bcryptjs');
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { rollNumber, firstName, lastName, email, password, Squestion, Sanswer } =
+  const {firstName, lastName, email, password, Squestion, Sanswer } =
     req.body;
+  // console.log(req.body);
   fullName = firstName + " " + lastName;
   const emailExists = await User.findOne({ email });
-  const userExists = await User.findOne({ rollNumber });
+  // const userExists = await User.findOne({ rollNumber });
   if (emailExists) {
     res.status(400);
     throw new Error("User with provided email exists");
-  } else if (userExists) {
-    res.status(400);
-    throw new Error("rollNumber is already taken");
-  }
+  } 
+  // else if (userExists) {
+  //   res.status(400);
+  //   throw new Error("rollNumber is already taken");
+  // }
   //   const { fullName } = req.body.fullName;
-  console.log(fullName);
+  // console.log(fullName);
   const user = await User.create({
-    rollNumber,
     firstName,
     lastName,
     fullName,
@@ -27,13 +28,12 @@ const registerUser = asyncHandler(async (req, res) => {
     password,
     Squestion,
     Sanswer,
-
-    reportCount,
+    // reportCount,
+    // isAdmin,
   });
   if (user) {
     res.status(201).json({
       _id: user._id,
-      rollNumber: user.rollNumber,
       firstName: user.firstName,
       lastName: user.lastName,
       fullName: user.fullname,
@@ -57,7 +57,6 @@ const login = asyncHandler(async (req, res) => {
   if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
-      rollNumber: user.rollNumber,
       firstName: user.firstName,
       lastName: user.lastName,
       fullName: user.fullName,
@@ -70,9 +69,9 @@ const login = asyncHandler(async (req, res) => {
       isAdmin: user.isAdmin,
     });
   } else {
-    res.status(400);
+    res.status(400).json({error:"Invalid Email or Password"});
     throw new Error("Invalid email or password");
-  }
+  } 
 });
 
 const changePass = asyncHandler(async (req, res)=>{
@@ -86,7 +85,10 @@ const changePass = asyncHandler(async (req, res)=>{
   }
   else
   {
-    res.status(400);
+    if(!await user.matchPassword(currentPassword)){
+      res.status(400).json({error:"Incorrect Current Password"})
+    }
+    // res.status(400);
     throw new Error('Error Occured')
   }
 });

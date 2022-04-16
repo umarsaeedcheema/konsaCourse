@@ -23,7 +23,9 @@ export default function AccountMenu() {
     setAnchorEl(null);
   };
   const navigate = useNavigate()
- const name='Umar'
+//  const name='Umar'
+  const localObject = JSON.parse(localStorage.getItem("user"));
+
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -36,7 +38,7 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>{localObject.firstName[0]}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -86,7 +88,7 @@ export default function AccountMenu() {
           <ListItemIcon>
             <Person fontSize="small" />
           </ListItemIcon>
-          {name} 
+          {localObject.firstName} 
         </MenuItem>
         <MenuItem onClick={()=>{
           navigate("/pages/changepassword")
@@ -96,7 +98,11 @@ export default function AccountMenu() {
           </ListItemIcon>
           Change Password
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={()=>{
+          localStorage.clear();
+          navigate('/pages/landing');
+          window.location.reload();
+        }}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
