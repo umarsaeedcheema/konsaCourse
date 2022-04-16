@@ -19,6 +19,7 @@ import ChangePassword from './ChangePassword'
 import ProfessorScreen from './ProfessorScreen'
 import NavbarComponent from '../components/NavbarComponent'
 import { useState, useEffect } from "react"
+import AddInstructor from './AddInstructor'
 
 
 const Pages = () => {
@@ -47,6 +48,7 @@ const Pages = () => {
             <Route path ='pages/forgotpassword' element={<ForgotPassword/>}/>
             <Route path='/pages/homepage' element={<Landing/>}></Route>
             <Route path='/pages/landing' element={<Landing/>}></Route>
+            <Route path='/pages/addinstructor' element={<AddInstructor/>}> </Route>
         </Routes>
     </Router>
   )
