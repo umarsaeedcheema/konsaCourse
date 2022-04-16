@@ -72,5 +72,12 @@ const allInstructors = asyncHandler(async (req, res) => {
       res.status(200).json(result)
     });
   });
-  module.exports = { addCourse, searchCourse, allInstructors, courseByInstructor};
+
+  const uniqueCourses = asyncHandler(async (req, res)=>{
+    var courseName = req.params.n;
+    Course.distinct("courseName").then((result)=>{
+      res.status(200).json(result);
+    });
+  });
+  module.exports = { addCourse, searchCourse, allInstructors, courseByInstructor, uniqueCourses};
   
