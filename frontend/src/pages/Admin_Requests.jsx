@@ -1,12 +1,8 @@
 import React from 'react'
 import RequestCard from '../components/RequestCard.jsx';
-import { autocompleteClasses, Divider, Grid } from '@mui/material';
-import Header from '../components/Header.jsx';
-import NavbarComponent from '../components/NavbarComponent.jsx';
-import styles from './styles.module.css'
-import { color } from '@mui/system';
-import { red } from '@mui/material/colors';
+import { Grid } from '@mui/material';
 
+import NavbarComponent from '../components/NavbarComponent.jsx';
 
 
 const Admin_Requests = () => {
@@ -40,12 +36,12 @@ const Admin_Requests = () => {
 
 
       <div
-      style={{
-        marginTop:'50px'
-      }}
+        style={{
+          marginTop: '50px'
+        }}
       >
         <Grid container direction={'column'} spacing={4}
-          
+
         >
 
           {/* <Grid item container>   */}

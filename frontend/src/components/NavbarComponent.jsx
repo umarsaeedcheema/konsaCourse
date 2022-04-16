@@ -1,6 +1,5 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import styles from '../pages/styles.module.css'
 import BasicMenu from './BasicMenu'
 
 // <div className={styles.gradient}>
