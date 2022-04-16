@@ -26,6 +26,13 @@ export default function AccountMenu() {
 //  const name='Umar'
   const localObject = JSON.parse(localStorage.getItem("user"));
 
+  const [fname, setFname] = React.useState();
+  const [fchar, setFchar] = React.useState();
+  if (localObject) {
+    setFchar(localObject.firstName[0]);
+    setFname(localObject.firstName);
+  }
+
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -38,7 +45,7 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>{localObject.firstName[0]}</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>{fchar}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -88,7 +95,7 @@ export default function AccountMenu() {
           <ListItemIcon>
             <Person fontSize="small" />
           </ListItemIcon>
-          {localObject.firstName} 
+          {fname} 
         </MenuItem>
         <MenuItem onClick={()=>{
           navigate("/pages/changepassword")

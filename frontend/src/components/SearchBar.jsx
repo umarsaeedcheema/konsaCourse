@@ -2,25 +2,56 @@ import React, { useEffect, useState } from "react";
 import "./SearchBar.css";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
-import { useNavigate } from "react-router-dom";
-const axios = require('axios')
+import { useNavigate, useLocation } from "react-router-dom";
+
+const axios = require('axios');
 
 
 function SearchBar({ placeholder, url }) {
-  const [data,setData] = useState([])
+
+  //const { state } = useLocation();
+  const [data,setData] = useState(null);
+
   
-  const getData = async()=>{
-    const temp = await axios.get(url)
-    if(temp.length !==0)
-    {
-      setData(temp)
-    }
-  }
+  // const getData = async()=>{
+  //   //e.preventDefault();
+  //   try{
+  //     const temp = await axios.get(`/instructor/allNames`);
+  //     const names = temp.data;
+  //     console.log("1", names);
+  //     setData(names);
+      
+  //     console.log("2", temp);
+  //     console.log("3", data);
+  //   } catch (error) {
+  //     console.log(error.message);
+  //     console.log("Again");
+  //   }
+  // }
 
   useEffect( () => {
-    getData()
+    
+    async function getData()  {
+      //e.preventDefault();
+      try{
+        const temp = await axios.get(`/instructor/allNames`);
+        const names = temp.data;
+        console.log("1", names);
+        setData(names);
+        
+        console.log("2", temp);
+      } catch (error) {
+        console.log(error.message);
+        console.log("Again");
+      }
+    }
+
+    getData(); 
       
-  },[])
+  }, []);
+
+  console.log("Data", data);
+
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
   const typ = "Search "+placeholder
@@ -28,7 +59,7 @@ function SearchBar({ placeholder, url }) {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
     const newFilter = data.filter((value) => {
-      return value.title.toLowerCase().includes(searchWord.toLowerCase());
+      return value.fullName.toLowerCase().includes(searchWord.toLowerCase());
     });
 
     if (searchWord === "") {
@@ -42,7 +73,7 @@ function SearchBar({ placeholder, url }) {
     setFilteredData([]);
     setWordEntered("");
   };
-  const nav = useNavigate()
+  const nav = useNavigate();
 
   return (
     <div className="search">
@@ -75,9 +106,13 @@ function SearchBar({ placeholder, url }) {
                   {nav('/pages/Course',value)}
                   else
                   {
-                    nav('/pages/professorscreen',value)
+                    nav('/pages/professorscreen',{
+                      state: {
+                        name: value.fullName
+                      }
+                    });
                   }
-                }}>{value.title} </div>
+                }}>{value.fullName} </div>
             );
           })}
         </div>

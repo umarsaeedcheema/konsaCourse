@@ -43,6 +43,16 @@ const Signup = () => {
 				Sanswer: data.answer,
 				reportCount: 0
 			};
+
+			// const url = `/allNames`;
+			// await axios.get(url).then((res)=>{
+			// 	console.log(res);
+			// })
+			// .catch(function (error) {
+			// 	console.log(error.message);
+			// });
+
+		
 	
 			const url = `/signup`;
 			await axios.post(url, signupobject).then((res)=>{

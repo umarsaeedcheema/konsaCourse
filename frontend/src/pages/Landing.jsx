@@ -4,13 +4,31 @@ import SearchBar from '../components/SearchBar';
 // import Data from '../Data.json'
 import {useState,useEffect } from 'react'
 import styles from './styles.module.css'
+import axios from 'axios';
+
+
 
 const Landing = () => {
-  
-  const [user, setUser] = useState();
 
-  const url = 'darhiman';
-  
+
+
+
+  const [placer, setPlacer] = useState("Instructor");
+
+  const [altern, setAltern] = useState("Course");
+  const [url, setUrl] = useState(`/instructor/allNames`);
+  const [alturl, setAlturl] = useState(`dummycourse`);
+
+  const clickspan1 = () => {
+    let temp = placer;
+    //let tempurl = url;
+    setPlacer(altern);
+    setAltern(temp);
+    //setUrl(alturl);
+    //setAlturl(url);
+  }
+
+  const [user, setUser] = useState();
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
@@ -50,19 +68,14 @@ const Landing = () => {
       <div className=' align-items-center justify-content-start ml-20 pt-40' style={{ width: '50%', height: "100%" }} >
         <div style={{ width: "80%" }}>
           <h1>Let's find the perfect <br />course for you!</h1>
-          <form
-            style={{
-              display: 'block',
-              marginTop: '-60px'
-            }}
-          >
-            <div class="container">
+          <form>
+            <div >
               <div class="d-flex ">
                 <div class="col-8" style={{ marginTop: "-20%" }}>
-                  <SearchBar placeholder={"Instructor"} url={url} style={{backgroundColor:"#3aafa020"}} />
-                  <span style={{ color: '#3AAFA0', cursor: 'pointer' }}
-
-                  > Search Instructor Instead</span>
+                  <SearchBar placeholder={placer} url={url} style={{backgroundColor:"#3aafa020"}} />
+                  <span id="myspan" style={{ color: '#3AAFA0', cursor: 'pointer' }}
+                  onClick={clickspan1}
+                  > Search {altern} Instead</span>
                 </div>
               </div>
             </div>

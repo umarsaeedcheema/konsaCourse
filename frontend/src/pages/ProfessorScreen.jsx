@@ -3,13 +3,27 @@ import Rating from '@mui/material/Rating';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import styles from './styles.module.css';
-import { Divider, Grid } from '@mui/material';
+import { Divider, Grid, IconButton } from '@mui/material';
 import ReviewCard from '../components/ReviewCard';
 import NavbarComponent from '../components/NavbarComponent';
+import { useNavigate, useLocation } from "react-router-dom";
+
+
 // import styles from './styles.module.css'
+// import { IconButton } from '@mui/material';
+// import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 
 const ProfessorScreen = (proff) => {
+
+    const { state } = useLocation();
+    console.log(state);
+    const [profdata, setProfdata] = useState();
+
+    const url = "/instructor/searchInstructor/" + proff.fullName;
+    console.log(state.name);
+
+
 
     const labels = ["F", "C-", "C", "C+", "B-", "B", "B+", "A-", "A", "A+"];
     const rating = 2.5;
@@ -24,26 +38,26 @@ const ProfessorScreen = (proff) => {
     ["Software Engineering CS 360", 4, "Yes", "No", "Yes", "Amazing course! loved it, was beauutiful", ["Lenient", "Accomodating", "Punctual"]]];
 
 
-    
-    
+
+
 
 
     return (
 
         //<div className='d-flex flex-column justify-column-start'  >
         <div className={styles.gradient}>
-        <NavbarComponent
+            {/* <NavbarComponent
                 isAdmin={false}
                 isLoggedIn={true}
                 style={{flex:1}}
-            />
+            /> */}
 
-            <div className="flex-column align-content-start justify-content-start" style={{backgroundColor:"#00000000",flex:9}}>
+            <div className="flex-column align-content-start justify-content-start" style={{ backgroundColor: "#00000000", flex: 9 }}>
                 <div style={{
                     position: 'sticky',
                     marginLeft: '5%',
                     marginTop: "5%",
-                    backgroundColor:"#00000000"
+                    backgroundColor: "#00000000"
                 }}>
 
                     <h1>{firstname} {lastname}</h1>
@@ -61,19 +75,22 @@ const ProfessorScreen = (proff) => {
                             readOnly
                         />
 
-                        <div className={styles.rubber} style={{marginLeft:"10%"}}>{labels[labnum]}</div>
+                        <div className={styles.rubber} style={{ marginLeft: "10%" }}>{labels[labnum]}</div>
 
                     </div>
 
-                    <div style={{ fontSize: "small", alignContent:"end" }}>Based on {numrating} ratings</div>
+                    <div style={{ fontSize: "small", alignContent: "end" }}>Based on {numrating} ratings</div>
 
-                    <button type="submit" className={styles.green_btn} style={{fontSize:"20px"}}>
+                    <button type="submit" className={styles.green_btn} style={{ fontSize: "20px", marginLeft: '-0.2%' }}>
                         Rate Professor
                     </button>
 
                     <h4>Professor {firstname}'s Top Five Tags</h4>
 
-                    <div className="d-flex justify-content-start">
+                    <div className="d-flex justify-content-start "
+                        style={{
+                            marginLeft: '-1%'
+                        }}>
                         {tags.map((value, key) => {
 
                             return (<button className={styles.tag_btn} disabled="true">
@@ -89,12 +106,12 @@ const ProfessorScreen = (proff) => {
                 </div>
 
                 <div
-                
-                style={{
-                    position:'relative',
-                    marginLeft:'-15%',
-                    marginTop:'5%'
-                }}
+
+                    style={{
+                        position: 'relative',
+                        marginLeft: '-14.5%',
+                        marginTop: '5%'
+                    }}
                 >
 
                     <Grid container direction={'column'} spacing={4}>
@@ -116,6 +133,9 @@ const ProfessorScreen = (proff) => {
                                                 takeagain={value[4]}
                                                 description={value[5]}
                                                 tags={value[6]}
+                                                UpCount= {15}
+                                                DownCount = {3}      
+
                                             />
 
                                         </Grid>
