@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./SearchBar.css";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
-import { useNavigate } from "react-router-dom";
-const axios = require('axios')
+import { useNavigate, useLocation } from "react-router-dom";
+
+const axios = require('axios');
 
 
 function SearchBar({ placeholder, url }) {
 
-
+  //const { state } = useLocation();
   const [data,setData] = useState(null);
 
   
@@ -72,7 +73,7 @@ function SearchBar({ placeholder, url }) {
     setFilteredData([]);
     setWordEntered("");
   };
-  const nav = useNavigate()
+  const nav = useNavigate();
 
   return (
     <div className="search">
@@ -105,7 +106,11 @@ function SearchBar({ placeholder, url }) {
                   {nav('/pages/Course',value)}
                   else
                   {
-                    nav('/pages/professorscreen',value)
+                    nav('/pages/professorscreen',{
+                      state: {
+                        name: value.fullName
+                      }
+                    });
                   }
                 }}>{value.fullName} </div>
             );

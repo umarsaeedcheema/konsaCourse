@@ -6,11 +6,24 @@ import styles from './styles.module.css';
 import { Divider, Grid, IconButton } from '@mui/material';
 import ReviewCard from '../components/ReviewCard';
 import NavbarComponent from '../components/NavbarComponent';
+import { useNavigate, useLocation } from "react-router-dom";
+
+
+// import styles from './styles.module.css'
 // import { IconButton } from '@mui/material';
 // import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 
 const ProfessorScreen = (proff) => {
+
+    const { state } = useLocation();
+    console.log(state);
+    const [profdata, setProfdata] = useState();
+
+    const url = "/instructor/searchInstructor/" + proff.fullName;
+    console.log(state.name);
+
+
 
     const labels = ["F", "C-", "C", "C+", "B-", "B", "B+", "A-", "A", "A+"];
     const rating = 2.5;
