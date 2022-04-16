@@ -11,18 +11,21 @@ import axios from 'axios';
 const Landing = () => {
 
 
+
+
   const [placer, setPlacer] = useState("Instructor");
+
   const [altern, setAltern] = useState("Course");
-  const [url, setUrl] = useState(`instructor/allNames`);
+  const [url, setUrl] = useState(`/instructor/allNames`);
   const [alturl, setAlturl] = useState(`dummycourse`);
 
   const clickspan1 = () => {
     let temp = placer;
-    let tempurl = url;
+    //let tempurl = url;
     setPlacer(altern);
     setAltern(temp);
-    setUrl(alturl);
-    setAlturl(url);
+    //setUrl(alturl);
+    //setAlturl(url);
   }
 
   const [user, setUser] = useState();
