@@ -3,9 +3,9 @@ import styles from './styles.module.css'
 import NavbarComponent from '../components/NavbarComponent'
 const Rate = () => {
   return (
-   <div>
-     <NavbarComponent></NavbarComponent>
-   </div>
+    <div >
+        Hello
+    </div>
   )
 }
 
