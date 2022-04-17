@@ -14,12 +14,21 @@ const removeRating = asyncHandler(async (req, res)=>{
         console.log(error);
         res.status(400).error(error);
     })
-    await Report.remove({_id:this.id});
+    // Rating.id
+    await Report.remove({ratingID:ratingID}).then((result)=>{
+        console.log(result);
+    }).catch((error)=>{
+        console.log(error);
+    });
 
 });
 
 const restoreRating = asyncHandler(async (req, res)=>{
-    await Report.remove({_id: this.id});
+    const {ratingID} = req.body;
+    await Report.remove({ratingID: ratingID}).then((result)=>{
+        console.log(result);
+        res.status(200).json("Rating Restored");
+    }).catch((error)=>console.log(error));
 });
 
 const viewReports = asyncHandler(async (req, res)=>{
