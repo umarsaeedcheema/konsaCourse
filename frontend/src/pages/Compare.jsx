@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import NavbarComponent from '../components/NavbarComponent'
 import SearchBar from '../components/SearchBar'
 import Data from '../Data.json'
@@ -7,11 +7,29 @@ import { useState } from 'react'
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { Input } from '@mui/material';
-
+import CompCard from '../components/ComparisonCard'
 const Compare = () => {
 
   const [selected, setSelected] = useState(false)
+  const [prof1,setProf1] = useState()//{tags:[],overallrating:0})
+  const [prof2,setProf2] = useState()
+  
+  useEffect(() => {
+  
+    let body = {
+      tags:[1,2,3,4,5],
+      overallrating:4
+    }
+    setProf1(body)
+    setProf2(body)
+  
+    
+  }, [])
+  
 
+
+  // setProf1(body)
+  // setProf2({"tags":['a','b','c','d'],"overallrating":4})
 
   const [filteredcourses, setFilteredcourses] = useState([]);
   const [courseEntered, setcourseEntered] = useState("");
@@ -88,10 +106,10 @@ const Compare = () => {
       <NavbarComponent
         isLoggedIn={false}
         isAdmin={false}
-        style={{backgroundColor:"red",flex:1,display:"flex"}}
+        style={{backgroundColor:"red",display:"flex"}}
       ></NavbarComponent>
-      <div className="d-flex justify-content-center" style={{marginTop:"0%"}}>
-         <div className="searchInputs" style={{backgroundColor:"#000fff00",flex:"row", justifyContent:"center",alignContent:"center"}}>
+      <div className="d-flex justify-content-center" >
+         <div className="searchInputs" style={{backgroundColor:"#000fff00",flexDirection:"row", justifyContent:"center",alignContent:"center"}}>
            <input style={{backgroundColor:"#3aafa020",width:"100%",paddingLeft:8,justifyContent:"center",borderRadius:"20px" }}
             type="search"
             placeholder='Choose Course'
@@ -123,8 +141,8 @@ const Compare = () => {
        </div>
       </div>
 
-      {selected && <div className='row justify-content-md-center'>
-      <div className="col-4"> 
+      {selected && <div className='row justify-content-around' >
+      <div className="col-4 align-content-center justify-content-center "> 
       <div className="searchInputs" style={{backgroundColor:"#000fff00",flex:"row", justifyContent:"center",alignContent:"center"}}>
            <input style={{backgroundColor:"#3aafa020",width:"100%",paddingLeft:8,justifyContent:"center",borderRadius:"20px" }}
             type="search"
@@ -160,10 +178,54 @@ const Compare = () => {
        </div>
       </div>
       </div>}
+      {selected && <div className='row justify-content-around ' style={{paddingTop:"3%"}}> 
+     <div className='col-4'>
+         <CompCard 
+            overall={prof1.overallrating}
+            teaching={prof1.teachingrating} 
+            quality1={prof1.quality1rating}
+            quality2={prof1.quality2rating}
+            quality3={prof1.quality3rating}
+            tags={prof1.tags}                      
+        />
+
+     </div>
+     <div className='col-4'>
+       <div className='row align-content-center'>
+        
+        <CompCard 
+            overall={prof2.overallrating}
+            teaching={prof2.teachingrating} 
+            quality1={prof2.quality1rating}
+            quality2={prof2.quality2rating}
+            quality3={prof2.quality3rating}
+            tags={prof2.tags}                      
+        />
+      </div>  
+      </div>
+      </div>}
       </div>
       
   )
 }
+//  {selected && <div className='row align-content-center'>
+//         <CompCard 
+//             overall={prof1.overallrating}
+//             teaching={prof1.teachingrating} 
+//             quality1={prof1.quality1rating}
+//             quality2={prof1.quality2rating}
+//             quality3={prof1.quality3rating}
+//             tags={prof1.tags}                      
+//         />
+//         <CompCard 
+//             overall={prof2.overallrating}
+//             teaching={prof2.teachingrating} 
+//             quality1={prof2.quality1rating}
+//             quality2={prof2.quality2rating}
+//             quality3={prof2.quality3rating}
+//             tags={prof2.tags}                      
+//         />
+//       </div> } 
 
 //{ <div
       // className='d-flex flex-row justify-content-center align-content-center'

@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const registerUser = asyncHandler(async (req, res) => {
   const {firstName, lastName, email, password, Squestion, Sanswer } =
     req.body;
-  console.log(req.body);
+  // console.log(req.body);
   fullName = firstName + " " + lastName;
   const emailExists = await User.findOne({ email });
   // const userExists = await User.findOne({ rollNumber });
@@ -19,7 +19,7 @@ const registerUser = asyncHandler(async (req, res) => {
   //   throw new Error("rollNumber is already taken");
   // }
   //   const { fullName } = req.body.fullName;
-  console.log(fullName);
+  // console.log(fullName);
   const user = await User.create({
     firstName,
     lastName,
@@ -69,9 +69,9 @@ const login = asyncHandler(async (req, res) => {
       isAdmin: user.isAdmin,
     });
   } else {
-    res.status(400);
+    res.status(400).json({error:"Invalid Email or Password"});
     throw new Error("Invalid email or password");
-  }
+  } 
 });
 
 const changePass = asyncHandler(async (req, res)=>{
@@ -85,7 +85,10 @@ const changePass = asyncHandler(async (req, res)=>{
   }
   else
   {
-    res.status(400);
+    if(!await user.matchPassword(currentPassword)){
+      res.status(400).json({error:"Incorrect Current Password"})
+    }
+    // res.status(400);
     throw new Error('Error Occured')
   }
 });

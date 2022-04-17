@@ -4,9 +4,7 @@ import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import Person from '@mui/icons-material/Person';
 import Settings from '@mui/icons-material/Settings';
@@ -23,7 +21,13 @@ export default function AccountMenu() {
     setAnchorEl(null);
   };
   const navigate = useNavigate()
- const name='Umar'
+//  const name='Umar'
+  const localObject = JSON.parse(localStorage.getItem("user"));
+  const fchar = localObject.firstName[0];
+  const fname = localObject.firstName;
+
+
+
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -36,7 +40,7 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>{fchar}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -86,7 +90,7 @@ export default function AccountMenu() {
           <ListItemIcon>
             <Person fontSize="small" />
           </ListItemIcon>
-          {name} 
+          {fname} 
         </MenuItem>
         <MenuItem onClick={()=>{
           navigate("/pages/changepassword")
@@ -96,7 +100,11 @@ export default function AccountMenu() {
           </ListItemIcon>
           Change Password
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={()=>{
+          localStorage.clear();
+          navigate('/pages/landing');
+          window.location.reload();
+        }}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
