@@ -68,10 +68,12 @@ const allInstructors = asyncHandler(async (req, res) => {
   await Course.find({ courseName: regex }, { instructorName: 1, _id: 0 }).then((result) => {
     len = result.length
     resultArr = []
-    for (i = 0;i<len;i++)
+    for(i =0;i<len;i++)
     {
       resultArr.push(result[i].instructorName)
+
     }
+
     res.status(200).json(resultArr)
   });
 });
@@ -105,6 +107,7 @@ const getCourseTags = asyncHandler(async (req, res) => {
 
 
   const uniqueCourses = asyncHandler(async (req, res)=>{
+    console.log("in unique courses")
     var courseName = req.params.n;
     Course.distinct("courseName").then((result)=>{
       res.status(200).json(result);
