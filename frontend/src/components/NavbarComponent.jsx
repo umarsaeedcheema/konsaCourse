@@ -32,14 +32,14 @@ const NavbarComponent = (props) => {
                                 style={{ color: '#000000' }}
                             >COURSE</div>
                         </div>
-                        {/* <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
-                        </button> */}
+                        </button>
                         <div class="collapse navbar-collapse justify-center ">
                             <div class="navbar-nav" >
                                 <a class="nav-link active mr-5" aria-current="page" href="/" style={{ color: "#000000" }}>Home</a>
-                                <a class="nav-link mr-5" href="/pages/search" style={{ color: "#000000" }} >Search</a>
-                                {!props.isAdmin && <a class="nav-link mr-5" href="/pages/rate" style={{ color: "#000000" }}>Rate</a>}
+                                {props.isLoggedIn && <a class="nav-link mr-5" href="/pages/addinstructor" style={{ color: "#000000" }} >Add</a>}
+                                {props.isLoggedIn && <a class="nav-link mr-5" href="/pages/rate" style={{ color: "#000000" }}>Rate</a>}
                                 {!props.isAdmin && <a class="nav-link mr-5" href="/pages/compare" style={{ color: "#000000" }}>Compare</a>}
                                 {props.isAdmin && <a class="nav-link mr-5" href="/pages/admin_requests" style={{ color: "#000000" }}>Requests</a>}
                                 {props.isAdmin && <a class="nav-link mr-5" href="/pages/admin_reports" style={{ color: "#000000" }}>Reports</a>}
