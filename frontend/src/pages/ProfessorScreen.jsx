@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import Rating from '@mui/material/Rating';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import styles from './styles.module.css';
-import { Divider, Grid, IconButton } from '@mui/material';
+import { Grid, } from '@mui/material';
 import ReviewCard from '../components/ReviewCard';
-import NavbarComponent from '../components/NavbarComponent';
-import { useNavigate, useLocation } from "react-router-dom";
+
+import {  useLocation } from "react-router-dom";
 
 
 // import styles from './styles.module.css'
