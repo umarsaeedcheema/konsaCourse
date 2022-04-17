@@ -2,9 +2,10 @@ import React from 'react'
 import styles from './styles.module.css'
 import NavbarComponent from '../components/NavbarComponent'
 import {useState} from 'react'
+import { Button } from '@mui/material'
 
  const AddInstructor = () => {
-	const [data, setData] = useState({ fname: "",sname: "",cname: "", ccode: "" });
+	const [data, setData] = useState({ fname: "",sname: "",cname: "", ccode: "",dnmae:'' });
 	const [error, setError] = useState("");
 
 	const handleChange = ({ currentTarget: input }) => {
@@ -23,7 +24,7 @@ import {useState} from 'react'
               <div className="d-flex align-items-center justify-content-center flex-column"
 					style={{
 						margin: 'auto',
-						backgroundColor: '#3aafa020',
+						// backgroundColor: '#3aafa020',
 						borderRadius: '5%',
 						width: '50%',
 						height: '60%',
@@ -33,14 +34,18 @@ import {useState} from 'react'
                     <form className={styles.form_container} onSubmit={handleSubmit}
                     style={{
 
-                        height: '100 %',
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: ' center',
-                        justifyContent: 'center'
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginTop: '15%',
+                        background: 'rgba(58, 175, 160, 0.05)',
+                        width: '60%',
+                        padding: '4%',
+                        borderRadius: '15px'
 
                     }}>
-                    <h3 className="mb-5" style={{ color: "black"}}>Add A Course Or Instructor</h3>
+                    <h3 className="mb-4" style={{ color: "black"}}>Add A Course Or Instructor</h3>
 
                          <input
                         type="text"
@@ -57,6 +62,15 @@ import {useState} from 'react'
                         name="sname"
                         onChange={handleChange}
                         value={data.sname}
+                        required
+                        className={styles.input}
+                     />   
+                     <input
+                        type="text" 
+                        placeholder="Enter Instructor's Department Name"
+                        name="dname"
+                        onChange={handleChange}
+                        value={data.dname}
                         required
                         className={styles.input}
                      />   
@@ -79,10 +93,20 @@ import {useState} from 'react'
                         className={styles.input}
 
                     />
-                    {error && <div className={styles.error_msg}>{error}</div>}
-                     <button type="submit" className={styles.green_btn}>
+                    {error && <div className={styles.error_msg}
+                    style={{
+                        width:'100%'
+                    }}
+                    >{error}</div>}
+                     <Button type="submit" variant='contained'
+                     style={{
+                         borderRadius:'15px',
+                         width:'35%',
+                         marginTop:'5%'
+                     }}
+                     >
                         Sign In
-                    </button>
+                    </Button>
                         </form>
                     </div>
 
