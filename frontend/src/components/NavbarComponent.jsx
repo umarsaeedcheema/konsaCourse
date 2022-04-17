@@ -62,7 +62,7 @@ const GetButtons = (props) => {
                     onClick={() => {
                         navigate('/pages/login')
                     }}
-                    > SignIn
+                    > Sign In
                 </button>
                 <button className={styles.white_btn}
                 style={{
@@ -76,7 +76,7 @@ const GetButtons = (props) => {
                     onClick={() => {
                         navigate('/pages/signup')
                     }}
-                > SignUp </button>
+                > Sign Up </button>
             </div>
         )
     }
