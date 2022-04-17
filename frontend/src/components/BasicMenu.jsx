@@ -22,9 +22,9 @@ export default function AccountMenu() {
   };
   const navigate = useNavigate()
 //  const name='Umar'
-  // const localObject = JSON.parse(localStorage.getItem("user"));
-  // const fchar = localObject.firstName[0];
-  // const fname = localObject.firstName;
+  const localObject = JSON.parse(localStorage.getItem("user"));
+  const fchar = localObject.firstName[0];
+  const fname = localObject.firstName;
 
 
 
@@ -41,7 +41,7 @@ export default function AccountMenu() {
             aria-expanded={open ? 'true' : undefined}
           >
             {/* <Avatar sx={{ width: 32, height: 32 }}>{fchar}</Avatar> */}
-            <Avatar sx={{ width: 32, height: 32 }}>U</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>{fchar}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -91,8 +91,8 @@ export default function AccountMenu() {
           <ListItemIcon>
             <Person fontSize="small" />
           </ListItemIcon>
-          {/* {fname}  */}
-          umar
+          {fname} 
+        
         </MenuItem>
         <MenuItem onClick={()=>{
           navigate("/pages/changepassword")

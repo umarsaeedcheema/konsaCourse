@@ -17,12 +17,13 @@ const addRequest = asyncHandler(async (req, res) => {
 
     let fullName = firstName + " " + lastName;
     let fullCourse = courseCode + " " + courseName;
-    const requestExists = await Request.findOne({ courseName: courseName, fullName: fullName });
+    const requestExists = await Request.findOne({ courseName: courseName, firstName: firstName });
 
     if(requestExists)
     {
-      res.status(201).json("Request already exists")
-      return
+      res.status(400);
+      throw new Error("Request already exists")
+      
     }
 
     const request = await Request.create({
