@@ -22,7 +22,7 @@ const Admin_Requests = () => {
       <div style={{
         height: 100,
       }}>
-        <NavbarComponent />
+        {/* <NavbarComponent /> */}
       </div>
 
       <h1

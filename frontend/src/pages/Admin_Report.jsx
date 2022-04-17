@@ -1,7 +1,6 @@
 import React from 'react'
 import ReportCard from '../components/ReportCard.jsx'
-import { Divider, Grid } from '@mui/material';
-import Header from '../components/Header.jsx';
+import { Grid } from '@mui/material';
 import NavbarComponent from '../components/NavbarComponent.jsx';
 
 
@@ -23,7 +22,7 @@ const Admin_Report = () => {
           position: 'relative'
         }}
       >
-        <NavbarComponent />
+        {/* <NavbarComponent /> */}
       </div>
       <div
         style={{
