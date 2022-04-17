@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import axios from "axios"
 // import { Link } from "react-router-dom";
 
 
@@ -21,20 +22,20 @@ const ForgotPassword = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		console.log(e.target.value)
-		// try {
-		// 	const url = "http://localhost:8080/api/auth";
-		// 	const { data: res } = await axios.post(url, data);
-		// 	localStorage.setItem("token", res.data);
-		// 	window.location = "/";
-		// } catch (error) {
-		// 	if (
-		// 		error.response &&
-		// 		error.response.status >= 400 &&
-		// 		error.response.status <= 500
-		// 	) {
-		// 		setError(error.response.data.message);
-		// 	}
-		// }
+		const forgotObject = {
+			email:data.email,
+			Squestion: data.question,
+			Sanswer: data.answer,
+			newPassword: data.password
+		}
+		const url = `/forgotPassword`;
+		await axios.post(url, forgotObject).then((res) =>{
+			console.log(res);
+			alert("Your password has been reset. Please log in");
+			navigate('/pages/login');
+		}).catch((error)=>{
+			setError(error.response.data.error)
+		})
 	};
 
 	const navigate = useNavigate()
@@ -56,7 +57,7 @@ const ForgotPassword = () => {
 							marginLeft:"31%"
 						}}
 						onClick={() => {
-							navigate('/pages/login')
+							navigate('/pages/signup')
 						}}
 					>
 						Sign Up
