@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Divider, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import Rating from '@mui/material/Rating';
 import styles from '../pages/styles.module.css';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
@@ -56,9 +56,6 @@ const ReviewCard = (props) => {
 
 
                         <Typography flexBasis={'35%'}
-
-                        
-                        
                         >Attendance: {props.attendance}</Typography>
                         <Typography flexBasis={'26%'}>CP: {props.cp}</Typography>
                         <Typography>Would Take Again: {props.takeagain}</Typography>
