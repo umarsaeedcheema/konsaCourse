@@ -32,12 +32,15 @@ export const Comparer = () => {
                 setError1(false);
                 //console.log(data1[0].instructorName);
                 console.log("SMTH WENT RIGHT");
+                console.log(data1);
+                console.log(typeof data1.courseRating["$numberDecimal"]);
+                console.log(data1.instructorName);
             }
         }
         // console.log(data1.toJSON());
             
     },[data1, data2])
-    console.log(data1)
+
     const clearInput = () => {
         setCourse();
         setInstructor1();
@@ -111,16 +114,16 @@ export const Comparer = () => {
             {/* {dbool && <GetData1 url1={u1} url2={u2} />} */}
             {!cbool && <Content
                             instructor1={data1.instructorName}
-                            instructor2={instructor2}
-                            overallrating1 = {data1.courseRating}
-                            teachingrating1 = {data1.learnRating}
-                            quality1rating1 = {data1.gradeRating}
-                            quality2rating1 = {data1.workRating}
+                            instructor2={data2.instructorName}
+                            overallrating1 = {parseFloat(data1.courseRating["$numberDecimal"])}
+                            teachingrating1 = {parseFloat(data1.learnRating["$numberDecimal"])}
+                            quality1rating1 = {parseFloat(data1.gradeRating["$numberDecimal"])}
+                            quality2rating1 = {parseFloat(data1.workRating["$numberDecimal"])}
 
-                            overallrating2 = {3}
-                            teachingrating2 = {2}
-                            quality1rating2 = {1}
-                            quality2rating2 = {4}></Content>}
+                            overallrating2 = {parseFloat(data2.courseRating["$numberDecimal"])}
+                            teachingrating2 = {parseFloat(data2.learnRating["$numberDecimal"])}
+                            quality1rating2 = {parseFloat(data2.gradeRating["$numberDecimal"])}
+                            quality2rating2 = {parseFloat(data2.workRating["$numberDecimal"])}></Content>}
             
             
             {!cbool && <button type="button" className={styles.green_btn} onClick = {(event)=>{
