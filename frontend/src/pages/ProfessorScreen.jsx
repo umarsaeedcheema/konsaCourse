@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Rating from '@mui/material/Rating';
 import styles from './styles.module.css';
 import { Grid, } from '@mui/material';
@@ -6,6 +6,7 @@ import ReviewCard from '../components/ReviewCard';
 import { Button } from '@mui/material';
 
 import {  useLocation } from "react-router-dom";
+const axios = require('axios');
 // import NavbarComponent from '../components/NavbarComponent';
 
 
@@ -16,13 +17,37 @@ import {  useLocation } from "react-router-dom";
 
 const ProfessorScreen = (proff) => {
 
-    // const { state } = useLocation();
-    // console.log(state);
-    // const [profdata, setProfdata] = useState();
+    const { state } = useLocation();
+    console.log(state);
+    const [profdata, setProfdata] = useState([null, false, 0, null]);
 
-    // const url = "/instructor/searchInstructor/" + proff.fullName;
-    // console.log(state.name);
+    const url = ("/instructor/searchInstructor/" + state.name).replaceAll(' ', '%20');
+    console.log(state.name);
 
+    const getData = async () => {
+        await axios.get(url).then(async (temp)=>{
+            let gradnum = Math.round(parseFloat(((temp.data[0].overallRating['$numberDecimal'])*2)-1));
+
+                if (gradnum < 0) {
+                    gradnum = 0;
+                }
+            const newurl = ("/rate/getRatings/" + state.name).replaceAll(' ', '%20');
+            await axios.get(newurl).then((newtemp)=> {
+                setProfdata([temp.data[0],true,gradnum,newtemp.data])
+                console.log("PROF DATA", newtemp.data);
+            }).catch((error) => {
+                console.log("ERROR 1", error)
+            })
+             
+
+        }).catch((error)=> {
+            console.log("ERROR 2", error)
+        })
+    }
+
+    useEffect(()=>{
+        getData();
+    },[])
 
 
     const labels = ["F", "C-", "C", "C+", "B-", "B", "B+", "A-", "A", "A+"];
@@ -34,18 +59,21 @@ const ProfessorScreen = (proff) => {
     const tags = ["Lenient", "Accomodating", "Punctual", "Inspirational", "Interactive"];
 
 
+
+
     const reviews = [["Software Engineering CS 360", 4, "Yes", "No", "Yes", "Amazing course! loved it, was beauutiful", ["Lenient", "Accomodating", "Punctual"]],
     ["Software Engineering CS 360", 4, "Yes", "No", "Yes", "Amazing course! loved it, was beauutiful", ["Lenient", "Accomodating", "Punctual"]]];
 
 
-
+    
 
 
 
     return (
 
         //<div className='d-flex flex-column justify-column-start'  >
-        <div className={styles.gradient}>
+        <>
+        {profdata[1] && <div className={styles.gradient}>
             {/* <NavbarComponent
                 isAdmin={false}
                 isLoggedIn={true}
@@ -60,7 +88,7 @@ const ProfessorScreen = (proff) => {
                     backgroundColor: "#00000000"
                 }}>
 
-                    <h1>{firstname} {lastname}</h1>
+                    <h1>{profdata[0].fullName}</h1>
                     <p size="large">Professor in the Computer Science Department</p>
 
                     <div class="d-flex align-items-center ">
@@ -68,24 +96,24 @@ const ProfessorScreen = (proff) => {
                         <Rating
 
                             name="profStars"
-                            value={rating}
+                            value={profdata[0].overallRating['$numberDecimal']}
                             size="large"
                             //precision={0.5}
 
                             readOnly
                         />
 
-                        <div className={styles.rubber} style={{ marginLeft: "10%" }}>{labels[labnum]}</div>
+                        <div className={styles.rubber} style={{ marginLeft: "10%" }}>{labels[profdata[2]]}</div>
 
                     </div>
 
-                    <div style={{ fontSize: "small", alignContent: "end" }}>Based on {numrating} ratings</div>
+                    <div style={{ fontSize: "small", alignContent: "end" }}>Based on {profdata[0].numReviews} ratings</div>
 
                     <button type="submit" className={styles.green_btn} style={{ fontSize: "20px", marginLeft: '-0.2%' }}>
                         Rate Professor
                     </button>
 
-                    <h4>Professor {firstname}'s Top Five Tags</h4>
+                    <h4>Professor {profdata[0].firstName}'s Top Five Tags</h4>
 
                     <div className="d-flex justify-content-start "
                         style={{
@@ -124,7 +152,7 @@ const ProfessorScreen = (proff) => {
                     <Grid container direction={'column'} spacing={4}>
 
 
-                        {reviews.map((value, key) => {
+                        {(profdata[3]).map((value, key) => {
 
                             return (
                                 <>
@@ -133,15 +161,15 @@ const ProfessorScreen = (proff) => {
                                         <Grid item xs={12} sm={8}>
 
                                             <ReviewCard
-                                                title={value[0]}
-                                                rating={value[1]}
-                                                attendance={value[2]}
-                                                cp={value[3]}
-                                                takeagain={value[4]}
-                                                description={value[5]}
-                                                tags={value[6]}
-                                                UpCount= {15}
-                                                DownCount = {3}      
+                                                title={value.courseName}
+                                                rating={value.instructorRating['$numberDecimal']}
+                                                attendance={value.answers[0]}
+                                                cp={value.answers[1]}
+                                                takeagain={value.answers[2]}
+                                                description={value.comment}
+                                                tags={[]}
+                                                UpCount= {value.likes}
+                                                DownCount = {value.dislikes}      
 
                                             />
 
@@ -160,7 +188,8 @@ const ProfessorScreen = (proff) => {
                 </div>
             </div>
 
-        </div>
+        </div>}
+        </>
     )
 }
 export default ProfessorScreen

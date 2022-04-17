@@ -53,7 +53,7 @@ const Rate = () => {
 
   const tags = ["Lenient", "Accomodating", "Punctual", "Inspirational", "Interactive", "Lenient", "Accomodating", "Punctual", "Inspirational", "Interactive"];
 
-  const [tagPress, setTagPress]= useState('black')
+
 
   return (
     <div className={styles.gradient}>

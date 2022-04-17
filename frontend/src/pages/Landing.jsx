@@ -29,6 +29,7 @@ const Landing = () => {
 
   const [user, setUser] = useState();
 
+
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {

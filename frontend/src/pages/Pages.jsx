@@ -14,10 +14,8 @@ import ForgotPassword from './ForgotPassword'
 import ChangePassword from './ChangePassword'
 import ProfessorScreen from './ProfessorScreen'
 import NavbarComponent from '../components/NavbarComponent'
-import { useState, useEffect } from "react"
-import { Comparer } from './Comparer'
 import AddInstructor from './AddInstructor'
-
+import Comparer from './Comparer'
 
 const Pages = () => {
 
