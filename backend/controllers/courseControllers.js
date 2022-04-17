@@ -69,8 +69,10 @@ const allInstructors = asyncHandler(async (req, res) => {
     var regex1 = new RegExp(req.params.n, "i");
     var regex2 = new RegExp(req.params.m, "i");
     Course.find({courseName:regex1, instructorName:regex2}).then((result)=> {
-      res.status(200).json(result)
-    });
+      res.status(201).json(result);
+    }).catch((error)=>{
+    console.log(error); 
+  });
   });
 
   const uniqueCourses = asyncHandler(async (req, res)=>{
