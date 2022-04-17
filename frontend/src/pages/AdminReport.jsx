@@ -5,7 +5,7 @@ import NavbarComponent from '../components/NavbarComponent.jsx';
 
 
 
-const Admin_Report = () => {
+const AdminReport = () => {
 
   const reviews = [["Sociology", "SOC 100", "Usama Hameed", "This was a bad course"],
   ["Computer Science", "CS 100", "Umar Cheema", "I loved this course it was amazing"],
@@ -83,4 +83,4 @@ const Admin_Report = () => {
   )
 }
 
-export default Admin_Report
+export default AdminReport

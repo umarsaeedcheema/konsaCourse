@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import BasicMenu from './BasicMenu'
+import styles from '../pages/styles.module.css'
 
 // <div className={styles.gradient}>
 // {/* <div className='d-flex justify-content-center flex-1 ' style={{ backgroundColor: "#00ffff00" }} >  </div> */}
@@ -32,7 +33,7 @@ const NavbarComponent = (props) => {
                         </button> */}
                         <div class="collapse navbar-collapse justify-center ">
                             <div class="navbar-nav" >
-                                <a class="nav-link active mr-5" aria-current="page" href="./landing" style={{ color: "#000000" }}>Home</a>
+                                <a class="nav-link active mr-5" aria-current="page" href="/" style={{ color: "#000000" }}>Home</a>
                                 <a class="nav-link mr-5" href="/pages/search" style={{ color: "#000000" }} >Search</a>
                                 {!props.isAdmin && <a class="nav-link mr-5" href="/pages/rate" style={{ color: "#000000" }}>Rate</a>}
                                 {!props.isAdmin && <a class="nav-link mr-5" href="/pages/compare" style={{ color: "#000000" }}>Compare</a>}
@@ -52,14 +53,26 @@ const GetButtons = (props) => {
     const navigate = useNavigate()
     if (props.isLoggedIn === false) {
         return (
-            <div className="justify-content-end pr-20">
-                <button className="btn btn-success mr-5 rounded-pill"
+            <div className="d-flex justify-content-end pr-20">
+                <button className={styles.green_btn}
+                style={{
+                    width:'80%'
+                }}
+                
                     onClick={() => {
                         navigate('/pages/login')
                     }}
                     > SignIn
                 </button>
-                <button className="btn btn-dark rounded-pill"
+                <button className={styles.white_btn}
+                style={{
+                    // width:'80%'
+                    height:'20%',
+                    marginTop:'4%',
+                    backgroundColor:'black',
+                    color:'white'
+
+                }}
                     onClick={() => {
                         navigate('/pages/signup')
                     }}

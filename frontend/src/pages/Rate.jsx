@@ -60,10 +60,20 @@ const Rate = () => {
         isLoggedIn={loggedin}
       />
 
+
       <Grid container
         direction={'column'}
         alignItems={'center'}
-        justifyContent={'center'}>
+        justifyContent={'center'}
+        style={{
+          marginTop:'5%',
+          borderRadius: '5%',
+          backgroundColor: 'rgba(58, 175, 160, 0.05)',
+          margin: 'auto',
+          width: '50%'
+        }}
+
+      >
 
         <div
           style={{
@@ -215,24 +225,52 @@ const Rate = () => {
         <div
           className='inline-block'
           style={{
-            marginLeft: '-6%'
+            marginLeft: '15%'
           }}
         >
-          <div>
-            <h4>Rate Professor's Teaching Methodology</h4>
-            <Rating />
+          <div style={{
+            display: 'inline-grid',
+          }}>
+            <h4
+
+            >Rate Professor's Teaching Methodology</h4>
+            <Rating
+              style={{
+                margin: 'auto'
+              }} />
           </div>
-          <div>
+
+          <div
+            style={{
+              display: 'inline-grid',
+            }}
+          >
             <h4>Rate Professor's Teaching Methodology</h4>
-            <Rating />
+            <Rating
+              style={{
+                margin: 'auto'
+              }} />
           </div>
-          <div>
+          <div
+            style={{
+              display: 'inline-grid',
+            }}>
             <h4>Rate Professor's Teaching Methodology</h4>
-            <Rating />
+            <Rating
+              style={{
+                margin: 'auto'
+              }} />
           </div>
-          <div>
+          <div
+            style={{
+              display: 'inline-grid',
+            }}
+          >
             <h4>Rate Professor's Teaching Methodology</h4>
-            <Rating />
+            <Rating
+              style={{
+                margin: 'auto'
+              }} />
           </div>
         </div>
 
@@ -252,24 +290,36 @@ const Rate = () => {
         <div
           className='d-flex flex-col'
           style={{
-            marginLeft: '-18%'
+            marginLeft: '-33%'
           }}
         >
           <h4>Leave a Comment:</h4>
-          <div>
+          <div
+            style={{
+              height: '200px'
+            }}
+          >
 
             <input type={'text'} placeholder='What do you want other students to know about this professor'
               style={{
-                width: '240%'
+                // display:'flex',
+                // justifyContent:'start',
+                width: '165%',
+                height: '50%',
+                paddingtop:'-15px',
+                paddingLeft: '5px',
+                borderRadius: '15px',
+                backgroundColor: 'rgba(58, 175, 160, 0.1)'
               }}
 
             ></input>
-            <Button 
-            variant='contained'
-            style={{
-              marginLeft:'60%'
-            }}
-            >Submit</Button>
+            <button
+              variant='contained'
+              className={styles.green_btn}
+              style={{
+                marginLeft: '60%'
+              }}
+            >Submit</button>
           </div>
         </div>
 
