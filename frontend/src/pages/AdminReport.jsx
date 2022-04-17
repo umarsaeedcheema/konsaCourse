@@ -1,12 +1,11 @@
 import React from 'react'
 import ReportCard from '../components/ReportCard.jsx'
-import { Divider, Grid } from '@mui/material';
-import Header from '../components/Header.jsx';
+import { Grid } from '@mui/material';
 import NavbarComponent from '../components/NavbarComponent.jsx';
 
 
 
-const Admin_Report = () => {
+const AdminReport = () => {
 
   const reviews = [["Sociology", "SOC 100", "Usama Hameed", "This was a bad course"],
   ["Computer Science", "CS 100", "Umar Cheema", "I loved this course it was amazing"],
@@ -17,30 +16,29 @@ const Admin_Report = () => {
 
 
   return (
-    <>
-      <div
-        style={{
-          position: 'relative'
-        }}
-      >
-        <NavbarComponent />
-      </div>
-      <div
-        style={{
-          position: 'relative',
-          top: -500
-        }}
-      >
 
-        <h1
-          style={{
-            position: 'relative',
-            left: 550,
-            top: -50
-          }}
-        >
-          Reported Ratings
-        </h1>
+    <div style={{
+      width: 'auto'
+    }} >
+      <div style={{
+        height: 100,
+      }}>
+        {/* <NavbarComponent /> */}
+      </div>
+
+      <h1
+        style={{
+          display: 'flex',
+          justifyContent: 'center'
+        }}
+      >
+        Reports
+      </h1>
+      <div
+        style={{
+          marginTop: '50px'
+        }}
+      >
 
 
         <Grid container direction={'column'} spacing={4}>
@@ -80,9 +78,9 @@ const Admin_Report = () => {
         </Grid>
 
       </div>
+    </div>
 
-    </>
   )
 }
 
-export default Admin_Report
+export default AdminReport
