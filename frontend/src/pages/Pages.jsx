@@ -19,6 +19,7 @@ import ChangePassword from './ChangePassword'
 import ProfessorScreen from './ProfessorScreen'
 import NavbarComponent from '../components/NavbarComponent'
 import { useState, useEffect } from "react"
+import { Comparer } from './Comparer'
 
 
 const Pages = () => {
@@ -31,7 +32,7 @@ const Pages = () => {
         <Routes >
             
             
-            <Route path='/pages/compare' element={<Compare/>} />
+            <Route path='/pages/compare' element={<Comparer/>} />
             <Route path='/pages/comparefinal' element={<CompareFinal/>}></Route>
             <Route path ='/pages/course' element={<Course/>}/>
             <Route path ='/pages/professorscreen' element={<ProfessorScreen/>}/>

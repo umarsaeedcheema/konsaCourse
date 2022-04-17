@@ -60,7 +60,15 @@ const searchCourse = asyncHandler(async (req, res) => {
 const allInstructors = asyncHandler(async (req, res) => {
   var regex = new RegExp(req.params.n, "i");
   await Course.find({ courseName: regex }, { instructorName: 1, _id: 0 }).then((result) => {
-    res.status(200).json(result)
+    len = result.length
+    resultArr = []
+    for(i =0;i<len;i++)
+    {
+      resultArr.push(result[i].instructorName)
+
+    }
+
+    res.status(200).json(resultArr)
   });
 });
 
@@ -74,6 +82,7 @@ const allInstructors = asyncHandler(async (req, res) => {
   });
 
   const uniqueCourses = asyncHandler(async (req, res)=>{
+    console.log("in unique courses")
     var courseName = req.params.n;
     Course.distinct("courseName").then((result)=>{
       res.status(200).json(result);

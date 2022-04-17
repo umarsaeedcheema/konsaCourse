@@ -58,11 +58,7 @@ const  CompCard = (props) => {
                 <Typography >
                     Quality3 Rating:
                 </Typography>
-                <Rating 
-                    value={props.quality3}
-                    size="small"
-                    readOnly
-                />
+                
             </CardContent>
             <div>
                 <Typography style={{ paddingLeft: 15, fontSize: 20 }}>
