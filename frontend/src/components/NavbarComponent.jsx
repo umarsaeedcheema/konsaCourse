@@ -1,7 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import BasicMenu from './BasicMenu'
-import styles from '../pages/styles.module.css'
+// import styles from '../pages/styles.module.css'
+import { Button } from '@mui/material';
+
 
 // <div className={styles.gradient}>
 // {/* <div className='d-flex justify-content-center flex-1 ' style={{ backgroundColor: "#00ffff00" }} >  </div> */}
@@ -9,6 +11,8 @@ import styles from '../pages/styles.module.css'
 
 const NavbarComponent = (props) => {
     const navigate = useNavigate()
+
+    
     return (
 
             <div >
@@ -53,30 +57,34 @@ const GetButtons = (props) => {
     const navigate = useNavigate()
     if (props.isLoggedIn === false) {
         return (
-            <div className="d-flex justify-content-end pr-20">
-                <button className={styles.green_btn}
+            <div className="d-flex justify-content-end pr-20"
+            style={{
+                columnGap:'5px'
+            }}
+            >
+                <Button 
                 style={{
-                    width:'80%'
+                    backgroundColor:'rgba(58, 175, 160, 1)',
+                    color:'white',
+                    borderRadius:'15px'
                 }}
                 
                     onClick={() => {
                         navigate('/pages/login')
                     }}
                     > Sign In
-                </button>
-                <button className={styles.white_btn}
+                </Button>
+                <Button 
                 style={{
-                    // width:'80%'
-                    height:'20%',
-                    marginTop:'4%',
                     backgroundColor:'black',
-                    color:'white'
+                    color:'white',
+                    borderRadius:'15px'
 
                 }}
                     onClick={() => {
                         navigate('/pages/signup')
                     }}
-                > Sign Up </button>
+                > Sign Up </Button>
             </div>
         )
     }

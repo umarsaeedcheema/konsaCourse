@@ -10,6 +10,7 @@ import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import FlagIcon from '@mui/icons-material/Flag';
 import { IconButton } from '@mui/material';
 import { useState } from 'react';
+import { Button } from '@mui/material';
 
 const ReviewCard = (props) => {
     const UpCount = props.UpCount
@@ -62,15 +63,25 @@ const ReviewCard = (props) => {
 
                     <Typography>{props.description}</Typography>
 
-                    <div className="justify-content-start pt-10">
+                    <div className="d-flex justify-content-start pt-2"
+                    style={{
+                        columnGap:'5px'
+                    }}
+                    >
                         {props.tags.map((value, key) => {
 
                             return (
-                                <button className={styles.tag_btn} disabled="true">
+                                <Button variant='contained' disabled="true"
+                                    style={{
+                                        backgroundColor: 'black',
+                                        color: 'white',
+                                        borderRadius: '15px',
+                                        columnGap: '2px'
+                                    }}>
 
                                     {value}
 
-                                </button>)
+                                </Button>)
 
                         })}
 
@@ -114,11 +125,11 @@ const ReviewCard = (props) => {
                                     color: thumbsDownColor
                                 }}
                                 onClick={() => {
-                                    if (thumbsDown){
+                                    if (thumbsDown) {
                                         setthumbsDownColor()
                                         setThumbsDown(false)
                                     }
-                                    else{
+                                    else {
                                         setthumbsDownColor('black')
                                         setThumbsDown(true)
                                     }

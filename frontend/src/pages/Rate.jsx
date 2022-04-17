@@ -53,6 +53,7 @@ const Rate = () => {
 
   const tags = ["Lenient", "Accomodating", "Punctual", "Inspirational", "Interactive", "Lenient", "Accomodating", "Punctual", "Inspirational", "Interactive"];
 
+  const [tagPress, setTagPress]= useState('black')
 
   return (
     <div className={styles.gradient}>
@@ -319,7 +320,9 @@ const Rate = () => {
                     borderRadius: '15px',
                     margin: 'auto'
 
+                    
                   }}
+                
                 >
 
                   {value}
@@ -364,7 +367,8 @@ const Rate = () => {
                 marginLeft: '60%',
                 paddingBottom: '-5%',
                 borderRadius:'15px',
-                color:'white'
+                color:'white',
+
               }}
             >Submit</Button>
           </div>

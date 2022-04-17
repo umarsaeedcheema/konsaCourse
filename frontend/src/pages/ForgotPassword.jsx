@@ -1,6 +1,7 @@
 import styles from "./styles.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 // import { Link } from "react-router-dom";
 
 
@@ -43,15 +44,23 @@ const ForgotPassword = () => {
 		<div className={styles.login_form_container}>
 			<div className={styles.left}>
 				<h1>New Here?</h1>
-				<h2 >
-					<button type="button" className={styles.white_btn}
-
+				<h2 style={{
+					width:'100%'
+				}}>
+					<Button type="button"
+						variant="contained"
+						style={{
+							borderRadius:'15px',
+							backgroundColor:'white',
+							width:'35%',
+							marginLeft:"31%"
+						}}
 						onClick={() => {
 							navigate('/pages/login')
 						}}
 					>
 						Sign Up
-					</button>
+					</Button>
 				</h2>
 			</div>
 			<div className={styles.right}>
@@ -116,6 +125,9 @@ const ForgotPassword = () => {
 							value={data.password}
 							required
 							className={styles.input}
+							style={{
+								marginBottom: '5%'
+							}}
 						// endAdornment={
 						// 	<InputAdornment position="end" style={{color:"black",height:"10%"}}>
 						// 	  <IconButton
@@ -132,10 +144,19 @@ const ForgotPassword = () => {
 									{showPassword ? <Visibility /> : <VisibilityOff />}
 								  </IconButton> */}
 						{/* <button></button> */}
-						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={styles.green_btn}>
+						{error && <div className={styles.error_msg}
+
+						>{error}</div>}
+						<Button type="submit"
+							variant="contained"
+							style={{
+								borderRadius: '15px',
+								color: 'white'
+							}}
+
+						>
 							Update Password
-						</button>
+						</Button>
 
 					</form>
 				</div>
