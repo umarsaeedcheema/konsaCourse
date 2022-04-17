@@ -126,15 +126,11 @@ const addRating = asyncHandler(async (req, res) => {
 
         courseData = getCourseReviews
 
-
         let testRating = parseFloat(courseData["courseRating"])
-
         courseReviews = courseData.numReviews
         courseWorkRating = parseFloat(courseData["workRating"])
         courseGradeRating = parseFloat(courseData["gradeRating"])
         courseLearnRating = parseFloat(courseData["learnRating"])
-
-        console.log("LEARN RATING:", courseLearnRating)
 
 
         formula = ratingFormula(testRating, courseRating, courseReviews)
