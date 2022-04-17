@@ -192,9 +192,9 @@ const Comparer = () => {
                     quality2rating2={4}></Content>}
 
 
-            }}>
+           
 				Compare
-			</button>}
+		
             {error1 && <div className={styles.error_msg}>Incorrect Selection</div>}
             
             {/* {dbool && <GetData1 url1={u1} url2={u2} />} */}
@@ -212,7 +212,7 @@ const Comparer = () => {
                             quality2rating2 = {parseFloat(data2.workRating["$numberDecimal"])}></Content>}
             
             
-            {!cbool && <button type="button" className={styles.green_btn} onClick = {(event)=>{
+           
 
                 {!cbool && <button type="button" className={styles.green_btn} onClick={(event) => {
 
