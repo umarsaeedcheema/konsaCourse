@@ -193,9 +193,8 @@ const Comparer = () => {
 
 
            
-				Compare
 		
-            {error1 && <div className={styles.error_msg}>Incorrect Selection</div>}
+            
             
             {/* {dbool && <GetData1 url1={u1} url2={u2} />} */}
             {!cbool && <Content
