@@ -1,5 +1,4 @@
 import React from 'react'
-import Compare from './Compare'
 import CompareFinal from './CompareFinal'
 import Course from './Course'
 import Login from './Login'
@@ -15,6 +14,8 @@ import ForgotPassword from './ForgotPassword'
 import ChangePassword from './ChangePassword'
 import ProfessorScreen from './ProfessorScreen'
 import NavbarComponent from '../components/NavbarComponent'
+import { useState, useEffect } from "react"
+import { Comparer } from './Comparer'
 import AddInstructor from './AddInstructor'
 
 
@@ -28,7 +29,7 @@ const Pages = () => {
         <Routes >
             
             
-            <Route path='/pages/compare' element={<Compare/>} />
+            <Route path='/pages/compare' element={<Comparer/>} />
             <Route path='/pages/comparefinal' element={<CompareFinal/>}></Route>
             <Route path ='/pages/course' element={<Course/>}/>
             <Route path ='/pages/professorscreen' element={<ProfessorScreen/>}/>
