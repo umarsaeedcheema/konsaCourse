@@ -101,7 +101,7 @@ const getCourseTags = asyncHandler(async (req, res) => {
 
 
 })
-module.exports = { addCourse, searchCourse, allInstructors, courseByInstructor, getCourseTags };
+// module.exports = { addCourse, searchCourse, allInstructors, courseByInstructor, getCourseTags };
 
 
   const uniqueCourses = asyncHandler(async (req, res)=>{
@@ -110,5 +110,5 @@ module.exports = { addCourse, searchCourse, allInstructors, courseByInstructor, 
       res.status(200).json(result);
     });
   });
-  module.exports = { addCourse, searchCourse, allInstructors, courseByInstructor, uniqueCourses};
+  module.exports = { addCourse, searchCourse, allInstructors, courseByInstructor, uniqueCourses, getCourseTags};
   
