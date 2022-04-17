@@ -19,20 +19,29 @@ const ProfessorScreen = (proff) => {
 
     const { state } = useLocation();
     console.log(state);
-    const [profdata, setProfdata] = useState([null, false, 0]);
+    const [profdata, setProfdata] = useState([null, false, 0, null]);
 
-    const url = "/instructor/searchInstructor/" + state.name;
+    const url = ("/instructor/searchInstructor/" + state.name).replaceAll(' ', '%20');
     console.log(state.name);
 
     const getData = async () => {
-        await axios.get(url).then((temp)=>{
+        await axios.get(url).then(async (temp)=>{
             let gradnum = Math.round(parseFloat(((temp.data[0].overallRating['$numberDecimal'])*2)-1));
 
                 if (gradnum < 0) {
                     gradnum = 0;
-                } 
+                }
+            const newurl = ("/rate/getRatings/" + state.name).replaceAll(' ', '%20');
+            await axios.get(newurl).then((newtemp)=> {
+                setProfdata([temp.data[0],true,gradnum,newtemp.data])
+                console.log("PROF DATA", newtemp.data);
+            }).catch((error) => {
+                console.log("ERROR 1", error)
+            })
+             
 
-            setProfdata([temp.data[0],true, gradnum]);
+        }).catch((error)=> {
+            console.log("ERROR 2", error)
         })
     }
 
@@ -48,6 +57,8 @@ const ProfessorScreen = (proff) => {
     const firstname = "Suleman";
     const lastname = "Shahid";
     const tags = ["Lenient", "Accomodating", "Punctual", "Inspirational", "Interactive"];
+
+
 
 
     const reviews = [["Software Engineering CS 360", 4, "Yes", "No", "Yes", "Amazing course! loved it, was beauutiful", ["Lenient", "Accomodating", "Punctual"]],
@@ -96,7 +107,7 @@ const ProfessorScreen = (proff) => {
 
                     </div>
 
-                    <div style={{ fontSize: "small", alignContent: "end" }}>Based on {profdata.numReviews} ratings</div>
+                    <div style={{ fontSize: "small", alignContent: "end" }}>Based on {profdata[0].numReviews} ratings</div>
 
                     <button type="submit" className={styles.green_btn} style={{ fontSize: "20px", marginLeft: '-0.2%' }}>
                         Rate Professor
@@ -141,7 +152,7 @@ const ProfessorScreen = (proff) => {
                     <Grid container direction={'column'} spacing={4}>
 
 
-                        {reviews.map((value, key) => {
+                        {(profdata[3]).map((value, key) => {
 
                             return (
                                 <>
@@ -150,15 +161,15 @@ const ProfessorScreen = (proff) => {
                                         <Grid item xs={12} sm={8}>
 
                                             <ReviewCard
-                                                title={value[0]}
-                                                rating={value[1]}
-                                                attendance={value[2]}
-                                                cp={value[3]}
-                                                takeagain={value[4]}
-                                                description={value[5]}
-                                                tags={value[6]}
-                                                UpCount= {15}
-                                                DownCount = {3}      
+                                                title={value.courseName}
+                                                rating={value.instructorRating['$numberDecimal']}
+                                                attendance={value.answers[0]}
+                                                cp={value.answers[1]}
+                                                takeagain={value.answers[2]}
+                                                description={value.comment}
+                                                tags={[]}
+                                                UpCount= {value.likes}
+                                                DownCount = {value.dislikes}      
 
                                             />
 

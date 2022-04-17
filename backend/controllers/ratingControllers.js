@@ -317,4 +317,4 @@ const getRatings = asyncHandler(async (req, res) =>{
 })
 
 
-module.exports = { addRating, deleteRating, addLike, addDislike, filterReviewsAdmin, showRatings, approve, getRatings};
+module.exports = { addRating, deleteRating, addLike, addDislike, filterReviewsAdmin, showRatings, getRatings};

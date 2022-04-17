@@ -12,8 +12,8 @@ import { useState } from 'react';
 import { Button } from '@mui/material';
 
 const ReviewCard = (props) => {
-    const UpCount = props.UpCount
-    const DownCount = props.DownCount
+    const [UpCount, setUpCount] = useState(parseInt(props.UpCount))
+    const [DownCount, setDownCount] = useState(parseInt(props.DownCount))
 
     const [flagColor, setFlagColor] = useState()
     const [thumbsUpColor, setthumbsUpColor] = useState()
@@ -99,15 +99,22 @@ const ReviewCard = (props) => {
                                     if (thumbsUp) {
                                         setthumbsUpColor()
                                         setThumbsUp(false)
+                                        setUpCount(UpCount-1)
                                     }
                                     else {
                                         setthumbsUpColor('green')
                                         setThumbsUp(true)
-
+                                        setUpCount(UpCount+1)
 
                                     }
-                                    setthumbsDownColor()
-                                    setThumbsDown(false)
+                                    //setthumbsDownColor()
+                                    if (thumbsDown) {
+                                        setDownCount(DownCount-1)
+                                        setThumbsDown(false)
+                                        setthumbsDownColor()
+                                    }
+                                    
+                                        
                                 }}
                             >
 
@@ -127,13 +134,21 @@ const ReviewCard = (props) => {
                                     if (thumbsDown) {
                                         setthumbsDownColor()
                                         setThumbsDown(false)
+                                        setDownCount(DownCount-1)
                                     }
                                     else {
                                         setthumbsDownColor('black')
                                         setThumbsDown(true)
+                                        setDownCount(DownCount+1)
                                     }
-                                    setthumbsUpColor()
-                                    setThumbsUp(false)
+                                    
+                                    if (thumbsUp) {
+                                        setUpCount(UpCount-1)
+                                        setThumbsUp(false)
+                                        setthumbsUpColor()
+                                    }
+                                    
+                                    
 
                                 }}
                             >
