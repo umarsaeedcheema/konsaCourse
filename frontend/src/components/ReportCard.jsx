@@ -1,10 +1,7 @@
 import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Divider, Grid } from '@mui/material';
-import Rating from '@mui/material/Rating';
 import styles from '../pages/styles.module.css';
 import { useState } from "react";
 
@@ -12,39 +9,104 @@ import { useState } from "react";
 
 const ReportCard = (props) => {
 
+    const [restore, setRestore] = useState(false);
+    const [remove, setRemove] = useState(false);
+
+
 
 
     return (
         <Card sx={{ minWidth: 275 }} style={{ backgroundColor: "#319FA025", borderRadius: "15px" }}>
 
             <CardContent>
-                
-                <div className='d-flex flex-row'>
-                    <div><Typography variant='h5'className={styles.report_card}>{props.coursename}</Typography></div>
-                    <div><Typography variant='h5' className={styles.report_card}>({props.coursecode})</Typography> </div>
-                    <Typography variant='h5' className={styles.wordspace}>-</Typography>
-                    <Typography variant='h5'> {props.username}</Typography>
+
+                <div className='d-flex flex-row'
+                    style={{
+                        padding: '5px',
+                    }}>
+                    <div><Typography className='fw-bold'
+                        style={{
+                            margin: '5px',
+                            fontSize: '30px'
+                        }}
+
+                    >{props.coursename}</Typography></div>
+                    <div><Typography className='fw-bold'
+                        style={{
+                            margin: '5px',
+                            fontSize: '30px'
+                        }}
+
+                    >({props.coursecode})</Typography> </div>
+                    <Typography className='fw-bold'
+                        style={{
+                            margin: '5px',
+                            fontSize: '30px'
+                        }}
+
+                    >-</Typography>
+                    <Typography
+                        style={{
+                            margin: '5px',
+                            fontSize: '30px'
+                        }}
+
+                    > {props.username}</Typography>
                 </div>
-                <Typography variant='h6' className={styles.report_card_description}>{props.description}</Typography>
+                <Typography
+                    style={{
+                        marginLeft: '1%'
+                    }}
+                >{props.description}</Typography>
             </CardContent>
             <div
-            style={{
-                float:'right'
-            }}
+                style={{
+                    display: 'flex',
+                    justifyContent: 'end',
+                    marginRight: '2%'
+                }}
             >
-            <button type="submit" className={styles.green_btn}
-            onClick={()=>{
-                
-                console.log("Hello")
-                
-            }}
-            >
-				Restore
-			</button>
+                {!restore && !remove && <button type="submit" className={styles.green_btn}
+                    onClick={() => {
+                        setRestore(true)
 
-            <button type="submit" className={styles.black_btn}>
-				Remove
-			</button>
+                    }}
+                >
+                    Restore
+                </button>}
+
+                {!restore && !remove && <button type="submit" className={styles.black_btn}
+                    onClick={() => {
+                        setRemove(true)
+                    }}
+                >
+                    Remove
+                </button>}
+
+            </div>
+            <div className='d-flex justify-content-end'
+            >
+
+                {restore && <div className='d-flex'
+                    style={{
+                        marginRight: '10%',
+                        fontSize: '20px',
+                        // marginTop: '5%',
+                        color: 'rgba(58, 175, 160, 1)'
+                    }}
+                >
+                    The Rating Has Been Restored</div>}
+
+                {remove && <div className='d-flex'
+                    style={{
+                        marginRight: '10%',
+                        // marginTop: '5%',
+                        color: 'rgba(0, 0, 0, 1)',
+                        fontSize: '20px',
+                    }}
+
+                >
+                    The Rating Has Been Removed</div>}
             </div>
 
 
