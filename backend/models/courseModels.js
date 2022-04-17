@@ -17,6 +17,10 @@ const courseSchema = mongoose.Schema({
     type: String,
     require: true,
   },
+  department:{
+    type:String,
+    require:true,
+  },
   courseRating: {
     //overall rating
     type: mongoose.Types.Decimal128,
