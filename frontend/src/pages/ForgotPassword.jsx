@@ -45,8 +45,9 @@ const ForgotPassword = () => {
 				<h1>New Here?</h1>
 				<h2 >
 					<button type="button" className={styles.white_btn}
-						style={{
-							marginRight: '15px'
+
+						onClick={() => {
+							navigate('/pages/login')
 						}}
 					>
 						Sign Up
@@ -58,7 +59,7 @@ const ForgotPassword = () => {
 				<div className="d-flex justify-content-end pr-20 mt-4 "
 					style={{
 						cursor: 'pointer',
-						
+
 					}}
 				>
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
@@ -69,13 +70,13 @@ const ForgotPassword = () => {
 
 				</div>
 				<div className="d-flex align-items-center justify-content-center flex-column"
-				style={{
-					backgroundColor: 'rgba(58, 175, 160, 0.05)',
-					borderRadius:'25px',
-					width:'450px',
-					height:'400px',
-					margin:'auto'
-				}}
+					style={{
+						backgroundColor: 'rgba(58, 175, 160, 0.05)',
+						borderRadius: '25px',
+						width: '450px',
+						height: '400px',
+						margin: 'auto'
+					}}
 				>
 
 					<form className={styles.form_container} onSubmit={handleSubmit}>

@@ -39,13 +39,13 @@ const courseSchema = mongoose.Schema({
     default: 0.0,
   },
   tags: {
-    type: Array,
+    type: Object,
     require: true,
   },
   numReviews: {
     type: Number,
     require: true,
-    defualt : 0,
+    default : 1,
   },
 });
 

@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import Rating from '@mui/material/Rating';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import styles from './styles.module.css';
-import { Divider, Grid, IconButton } from '@mui/material';
+import { Grid, } from '@mui/material';
 import ReviewCard from '../components/ReviewCard';
-import NavbarComponent from '../components/NavbarComponent';
-import { useNavigate, useLocation } from "react-router-dom";
+
+import {  useLocation } from "react-router-dom";
+// import NavbarComponent from '../components/NavbarComponent';
 
 
 // import styles from './styles.module.css'
@@ -16,12 +15,12 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 const ProfessorScreen = (proff) => {
 
-    const { state } = useLocation();
-    console.log(state);
-    const [profdata, setProfdata] = useState();
+    // const { state } = useLocation();
+    // console.log(state);
+    // const [profdata, setProfdata] = useState();
 
-    const url = "/instructor/searchInstructor/" + proff.fullName;
-    console.log(state.name);
+    // const url = "/instructor/searchInstructor/" + proff.fullName;
+    // console.log(state.name);
 
 
 
@@ -156,5 +155,4 @@ const ProfessorScreen = (proff) => {
         </div>
     )
 }
-//A commmit to check branch
 export default ProfessorScreen

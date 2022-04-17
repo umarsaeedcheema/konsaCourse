@@ -2,6 +2,7 @@ const { response } = require("express");
 const asyncHandler = require("express-async-handler");
 const Course = require("../models/courseModels");
 
+
 const addCourse = asyncHandler(async (req, res) => {
   const {
     courseName,
@@ -14,6 +15,13 @@ const addCourse = asyncHandler(async (req, res) => {
     tags,
     numReviews,
   } = req.body;
+
+  // console.log(tags)
+  const tagArray = await tags.reduce((accumulator, value) => {
+    return {...accumulator, [value]: 1};
+  }, {});
+  // console.log(tagArray)
+
   let fullCourse = courseCode + " " + courseName;
   const course = await Course.create({
     courseName,
@@ -24,7 +32,7 @@ const addCourse = asyncHandler(async (req, res) => {
     workRating,
     gradeRating,
     learnRating,
-    tags,
+    tags : tagArray,
     numReviews,
   });
   if (course) {
@@ -48,9 +56,7 @@ const addCourse = asyncHandler(async (req, res) => {
 });
 
 const searchCourse = asyncHandler(async (req, res) => {
-  console.log("fvdbajfbjhfaruhwebfjer");
   var regex = new RegExp(req.params.n, "i");
-  //   let combine = courseName + " " + courseCode;
   Course.find({ fullCourse: regex }).then((result) => {
     res.status(200).json(result);
   });
@@ -73,13 +79,32 @@ const allInstructors = asyncHandler(async (req, res) => {
 });
 
 
-  const courseByInstructor = asyncHandler (async (req,res) => {
-    var regex1 = new RegExp(req.params.n, "i");
-    var regex2 = new RegExp(req.params.m, "i");
-    Course.find({courseName:regex1, instructorName:regex2}).then((result)=> {
-      res.status(200).json(result)
-    });
+const courseByInstructor = asyncHandler(async (req, res) => {
+  var regex1 = new RegExp(req.params.n, "i");
+  var regex2 = new RegExp(req.params.m, "i");
+  Course.find({ courseName: regex1, instructorName: regex2 }).then((result) => {
+    res.status(200).json(result)
   });
+});
+
+const getCourseTags = asyncHandler(async (req, res) => {
+  var regex = new RegExp(req.params.n, "i");
+  Course.find({ courseName: regex }, { tags: 1, _id: 0 }).then((result) => {
+    let newdict = { ...result}
+    let tempdict = newdict["0"]["tags"]
+    tagArray = []
+    for (i = 0; i < 3; i++) {
+      elem = Object.keys(tempdict).reduce(function (a, b) { return tempdict[a] > tempdict[b] ? a : b });
+      tagArray.push(elem)
+      delete tempdict[elem]
+    }
+    res.status(200).json(tagArray)
+  });
+
+
+})
+// module.exports = { addCourse, searchCourse, allInstructors, courseByInstructor, getCourseTags };
+
 
   const uniqueCourses = asyncHandler(async (req, res)=>{
     console.log("in unique courses")
@@ -88,5 +113,5 @@ const allInstructors = asyncHandler(async (req, res) => {
       res.status(200).json(result);
     });
   });
-  module.exports = { addCourse, searchCourse, allInstructors, courseByInstructor, uniqueCourses};
+  module.exports = { addCourse, searchCourse, allInstructors, courseByInstructor, uniqueCourses, getCourseTags};
   

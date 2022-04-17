@@ -1,19 +1,10 @@
 const mongoose = require("mongoose");
 
 const reportSchema = mongoose.Schema({
-  reportedUser: {
-    type: String,
-    require: true,
-  },
   ratingID: {
-    type: Number,
-    require: true,
-  },
-  flag: {
-    type: Boolean,
-    require: true,
-    default: true
-  },
+    type: mongoose.Schema.Types.ObjectId,
+    require: true,  
+  }
 });
 
 const Report = mongoose.model("Report", reportSchema);
