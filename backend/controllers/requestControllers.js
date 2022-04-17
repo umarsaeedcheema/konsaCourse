@@ -13,8 +13,17 @@ const addRequest = asyncHandler(async (req, res) => {
         courseCode
     } = req.body
 
+
+
     let fullName = firstName + " " + lastName;
     let fullCourse = courseCode + " " + courseName;
+    const requestExists = await Request.findOne({ courseName: courseName, fullName: fullName });
+
+    if(requestExists)
+    {
+      res.status(201).json("Request already exists")
+      return
+    }
 
     const request = await Request.create({
         firstName,
@@ -51,9 +60,13 @@ const deleteRequest = asyncHandler(async (req, res) => {
 
 
 const approveRequest = asyncHandler(async(req,res) => {
+  
 const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
     
+  await Request.deleteOne({_id:req.params.n});
+
     res.status(200).json(data)
+
     firstName = data.firstName
     lastName = data.lastName
     department = data.department
@@ -62,8 +75,16 @@ const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
      courseName = data.courseName
      instructorName = fullName
      fullCourse = data.fullCourse
+      const courseInstructorExists = await Course.findOne({ courseName, fullName });
       const instructorExists = await Instructor.findOne({fullName});
       const courseExists = await Course.findOne({ courseName });
+
+      if(courseInstructorExists)
+      {
+        console.log("RETURNING")
+        return
+      }
+      console.log("HELLO")
 
 
   if(instructorExists)
@@ -79,7 +100,7 @@ const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
 
       await Instructor.updateOne(
         { fullName: instructorName },
-        { $push: { course: { $each: courseName } } }
+        { $push: { course: courseName  } }
       )
   }
   else if(courseExists)
@@ -88,7 +109,7 @@ const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
         firstName,
         lastName,
         fullName,
-        fullCourse,
+        course: [courseName],
         department,
         overallRating: 0,
         teachRating: 0,
@@ -103,7 +124,7 @@ const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
         firstName,
         lastName,
         fullName,
-        fullCourse,
+        course: [courseName],
         department,
         overallRating: 0,
         teachRating: 0,

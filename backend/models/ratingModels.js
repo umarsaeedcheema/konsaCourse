@@ -26,12 +26,12 @@ const ratingSchema = mongoose.Schema({
     require: false,
   },
   likes: {
-    type: Array,
+    type: Number,
     require: true,
     default: 0,
   },
   dislikes: {
-    type: Array,
+    type: Number,
     require: true,
     default: 0,
   },
