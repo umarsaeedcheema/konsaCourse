@@ -79,16 +79,6 @@ const allInstructors = asyncHandler(async (req, res) => {
 });
 
 
-<<<<<<< HEAD
-  const courseByInstructor = asyncHandler (async (req,res) => {
-    var regex1 = new RegExp(req.params.n, "i");
-    var regex2 = new RegExp(req.params.m, "i");
-    Course.find({courseName:regex1, instructorName:regex2}).then((result)=> {
-      res.status(201).json(result);
-    }).catch((error)=>{
-    console.log(error); 
-  });
-=======
 const courseByInstructor = asyncHandler(async (req, res) => {
   var regex1 = new RegExp(req.params.n, "i");
   var regex2 = new RegExp(req.params.m, "i");
@@ -109,7 +99,6 @@ const getCourseTags = asyncHandler(async (req, res) => {
       delete tempdict[elem]
     }
     res.status(200).json(tagArray)
->>>>>>> 85cf1548ffd0c262f52c3cbe92c8e9c48d823ecb
   });
 
 

@@ -321,17 +321,4 @@ const getRatings = asyncHandler(async (req, res) =>{
 })
 
 
-<<<<<<< HEAD
 module.exports = { addRating, deleteRating, addLike, addDislike, filterReviewsAdmin, showRatings, approve, getRatings};
-=======
-
-
-
-
-
-
-
-
-
-module.exports = { addRating, deleteRating, addLike, addDislike, filterReviewsAdmin, showRatings };
->>>>>>> 85cf1548ffd0c262f52c3cbe92c8e9c48d823ecb
