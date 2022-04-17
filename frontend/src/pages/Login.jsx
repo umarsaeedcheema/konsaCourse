@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
+import { Button } from "@mui/material";
 
 
 //TODO
@@ -33,41 +34,41 @@ const Login = () => {
 		};
 
 		const url = `/login`;
-		
-		await axios.post(url, logindetails).then((res)=>{
+
+		await axios.post(url, logindetails).then((res) => {
 			console.log("Hello");
 			console.log(res);
-			
+
 			const userData = res.data;
 			localStorage.setItem('user', JSON.stringify(userData));
-			
+
 			navigate('/pages/homepage');
 
-		})		
-		.catch(function (error) {
+		})
+			.catch(function (error) {
 
-			if (error.response) {
-				if (
-					error.response &&
-					error.response.status >= 400 &&
-					error.response.status <= 500
-				) {
-					setError(error.response.data.error);
-					// setError(error.response.data.message);
-					// console.log(error.response.data.error);
-				}	
-			} else if (error.request) {
-				// console.log("Error 2");
-				// console.log(error.request);
-				setError(error.request.data.error);
-			} else {
-				// console.log("Error 3");
-				// console.log('Error', error.message);
-				setError(error.request.data.error);
-			}
+				if (error.response) {
+					if (
+						error.response &&
+						error.response.status >= 400 &&
+						error.response.status <= 500
+					) {
+						setError(error.response.data.error);
+						// setError(error.response.data.message);
+						// console.log(error.response.data.error);
+					}
+				} else if (error.request) {
+					// console.log("Error 2");
+					// console.log(error.request);
+					setError(error.request.data.error);
+				} else {
+					// console.log("Error 3");
+					// console.log('Error', error.message);
+					setError(error.request.data.error);
+				}
 
-		});
-		
+			});
+
 	};
 
 
@@ -78,21 +79,27 @@ const Login = () => {
 			<div className={styles.left}>
 				<h1 >New Here?</h1>
 				<h2 >
-					<button type="button ml-10" className={styles.white_btn}
+					<Button type="tutton ml-10"
+						variant="contained"
+						style={{
+							borderRadius: '15px',
+							backgroundColor: 'white'
+						}}
+						className={styles.white_btn}
 						onClick={() => {
 							navigate('/pages/signup')
 						}}
 					>
 						Sign Up
-					</button>
+					</Button>
 				</h2>
 			</div>
 			<div className={styles.right} >
 				<div className="d-flex justify-content-end pr-20 mt-4">
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
-						style={{ color: '#319fa0', cursor:'pointer' }} >KONSA</div>
+						style={{ color: '#319fa0', cursor: 'pointer' }} >KONSA</div>
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
-						style={{ color: '#000000',cursor:'pointer' }}
+						style={{ color: '#000000', cursor: 'pointer' }}
 					>COURSE</div>
 
 				</div>
@@ -104,7 +111,7 @@ const Login = () => {
 						borderRadius: '5%',
 						width: '500px',
 						height: '320px',
-						
+
 					}}
 				>
 
@@ -120,7 +127,7 @@ const Login = () => {
 						}}
 					>
 
-						<h1 className="mb-5" style={{ color: "black"}}>Sign in to Your Account</h1>
+						<h1 className="mb-5" style={{ color: "black" }}>Sign in to Your Account</h1>
 
 						<input
 							type="email"
@@ -144,7 +151,7 @@ const Login = () => {
 
 						{error && <div className={styles.error_msg}>{error}</div>}
 
-						<span className="d-flex justify-content-end"
+						<span className="d-flex justify-content-end mb-2"
 							style={{ width: "100%", marginRight: "8%", fontSize: "15px", cursor: 'pointer' }}
 							onClick={() => {
 								navigate('/pages/forgotpassword')
@@ -152,10 +159,21 @@ const Login = () => {
 							Forgot password?
 						</span>
 
-
-						<button type="submit" className={styles.green_btn}>
-							Sign In
-						</button>
+						<div
+						style={{
+							width:'100%',
+							marginLeft:'70%'
+						}}
+						>
+							<Button type="submit" variant="contained"
+								style={{
+									borderRadius: '15px',
+									width:'35%'
+								}}
+							>
+								Sign In
+							</Button>
+						</div>
 
 					</form>
 				</div>
