@@ -5,7 +5,7 @@ import { Grid } from '@mui/material';
 import NavbarComponent from '../components/NavbarComponent.jsx';
 
 
-const Admin_Requests = () => {
+const AdminRequests = () => {
 
   const reviews = [["Sociology", "SOC 100", "Usama Hameed"],
   ["Computer Science", "CS 100", "Umar Cheema"],
@@ -86,4 +86,4 @@ const Admin_Requests = () => {
   )
 }
 
-export default Admin_Requests
+export default AdminRequests
