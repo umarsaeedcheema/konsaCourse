@@ -2,7 +2,6 @@ import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import styles from '../pages/styles.module.css';
 import { useState } from "react";
 import { Button } from '@mui/material';
 
