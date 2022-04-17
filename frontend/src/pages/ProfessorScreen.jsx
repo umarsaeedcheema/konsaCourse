@@ -3,9 +3,10 @@ import Rating from '@mui/material/Rating';
 import styles from './styles.module.css';
 import { Grid, } from '@mui/material';
 import ReviewCard from '../components/ReviewCard';
+// import {Sparkline} from 'react-chartlet'
 
-import {  useLocation } from "react-router-dom";
-import NavbarComponent from '../components/NavbarComponent';
+// import {  useLocation } from "react-router-dom";
+// import NavbarComponent from '../components/NavbarComponent';
 
 
 // import styles from './styles.module.css'
@@ -15,17 +16,17 @@ import NavbarComponent from '../components/NavbarComponent';
 
 const ProfessorScreen = (proff) => {
 
-    const { state } = useLocation();
-    console.log(state);
-    const [profdata, setProfdata] = useState();
+    // const { state } = useLocation();
+    // console.log(state);
+    // // const [profdata, setProfdata] = useState();
 
-    const url = "/instructor/searchInstructor/" + proff.fullName;
-    console.log(state.name);
+    // const url = "/instructor/searchInstructor/" + proff.fullName;
+    // console.log(state.name);
 
 
 
     const labels = ["F", "C-", "C", "C+", "B-", "B", "B+", "A-", "A", "A+"];
-    const rating = 2.5;
+    const rating = 4.5;
     const labnum = (rating * 2) - 1;
     const numrating = 17;
     const firstname = "Suleman";
@@ -36,20 +37,15 @@ const ProfessorScreen = (proff) => {
     const reviews = [["Software Engineering CS 360", 4, "Yes", "No", "Yes", "Amazing course! loved it, was beauutiful", ["Lenient", "Accomodating", "Punctual"]],
     ["Software Engineering CS 360", 4, "Yes", "No", "Yes", "Amazing course! loved it, was beauutiful", ["Lenient", "Accomodating", "Punctual"]]];
 
-
-
-
-
-
     return (
 
         //<div className='d-flex flex-column justify-column-start'  >
         <div className={styles.gradient}>
-            <NavbarComponent
+            {/* <NavbarComponent
                 isAdmin={false}
                 isLoggedIn={true}
                 style={{flex:1}}
-            />
+            /> */}
 
             <div className="flex-column align-content-start justify-content-start" style={{ backgroundColor: "#00000000", flex: 9 }}>
                 <div style={{
@@ -151,7 +147,11 @@ const ProfessorScreen = (proff) => {
 
                 </div>
             </div>
-
+            {/* <Sparkline
+                data={[2, 5, 3, 8, 1]}
+                height="100px"
+                />
+             */}
         </div>
     )
 }
