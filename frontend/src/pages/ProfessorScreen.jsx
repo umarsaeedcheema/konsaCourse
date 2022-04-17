@@ -5,7 +5,7 @@ import { Grid, } from '@mui/material';
 import ReviewCard from '../components/ReviewCard';
 
 import {  useLocation } from "react-router-dom";
-import NavbarComponent from '../components/NavbarComponent';
+// import NavbarComponent from '../components/NavbarComponent';
 
 
 // import styles from './styles.module.css'
@@ -15,12 +15,12 @@ import NavbarComponent from '../components/NavbarComponent';
 
 const ProfessorScreen = (proff) => {
 
-    const { state } = useLocation();
-    console.log(state);
-    const [profdata, setProfdata] = useState();
+    // const { state } = useLocation();
+    // console.log(state);
+    // const [profdata, setProfdata] = useState();
 
-    const url = "/instructor/searchInstructor/" + proff.fullName;
-    console.log(state.name);
+    // const url = "/instructor/searchInstructor/" + proff.fullName;
+    // console.log(state.name);
 
 
 
@@ -45,11 +45,11 @@ const ProfessorScreen = (proff) => {
 
         //<div className='d-flex flex-column justify-column-start'  >
         <div className={styles.gradient}>
-            <NavbarComponent
+            {/* <NavbarComponent
                 isAdmin={false}
                 isLoggedIn={true}
                 style={{flex:1}}
-            />
+            /> */}
 
             <div className="flex-column align-content-start justify-content-start" style={{ backgroundColor: "#00000000", flex: 9 }}>
                 <div style={{

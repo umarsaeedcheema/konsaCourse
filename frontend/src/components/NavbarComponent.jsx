@@ -33,11 +33,11 @@ const NavbarComponent = (props) => {
                         <div class="collapse navbar-collapse justify-center ">
                             <div class="navbar-nav" >
                                 <a class="nav-link active mr-5" aria-current="page" href="./landing" style={{ color: "#000000" }}>Home</a>
-                                <a class="nav-link mr-5" href="./search" style={{ color: "#000000" }} >Search</a>
-                                {!props.isAdmin && <a class="nav-link mr-5" href="./rate" style={{ color: "#000000" }}>Rate</a>}
-                                {!props.isAdmin && <a class="nav-link mr-5" href="./compare" style={{ color: "#000000" }}>Compare</a>}
-                                {props.isAdmin && <a class="nav-link mr-5" href="./rate" style={{ color: "#000000" }}>Requests</a>}
-                                {props.isAdmin && <a class="nav-link mr-5" href="./rate" style={{ color: "#000000" }}>Reports</a>}
+                                <a class="nav-link mr-5" href="/pages/search" style={{ color: "#000000" }} >Search</a>
+                                {!props.isAdmin && <a class="nav-link mr-5" href="/pages/rate" style={{ color: "#000000" }}>Rate</a>}
+                                {!props.isAdmin && <a class="nav-link mr-5" href="/pages/compare" style={{ color: "#000000" }}>Compare</a>}
+                                {props.isAdmin && <a class="nav-link mr-5" href="/pages/admin_requests" style={{ color: "#000000" }}>Requests</a>}
+                                {props.isAdmin && <a class="nav-link mr-5" href="/pages/admin_reports" style={{ color: "#000000" }}>Reports</a>}
                             </div>
                         </div>
                         <GetButtons isLoggedIn={props.isLoggedIn} />
