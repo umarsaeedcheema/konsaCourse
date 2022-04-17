@@ -313,14 +313,12 @@ const showRatings = asyncHandler(async (req, res) => {
 
 
 
+const getRatings = asyncHandler(async (req, res) =>{
+  var regex1 =  new RegExp(req.params.n, "i")
+  await Rating.find({instructorName:regex1}).then((result)=>{
+    res.status(200).json(result);
+    })
+})
 
 
-
-
-
-
-
-
-
-
-module.exports = { addRating, deleteRating, addLike, addDislike, filterReviewsAdmin, showRatings };
+module.exports = { addRating, deleteRating, addLike, addDislike, filterReviewsAdmin, showRatings, approve, getRatings};
