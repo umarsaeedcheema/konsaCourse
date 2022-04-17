@@ -1,6 +1,8 @@
 import styles from "./styles.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+import axios from "axios"
 // import { Link } from "react-router-dom";
 
 
@@ -20,20 +22,20 @@ const ForgotPassword = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		console.log(e.target.value)
-		// try {
-		// 	const url = "http://localhost:8080/api/auth";
-		// 	const { data: res } = await axios.post(url, data);
-		// 	localStorage.setItem("token", res.data);
-		// 	window.location = "/";
-		// } catch (error) {
-		// 	if (
-		// 		error.response &&
-		// 		error.response.status >= 400 &&
-		// 		error.response.status <= 500
-		// 	) {
-		// 		setError(error.response.data.message);
-		// 	}
-		// }
+		const forgotObject = {
+			email:data.email,
+			Squestion: data.question,
+			Sanswer: data.answer,
+			newPassword: data.password
+		}
+		const url = `/forgotPassword`;
+		await axios.post(url, forgotObject).then((res) =>{
+			console.log(res);
+			alert("Your password has been reset. Please log in");
+			navigate('/pages/login');
+		}).catch((error)=>{
+			setError(error.response.data.error)
+		})
 	};
 
 	const navigate = useNavigate()
@@ -43,14 +45,23 @@ const ForgotPassword = () => {
 		<div className={styles.login_form_container}>
 			<div className={styles.left}>
 				<h1>New Here?</h1>
-				<h2 >
-					<button type="button" className={styles.white_btn}
+				<h2 style={{
+					width:'100%'
+				}}>
+					<Button type="button"
+						variant="contained"
 						style={{
-							marginRight: '15px'
+							borderRadius:'15px',
+							backgroundColor:'white',
+							width:'35%',
+							marginLeft:"31%"
+						}}
+						onClick={() => {
+							navigate('/pages/signup')
 						}}
 					>
 						Sign Up
-					</button>
+					</Button>
 				</h2>
 			</div>
 			<div className={styles.right}>
@@ -58,7 +69,7 @@ const ForgotPassword = () => {
 				<div className="d-flex justify-content-end pr-20 mt-4 "
 					style={{
 						cursor: 'pointer',
-						
+
 					}}
 				>
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
@@ -69,13 +80,13 @@ const ForgotPassword = () => {
 
 				</div>
 				<div className="d-flex align-items-center justify-content-center flex-column"
-				style={{
-					backgroundColor: 'rgba(58, 175, 160, 0.05)',
-					borderRadius:'25px',
-					width:'450px',
-					height:'400px',
-					margin:'auto'
-				}}
+					style={{
+						backgroundColor: 'rgba(58, 175, 160, 0.05)',
+						borderRadius: '25px',
+						width: '450px',
+						height: '400px',
+						margin: 'auto'
+					}}
 				>
 
 					<form className={styles.form_container} onSubmit={handleSubmit}>
@@ -115,6 +126,9 @@ const ForgotPassword = () => {
 							value={data.password}
 							required
 							className={styles.input}
+							style={{
+								marginBottom: '5%'
+							}}
 						// endAdornment={
 						// 	<InputAdornment position="end" style={{color:"black",height:"10%"}}>
 						// 	  <IconButton
@@ -131,10 +145,19 @@ const ForgotPassword = () => {
 									{showPassword ? <Visibility /> : <VisibilityOff />}
 								  </IconButton> */}
 						{/* <button></button> */}
-						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={styles.green_btn}>
+						{error && <div className={styles.error_msg}
+
+						>{error}</div>}
+						<Button type="submit"
+							variant="contained"
+							style={{
+								borderRadius: '15px',
+								color: 'white'
+							}}
+
+						>
 							Update Password
-						</button>
+						</Button>
 
 					</form>
 				</div>

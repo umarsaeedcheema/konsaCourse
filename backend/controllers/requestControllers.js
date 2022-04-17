@@ -8,17 +8,28 @@ const addRequest = asyncHandler(async (req, res) => {
     const {
         firstName,
         lastName,
+        department,
         courseName,
         courseCode
     } = req.body
 
+
+
     let fullName = firstName + " " + lastName;
     let fullCourse = courseCode + " " + courseName;
+    const requestExists = await Request.findOne({ courseName: courseName, fullName: fullName });
+
+    if(requestExists)
+    {
+      res.status(201).json("Request already exists")
+      return
+    }
 
     const request = await Request.create({
         firstName,
         lastName,
         fullName,
+        department,
         courseName,
         courseCode,
         fullCourse
@@ -29,6 +40,7 @@ const addRequest = asyncHandler(async (req, res) => {
           firstName: request.firstName,
           lastName: request.lastName,
           fullName: request.fullName,
+          department : request.department,
           courseName: request.courseName,
           courseCode: request.courseCode,
           fullCourse: request.fullCourse,
@@ -48,18 +60,31 @@ const deleteRequest = asyncHandler(async (req, res) => {
 
 
 const approveRequest = asyncHandler(async(req,res) => {
+  
 const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
     
+  await Request.deleteOne({_id:req.params.n});
+
     res.status(200).json(data)
+
     firstName = data.firstName
     lastName = data.lastName
+    department = data.department
     courseCode = data.courseCode
      fullName = data.fullName
      courseName = data.courseName
      instructorName = fullName
      fullCourse = data.fullCourse
+      const courseInstructorExists = await Course.findOne({ courseName, fullName });
       const instructorExists = await Instructor.findOne({fullName});
       const courseExists = await Course.findOne({ courseName });
+
+      if(courseInstructorExists)
+      {
+        console.log("RETURNING")
+        return
+      }
+      console.log("HELLO")
 
 
   if(instructorExists)
@@ -68,13 +93,14 @@ const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
         courseName,
         courseCode,
         fullCourse,
+        department,
         instructorName,
         numReviews:0
       });
 
       await Instructor.updateOne(
         { fullName: instructorName },
-        { $push: { course: { $each: courseName } } }
+        { $push: { course: courseName  } }
       )
   }
   else if(courseExists)
@@ -83,7 +109,8 @@ const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
         firstName,
         lastName,
         fullName,
-        fullCourse,
+        course: [courseName],
+        department,
         overallRating: 0,
         teachRating: 0,
         commRating: 0,
@@ -97,7 +124,8 @@ const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
         firstName,
         lastName,
         fullName,
-        fullCourse,
+        course: [courseName],
+        department,
         overallRating: 0,
         teachRating: 0,
         commRating: 0,
@@ -109,6 +137,7 @@ const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
         courseName,
         courseCode,
         fullCourse,
+        department,
         instructorName,
         numReviews:0,
       });

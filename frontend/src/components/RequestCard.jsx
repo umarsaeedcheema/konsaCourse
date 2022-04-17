@@ -2,8 +2,8 @@ import React from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import styles from '../pages/styles.module.css'
 import { useState } from 'react';
+import { Button } from '@mui/material';
 
 
 
@@ -55,24 +55,36 @@ const RequestCard = (props) => {
                 style={{
                     display: 'flex',
                     justifyContent: 'end',
-                    marginRight:'2%'
+                    marginRight:'2%',
+                    columnGap:'5px',
+                    paddingBottom:'1%'
                 }}
             >
-                {!approve && !decline && <button type="button" className={styles.green_btn}
+                {!approve && !decline && <Button type="Button" variant='contained'
+                style={{
+                    borderRadius:'15px',
+                   
+                   
+                }}
                     onClick={() => {
                         setApprove(true)
                     }}
                 >
                     Approve
-                </button>}
+                </Button>}
 
-                {!approve && !decline && <button type="button" className={styles.black_btn}
+                {!approve && !decline && <Button type="Button" variant='contained'
+                style={{
+                    borderRadius:'15px',
+                    backgroundColor:'black',
+                    color:'white'
+                }}
                     onClick={() => {
                         setDecline(true)
                     }}
                 >
                     Decline
-                </button>
+                </Button>
                 }
 
 
@@ -83,7 +95,7 @@ const RequestCard = (props) => {
 
                 {approve && <div className='d-flex'
                     style={{
-                        marginRight: '10%',
+                        marginRight: '5%',
                         fontSize:'20px',
                         // marginTop: '5%',
                         color: 'rgba(58, 175, 160, 1)'
@@ -93,7 +105,7 @@ const RequestCard = (props) => {
 
                 {decline && <div className='d-flex'
                     style={{
-                        marginRight: '10%',
+                        marginRight: '5%',
                         // marginTop: '5%',
                         color: 'rgba(0, 0, 0, 1)',
                         fontSize:'20px',

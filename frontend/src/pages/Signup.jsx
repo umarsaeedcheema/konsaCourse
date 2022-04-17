@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Button } from "@mui/material";
 //const dotenv = require("dotenv");
 //dotenv.config();
 // const dotenv = require("dotenv");
@@ -12,7 +13,7 @@ import axios from "axios";
 // import InputAdornment from "@material-ui/core/InputAdornment";
 
 function checkLums(mail) {
-	 
+
 	if (mail.endsWith("lums.edu.pk")) {
 		return true;
 	} else {
@@ -31,7 +32,7 @@ const Signup = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		
+
 		if (checkLums(data.email)) {
 			const signupobject = {
 				firstName: data.fname,
@@ -51,49 +52,49 @@ const Signup = () => {
 			// 	console.log(error.message);
 			// });
 
-		
-	
+
+
 			const url = `/signup`;
-			await axios.post(url, signupobject).then((res)=>{
+			await axios.post(url, signupobject).then((res) => {
 				console.log("Hello");
 				console.log(res);
-	
+
 				const userData = res.data;
 				localStorage.setItem('user', JSON.stringify(userData));
-				
-				navigate('/pages/homepage');
-	
-			})		
-			.catch(function (error) {
-	
-				if (error.response) {
-					if (
-						error.response &&
-						error.response.status >= 400 &&
-						error.response.status <= 500
-					) {
-						setError(error.response.data.message);
-						console.log("Error 1");
+
+				navigate('/pages/landing');
+
+			})
+				.catch(function (error) {
+
+					if (error.response) {
+						if (
+							error.response &&
+							error.response.status >= 400 &&
+							error.response.status <= 500
+						) {
+							setError(error.response.data.message);
+							console.log("Error 1");
+							setError("There was an error");
+						}
+					} else if (error.request) {
+						console.log("Error 2");
+						console.log(error.request);
+						setError("There was an error");
+					} else {
+						console.log("Error 3");
+						console.log('Error', error.message);
 						setError("There was an error");
 					}
-				} else if (error.request) {
-					console.log("Error 2");
-					console.log(error.request);
-					setError("There was an error");
-				} else {
-					console.log("Error 3");
-					console.log('Error', error.message);
-					setError("There was an error");
-				}
-	
-			});
+
+				});
 
 		} else {
 			setError("Please use a LUMS email address");
 		}
-		
+
 	};
-		
+
 
 
 	let navigate = useNavigate()
@@ -107,9 +108,9 @@ const Signup = () => {
 
 				<div className="d-flex justify-content-start ml-20 mt-4 ">
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
-						style={{ color: '#319fa0' , cursor:'pointer'}} >KONSA</div>
+						style={{ color: '#319fa0', cursor: 'pointer' }} >KONSA</div>
 					<div className="d-flex fw-bold" onClick={() => { navigate('/pages/landing') }}
-						style={{ color: '#000000' ,cursor:'pointer'}}
+						style={{ color: '#000000', cursor: 'pointer' }}
 					>COURSE</div>
 				</div>
 				<div className="d-flex align-items-center justify-content-center flex-column flex-1"  >
@@ -124,7 +125,8 @@ const Signup = () => {
 						}}
 					>
 						<h1 className="pb-4" style={{ color: "black" }}>Create an Account</h1>
-						<div className="d-flex justify-content-center" style={{ marginRight: "5%%" }}>
+						<div className="d-flex justify-content-center" 
+						style={{ marginBottom: "2%", }}>
 							<div className="d-flex flex-column" style={{ marginRight: "2.5%" }}>
 								<input
 									type="text"
@@ -184,10 +186,18 @@ const Signup = () => {
 								/>
 							</div>
 						</div>
-						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" onSubmit={handleSubmit} className={styles.green_btn}>
+						{error && <div 
+						className={styles.error_msg}>{error}</div>}
+						<Button type="submit" variant="contained" onSubmit={handleSubmit}
+							style={{
+								borderRadius: '15px',
+								width: '20%',
+								color: 'white',
+								
+							}}
+						>
 							Sign Up
-						</button>
+						</Button>
 						{/* Update Pass */}
 					</form>
 				</div>
@@ -195,15 +205,26 @@ const Signup = () => {
 			</div>
 			<div className={styles.left}>
 				<h1>Go To Home</h1>
-				<h2 >
+				<h2 
+				style={{
+					width:'100%'
+				}}
+				>
 
-					<button type="button" className={styles.white_btn}
+					<Button type="button" variant="contained"
+						style={{
+							width: '27%',
+							borderRadius: '15px',
+							backgroundColor:'white',
+							marginLeft:'35%'
+
+						}}
 						onClick={() => {
 							navigate('/pages/landing')
 
 						}}>
 						Home
-					</button>
+					</Button>
 
 				</h2>
 			</div>

@@ -2,12 +2,13 @@ import React from 'react'
 import styles from './styles.module.css'
 import NavbarComponent from '../components/NavbarComponent'
 import { useState, useEffect } from 'react'
-import { Button, Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 import SearchBar from '../components/SearchBar'
 import { Rating } from '@mui/material'
 import IconButton from '@mui/material/IconButton';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { Button } from '@mui/material'
 
 
 const Rate = () => {
@@ -50,7 +51,8 @@ const Rate = () => {
   const [tick3, setTick3] = useState(false);
   const [cross3, setCross3] = useState(false);
 
-  const tags = ["Lenient", "Accomodating", "Punctual", "Inspirational", "Interactive"];
+  const tags = ["Lenient", "Accomodating", "Punctual", "Inspirational", "Interactive", "Lenient", "Accomodating", "Punctual", "Inspirational", "Interactive"];
+
 
 
   return (
@@ -60,10 +62,21 @@ const Rate = () => {
         isLoggedIn={loggedin}
       />
 
+
       <Grid container
         direction={'column'}
         alignItems={'center'}
-        justifyContent={'center'}>
+        justifyContent={'center'}
+        style={{
+          margin: 'auto',
+          marginTop: '50px',
+          borderRadius: '5%',
+          backgroundColor: 'rgba(58, 175, 160, 0.05)',
+          width: '50%',
+
+        }}
+
+      >
 
         <div
           style={{
@@ -73,43 +86,34 @@ const Rate = () => {
 
           <h4
             style={{
-              marginLeft: '5%'
+              marginLeft: '14%'
             }}
           >Search Instructor</h4>
           <SearchBar placeholder={"Instructor"} />
           <h4
             style={{
-              marginLeft: '5%'
+              marginLeft: '12%'
             }}
 
           >Search Course Code</h4>
           <SearchBar placeholder={'Search Course Code'} />
           <h4
             style={{
-              marginLeft: '5%'
+              marginLeft: '12%'
             }}
           >Search Course Name</h4>
           <SearchBar placeholder={'Search Course Name'} />
         </div>
 
-        <div
-          style={{
-            marginLeft: '-11%'
-          }}
-        >
-          <h4>Rate Professor</h4>
-          <Rating />
-
-
-        </div>
         <div className="inline-block">
 
           <div className='d-flex'>
-            <h4>Did this course have attendance?</h4>
+            <p>Did this course have attendance?</p>
             <IconButton aria-label='check circle icon'
 
               style={{
-                color: checkIconColor
+                color: checkIconColor,
+                marginLeft: 'auto'
               }}
               onClick={() => {
                 if (cross1) {
@@ -125,7 +129,8 @@ const Rate = () => {
 
             <IconButton aria-label='cancel icon'
               style={{
-                color: crossIconColor
+                color: crossIconColor,
+
               }}
               onClick={() => {
                 if (tick1) {
@@ -142,10 +147,11 @@ const Rate = () => {
 
           <div className='d-flex'
           >
-            <h4>Did this course have class participation?</h4>
+            <p>Did this course have class participation?</p>
             <IconButton aria-label='check circle icon'
               style={{
-                color: participationIcon
+                color: participationIcon,
+                marginLeft: 'auto'
               }}
               onClick={() => {
                 if (cross2) {
@@ -177,10 +183,11 @@ const Rate = () => {
 
           <div className='d-flex'
           >
-            <h4>Would you take this course again?</h4>
+            <p>Would you take this course again?</p>
             <IconButton aria-label='check circle icon'
               style={{
-                color: courseIcon
+                color: courseIcon,
+                marginLeft: 'auto'
               }}
               onClick={() => {
 
@@ -213,70 +220,238 @@ const Rate = () => {
 
         </div>
         <div
-          className='inline-block'
           style={{
-            marginLeft: '-6%'
+            marginLeft: '20%',
+            display: 'flex',
+            columnGap: '300px'
           }}
         >
-          <div>
-            <h4>Rate Professor's Teaching Methodology</h4>
-            <Rating />
-          </div>
-          <div>
-            <h4>Rate Professor's Teaching Methodology</h4>
-            <Rating />
-          </div>
-          <div>
-            <h4>Rate Professor's Teaching Methodology</h4>
-            <Rating />
-          </div>
-          <div>
-            <h4>Rate Professor's Teaching Methodology</h4>
-            <Rating />
-          </div>
-        </div>
+          <div
+            style={{
 
+
+            }}
+          >
+            <h4>Rate Professor</h4>
+            <Rating
+              style={{
+                marginLeft: '1%'
+              }}
+            />
+          </div>
+
+          <div
+            style={{
+              marginLeft: '-30%'
+            }}
+          >
+            <h4
+
+            >
+
+              Rate Course</h4>
+            <Rating
+            />
+          </div>
+
+        </div>
         <div>
-          {tags.map((value) => {
-
-            return (<button className={styles.tag_btn} disabled="true">
-
-              {value}
 
 
-            </button>)
+          <div
+            className='inline-block'
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              marginLeft: '-70%',
+              flexDirection: 'column'
+            }}
+          >
+            <div style={{
+              display: 'inline-grid',
+            }}>
+              <p
 
-          })}
+              >Teaching Methodology</p>
+              <Rating
+                style={{
+                  marginTop: '-5%'
+                }} />
+            </div>
+
+            <div
+              style={{
+                display: 'inline-grid',
+              }}
+            >
+              <p>Communication</p>
+              <Rating
+                style={{
+                  marginTop: '-5%'
+                }} />
+            </div>
+            <div
+              style={{
+                display: 'inline-grid',
+              }}>
+              <p>Accommodating</p>
+              <Rating
+                style={{
+                  marginTop: '-5%'
+                }} />
+            </div>
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              marginLeft: '100%',
+              marginTop: '-105%'
+            }}
+          >
+
+
+
+            <div
+              style={{
+                display: 'inline-grid',
+              }}
+            >
+              <p
+               style={{
+                marginTop:'2%'
+              }}
+              >Grading</p>
+              <Rating
+                style={{
+                  marginTop: '-12%'
+                }} />
+            </div>
+            <div
+              style={{
+                display: 'inline-grid',
+              }}
+            >
+              <p
+                style={{
+                  marginTop: '10%'
+                }}
+              >Learning</p>
+              <Rating
+                style={{
+                  marginTop: '-12%'
+                }} />
+            </div>
+            <div
+              style={{
+                display: 'inline-grid',
+              }}
+            >
+              <p
+                style={{
+                  marginTop: '2%'
+                }}
+              >Course</p>
+              <Rating
+                style={{
+                  marginTop: '-8%'
+                }} />
+            </div>
+          </div>
         </div>
+
+        <div
+          style={{
+            marginLeft: '6%',
+            marginRight: '6%',
+            marginTop: '5%'
+          }}
+        >
+          <h4
+            style={{
+              marginLeft: '0.5%',
+              display: 'flex'
+            }}
+          >Choose Tags:</h4>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              rowGap: '10px'
+            }}
+          >
+
+
+            {tags.map((value) => {
+
+              return (
+
+                <Button
+                  variant='contained'
+                  size='small'
+                  style={{
+                    backgroundColor: 'black',
+                    color: 'white',
+                    borderRadius: '15px',
+                    margin: 'auto'
+
+
+                  }}
+
+                >
+
+                  {value}
+                </Button>)
+
+            })}
+          </div>
+        </div>
+
 
         <div
           className='d-flex flex-col'
           style={{
-            marginLeft: '-18%'
+            marginLeft: '-33%',
+            marginTop: '5%'
           }}
         >
           <h4>Leave a Comment:</h4>
-          <div>
+          <div
+            style={{
+              height: '200px'
+            }}
+          >
 
-            <input type={'text'} placeholder='What do you want other students to know about this professor'
+            <textarea placeholder='What do you want other students to know about this professor'
               style={{
-                width: '240%'
+                width: '165%',
+                height: '50%',
+                paddingtop: '-15px',
+                paddingLeft: '5px',
+                borderRadius: '15px',
+                backgroundColor: 'rgba(58, 175, 160, 0.1)'
+              }}
+              onClick={() => {
+
               }}
 
-            ></input>
-            <Button 
-            variant='contained'
-            style={{
-              marginLeft:'60%'
-            }}
+            ></textarea>
+            <Button
+              variant='contained'
+              size='large'
+              style={{
+                marginLeft: '60%',
+                paddingBottom: '-5%',
+                borderRadius: '15px',
+                color: 'white',
+
+              }}
             >Submit</Button>
           </div>
         </div>
 
       </Grid>
-
-
-
 
     </div>
   )

@@ -2,6 +2,7 @@ import styles from "./styles.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Button } from "@mui/material";
 // import { Link } from "react-router-dom";
 // import IconButton from "@material-ui/core/IconButton";
 // import Visibility from "@material-ui/icons/Visibility";
@@ -97,27 +98,27 @@ const ChangePassword = () => {
 			newPassword: data.cnew,
 		}
 		const url = `/changePassword`;
-		await axios.post(url, changeObject).then((res)=>{
+		await axios.post(url, changeObject).then((res) => {
 			console.log("hello from inside")
 			console.log(res);
 			alert("Your password has been changed")
 			navigate('/pages/homepage');
 		})
-		.catch((error)=>{
-			
-			// if (error.response) {
-			// 	if (
-			// 		error.response &&
-			// 		error.response.status >= 400 &&
-			// 		error.response.status <= 500
-			// 	) {
-			// 		setError(error.response.data.error);
-			// 		// setError(error.response.data.message);
-			// 		// console.log(error.response.data.error);
-			// 	}	
-			// console.log("hello");
-			setError(error.response.data.error);
-		})
+			.catch((error) => {
+
+				// if (error.response) {
+				// 	if (
+				// 		error.response &&
+				// 		error.response.status >= 400 &&
+				// 		error.response.status <= 500
+				// 	) {
+				// 		setError(error.response.data.error);
+				// 		// setError(error.response.data.message);
+				// 		// console.log(error.response.data.error);
+				// 	}	
+				// console.log("hello");
+				setError(error.response.data.error);
+			})
 
 	};
 
@@ -149,7 +150,7 @@ const ChangePassword = () => {
 				>
 
 					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1 className="mb-10"  style={{ color: "black" }}>Change Password</h1>
+						<h1 className="mb-10" style={{ color: "black" }}>Change Password</h1>
 						<input
 							type="password"
 							placeholder="Current Password"
@@ -176,11 +177,21 @@ const ChangePassword = () => {
 							value={data.cnew}
 							required
 							className={styles.input}
+							style={{
+								marginBottom: '2%'
+							}}
 						/>
-						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={styles.green_btn}>
+						{error && <div className={styles.error_msg}
+
+						>{error}</div>}
+						<Button type="submit" variant="contained" className={styles.green_btn}
+							style={{
+								borderRadius: '15px',
+								color: 'white'
+							}}
+						>
 							Update Password
-						</button>
+						</Button>
 
 					</form>
 				</div>
@@ -188,10 +199,20 @@ const ChangePassword = () => {
 			</div>
 			<div className={styles.left}>
 				<h1>Go To Home</h1>
-				<h2 >
-					<button type="button" className={styles.white_btn} onClick={() => { navigate('/pages/landing') }}>
+				<h2 
+				style={{
+					width:'100%'
+				}}>
+					<Button type="button" variant="contained" 
+					style={{
+						backgroundColor:'white',
+						width:'35%',
+						borderRadius:'15px',
+						marginLeft:'33%'
+					}}
+					onClick={() => { navigate('/pages/landing') }}>
 						Home
-					</button>
+					</Button>
 				</h2>
 			</div>
 		</div>

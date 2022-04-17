@@ -126,13 +126,11 @@ const addRating = asyncHandler(async (req, res) => {
 
         courseData = getCourseReviews
 
-
-        let testRating = courseData["courseRating"]
-
+        let testRating = parseFloat(courseData["courseRating"])
         courseReviews = courseData.numReviews
-        courseWorkRating = courseData["workRating"]
-        courseGradeRating = courseData["gradeRating"]
-        courseLearnRating = courseData["learnRating"]
+        courseWorkRating = parseFloat(courseData["workRating"])
+        courseGradeRating = parseFloat(courseData["gradeRating"])
+        courseLearnRating = parseFloat(courseData["learnRating"])
 
 
         formula = ratingFormula(testRating, courseRating, courseReviews)
@@ -166,14 +164,14 @@ const addRating = asyncHandler(async (req, res) => {
         //Updating instructor ratings
 
         instructorData = getInstructorReviews
-        instructorOverallRating = instructorData["overallRating"]
+        instructorOverallRating = parseFloat(instructorData["overallRating"])
         instructorReviews = instructorData["numReviews"]
 
         formula = ratingFormula(instructorOverallRating, instructorRating, instructorReviews)
 
-        instructorAcommRating = instructorData["accommRating"]
-        instructorCommRating = instructorData["commRating"]
-        instructorTeachRating = instructorData["teachRating"]
+        instructorAcommRating = parseFloat(instructorData["accommRating"])
+        instructorCommRating = parseFloat(instructorData["commRating"])
+        instructorTeachRating = parseFloat(instructorData["teachRating"])
 
 
         accommFormula = ratingFormula(instructorAcommRating, individualAccommRating, instructorReviews)
@@ -248,11 +246,6 @@ const addRating = asyncHandler(async (req, res) => {
       throw new Error("Error occured");
     }
   }
-  else {
-    console.log("ERROR")
-    res.status(400);
-    throw new Error("Course or Instructor does not exist. Please add.");
-  }
 
 });
 
@@ -311,14 +304,12 @@ const showRatings = asyncHandler(async (req, res) => {
 
 
 
+const getRatings = asyncHandler(async (req, res) =>{
+  var regex1 =  new RegExp(req.params.n, "i")
+  await Rating.find({instructorName:regex1}).then((result)=>{
+    res.status(200).json(result);
+    })
+})
 
 
-
-
-
-
-
-
-
-
-module.exports = { addRating, deleteRating, addLike, addDislike, filterReviewsAdmin, showRatings };
+module.exports = { addRating, deleteRating, addLike, addDislike, filterReviewsAdmin, showRatings, getRatings};
