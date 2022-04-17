@@ -62,7 +62,7 @@ const Signup = () => {
 				const userData = res.data;
 				localStorage.setItem('user', JSON.stringify(userData));
 
-				navigate('/pages/homepage');
+				navigate('/pages/landing');
 
 			})
 				.catch(function (error) {
