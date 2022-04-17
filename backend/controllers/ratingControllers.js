@@ -127,12 +127,14 @@ const addRating = asyncHandler(async (req, res) => {
         courseData = getCourseReviews
 
 
-        let testRating = courseData["courseRating"]
+        let testRating = parseFloat(courseData["courseRating"])
 
         courseReviews = courseData.numReviews
-        courseWorkRating = courseData["workRating"]
-        courseGradeRating = courseData["gradeRating"]
-        courseLearnRating = courseData["learnRating"]
+        courseWorkRating = parseFloat(courseData["workRating"])
+        courseGradeRating = parseFloat(courseData["gradeRating"])
+        courseLearnRating = parseFloat(courseData["learnRating"])
+
+        console.log("LEARN RATING:", courseLearnRating)
 
 
         formula = ratingFormula(testRating, courseRating, courseReviews)
@@ -166,14 +168,14 @@ const addRating = asyncHandler(async (req, res) => {
         //Updating instructor ratings
 
         instructorData = getInstructorReviews
-        instructorOverallRating = instructorData["overallRating"]
+        instructorOverallRating = parseFloat(instructorData["overallRating"])
         instructorReviews = instructorData["numReviews"]
 
         formula = ratingFormula(instructorOverallRating, instructorRating, instructorReviews)
 
-        instructorAcommRating = instructorData["accommRating"]
-        instructorCommRating = instructorData["commRating"]
-        instructorTeachRating = instructorData["teachRating"]
+        instructorAcommRating = parseFloat(instructorData["accommRating"])
+        instructorCommRating = parseFloat(instructorData["commRating"])
+        instructorTeachRating = parseFloat(instructorData["teachRating"])
 
 
         accommFormula = ratingFormula(instructorAcommRating, individualAccommRating, instructorReviews)
