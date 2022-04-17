@@ -79,7 +79,7 @@ const allCourses = asyncHandler(async (req, res) => {
 
 
 const allNames = asyncHandler(async (req, res) => {
-  await Instructor.find({}, {fullName:1, _id:0}).then((result) => {
+  await Instructor.find({ }, {fullName:1, _id:0}).then((result) => {
     res.status(200).json(result)
   })
 })
