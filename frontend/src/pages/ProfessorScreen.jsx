@@ -23,6 +23,7 @@ const ProfessorScreen = (proff) => {
 
     const url = ("/instructor/searchInstructor/" + state.name).replaceAll(' ', '%20');
     console.log(state.name);
+// >>>>>>> main
 
     const getData = async () => {
         await axios.get(url).then(async (temp)=>{
@@ -51,7 +52,7 @@ const ProfessorScreen = (proff) => {
 
 
     const labels = ["F", "C-", "C", "C+", "B-", "B", "B+", "A-", "A", "A+"];
-    const rating = 2.5;
+    const rating = 4.5;
     const labnum = (rating * 2) - 1;
     const numrating = 17;
     const firstname = "Suleman";
@@ -63,9 +64,7 @@ const ProfessorScreen = (proff) => {
 
     const reviews = [["Software Engineering CS 360", 4, "Yes", "No", "Yes", "Amazing course! loved it, was beauutiful", ["Lenient", "Accomodating", "Punctual"]],
     ["Software Engineering CS 360", 4, "Yes", "No", "Yes", "Amazing course! loved it, was beauutiful", ["Lenient", "Accomodating", "Punctual"]]];
-
-
-    
+ 
 
 
 
