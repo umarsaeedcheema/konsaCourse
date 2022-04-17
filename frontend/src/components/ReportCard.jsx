@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import styles from '../pages/styles.module.css';
 import { useState } from "react";
+import { Button } from '@mui/material';
 
 
 
@@ -63,25 +64,35 @@ const ReportCard = (props) => {
                 style={{
                     display: 'flex',
                     justifyContent: 'end',
-                    marginRight: '2%'
+                    marginRight: '2%',
+                    columnGap:'5px',
+                    paddingBottom:'1%'
                 }}
             >
-                {!restore && !remove && <button type="submit" className={styles.green_btn}
+                {!restore && !remove && <Button type="submit" variant='contained'
+                style={{
+                    borderRadius:'15px'
+                }}
                     onClick={() => {
                         setRestore(true)
 
                     }}
                 >
                     Restore
-                </button>}
+                </Button>}
 
-                {!restore && !remove && <button type="submit" className={styles.black_btn}
+                {!restore && !remove && <Button type="submit" variant='contained'
+                style={{
+                    borderRadius:'15px',
+                    backgroundColor:'black',
+                    color:'white'
+                }}
                     onClick={() => {
                         setRemove(true)
                     }}
                 >
                     Remove
-                </button>}
+                </Button>}
 
             </div>
             <div className='d-flex justify-content-end'
@@ -89,7 +100,7 @@ const ReportCard = (props) => {
 
                 {restore && <div className='d-flex'
                     style={{
-                        marginRight: '10%',
+                        marginRight: '5%',
                         fontSize: '20px',
                         // marginTop: '5%',
                         color: 'rgba(58, 175, 160, 1)'
@@ -99,7 +110,7 @@ const ReportCard = (props) => {
 
                 {remove && <div className='d-flex'
                     style={{
-                        marginRight: '10%',
+                        marginRight: '5%',
                         // marginTop: '5%',
                         color: 'rgba(0, 0, 0, 1)',
                         fontSize: '20px',

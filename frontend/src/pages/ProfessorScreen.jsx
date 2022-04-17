@@ -3,6 +3,7 @@ import Rating from '@mui/material/Rating';
 import styles from './styles.module.css';
 import { Grid, } from '@mui/material';
 import ReviewCard from '../components/ReviewCard';
+import { Button } from '@mui/material';
 
 import {  useLocation } from "react-router-dom";
 const axios = require('axios');
@@ -105,15 +106,22 @@ const ProfessorScreen = (proff) => {
 
                     <div className="d-flex justify-content-start "
                         style={{
-                            marginLeft: '-1%'
-                        }}>
+                            columnGap:'5px'
+
+                            }}>
                         {tags.map((value, key) => {
 
-                            return (<button className={styles.tag_btn} disabled="true">
+                            return (<Button variant='contained' disabled="true"
+                            style={{
+                                backgroundColor:'black',
+                                color:'white',
+                                borderRadius:'15px',
+                            }}
+                            >
 
                                 {value}
 
-                            </button>)
+                            </Button>)
 
                         })}
 
