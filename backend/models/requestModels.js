@@ -13,6 +13,10 @@ const requestSchema = mongoose.Schema({
         type: String,
         require: true,
       },
+      department:{
+        type:String,
+        require:true,
+      },
       courseName: {
         type: String,
         require: true,

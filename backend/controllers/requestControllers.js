@@ -8,6 +8,7 @@ const addRequest = asyncHandler(async (req, res) => {
     const {
         firstName,
         lastName,
+        department,
         courseName,
         courseCode
     } = req.body
@@ -19,6 +20,7 @@ const addRequest = asyncHandler(async (req, res) => {
         firstName,
         lastName,
         fullName,
+        department,
         courseName,
         courseCode,
         fullCourse
@@ -29,6 +31,7 @@ const addRequest = asyncHandler(async (req, res) => {
           firstName: request.firstName,
           lastName: request.lastName,
           fullName: request.fullName,
+          department : request.department,
           courseName: request.courseName,
           courseCode: request.courseCode,
           fullCourse: request.fullCourse,
@@ -53,6 +56,7 @@ const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
     res.status(200).json(data)
     firstName = data.firstName
     lastName = data.lastName
+    department = data.department
     courseCode = data.courseCode
      fullName = data.fullName
      courseName = data.courseName
@@ -68,6 +72,7 @@ const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
         courseName,
         courseCode,
         fullCourse,
+        department,
         instructorName,
         numReviews:0
       });
@@ -84,6 +89,7 @@ const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
         lastName,
         fullName,
         fullCourse,
+        department,
         overallRating: 0,
         teachRating: 0,
         commRating: 0,
@@ -98,6 +104,7 @@ const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
         lastName,
         fullName,
         fullCourse,
+        department,
         overallRating: 0,
         teachRating: 0,
         commRating: 0,
@@ -109,6 +116,7 @@ const thisRating = Request.findOne({ _id: req.params.n }).then(async (data)=>{
         courseName,
         courseCode,
         fullCourse,
+        department,
         instructorName,
         numReviews:0,
       });
