@@ -53,7 +53,7 @@ const Rate = () => {
 
   const tags = ["Lenient", "Accomodating", "Punctual", "Inspirational", "Interactive", "Lenient", "Accomodating", "Punctual", "Inspirational", "Interactive"];
 
-  const [tagPress, setTagPress]= useState('black')
+
 
   return (
     <div className={styles.gradient}>
@@ -105,24 +105,10 @@ const Rate = () => {
           <SearchBar placeholder={'Search Course Name'} />
         </div>
 
-        <div
-          style={{
-            marginLeft: '-11%'
-          }}
-        >
-          <h4>Rate Professor</h4>
-          <Rating
-            style={{
-              marginLeft: '12%'
-            }}
-          />
-
-
-        </div>
         <div className="inline-block">
 
           <div className='d-flex'>
-            <h4>Did this course have attendance?</h4>
+            <p>Did this course have attendance?</p>
             <IconButton aria-label='check circle icon'
 
               style={{
@@ -161,7 +147,7 @@ const Rate = () => {
 
           <div className='d-flex'
           >
-            <h4>Did this course have class participation?</h4>
+            <p>Did this course have class participation?</p>
             <IconButton aria-label='check circle icon'
               style={{
                 color: participationIcon,
@@ -197,7 +183,7 @@ const Rate = () => {
 
           <div className='d-flex'
           >
-            <h4>Would you take this course again?</h4>
+            <p>Would you take this course again?</p>
             <IconButton aria-label='check circle icon'
               style={{
                 color: courseIcon,
@@ -234,61 +220,151 @@ const Rate = () => {
 
         </div>
         <div
-          className='inline-block'
           style={{
-            marginLeft: '15%'
+            marginLeft: '20%',
+            display: 'flex',
+            columnGap: '300px'
           }}
         >
-          <div style={{
-            display: 'inline-grid',
-          }}>
+          <div
+            style={{
+
+
+            }}
+          >
+            <h4>Rate Professor</h4>
+            <Rating
+              style={{
+                marginLeft: '1%'
+              }}
+            />
+          </div>
+
+          <div
+            style={{
+              marginLeft: '-30%'
+            }}
+          >
             <h4
 
-            >Rate Professor's Teaching Methodology</h4>
+            >
+
+              Rate Course</h4>
             <Rating
-              style={{
-                margin: 'auto'
-              }} />
+            />
           </div>
 
+        </div>
+        <div>
+
+
           <div
+            className='inline-block'
             style={{
-              display: 'inline-grid',
+              display: 'flex',
+              flexWrap: 'wrap',
+              marginLeft: '-70%',
+              flexDirection: 'column'
             }}
           >
-            <h4>Rate Professor's Teaching Methodology</h4>
-            <Rating
-              style={{
-                margin: 'auto'
-              }} />
-          </div>
-          <div
-            style={{
+            <div style={{
               display: 'inline-grid',
             }}>
-            <h4>Rate Professor's Teaching Methodology</h4>
-            <Rating
+              <p
+
+              >Teaching Methodology</p>
+              <Rating
+                style={{
+                  marginTop: '-5%'
+                }} />
+            </div>
+
+            <div
               style={{
-                margin: 'auto'
-              }} />
+                display: 'inline-grid',
+              }}
+            >
+              <p>Communication</p>
+              <Rating
+                style={{
+                  marginTop: '-5%'
+                }} />
+            </div>
+            <div
+              style={{
+                display: 'inline-grid',
+              }}>
+              <p>Accommodating</p>
+              <Rating
+                style={{
+                  marginTop: '-5%'
+                }} />
+            </div>
           </div>
           <div
             style={{
-              display: 'inline-grid',
+              display: 'flex',
+              flexDirection: 'column',
+              marginLeft: '100%',
+              marginTop: '-105%'
             }}
           >
-            <h4>Rate Professor's Teaching Methodology</h4>
-            <Rating
+
+
+
+            <div
               style={{
-                margin: 'auto'
-              }} />
+                display: 'inline-grid',
+              }}
+            >
+              <p
+               style={{
+                marginTop:'2%'
+              }}
+              >Grading</p>
+              <Rating
+                style={{
+                  marginTop: '-12%'
+                }} />
+            </div>
+            <div
+              style={{
+                display: 'inline-grid',
+              }}
+            >
+              <p
+                style={{
+                  marginTop: '10%'
+                }}
+              >Learning</p>
+              <Rating
+                style={{
+                  marginTop: '-12%'
+                }} />
+            </div>
+            <div
+              style={{
+                display: 'inline-grid',
+              }}
+            >
+              <p
+                style={{
+                  marginTop: '2%'
+                }}
+              >Course</p>
+              <Rating
+                style={{
+                  marginTop: '-8%'
+                }} />
+            </div>
           </div>
         </div>
 
         <div
           style={{
             marginLeft: '6%',
-            marginRight: '6%'
+            marginRight: '6%',
+            marginTop: '5%'
           }}
         >
           <h4
@@ -302,7 +378,7 @@ const Rate = () => {
               display: 'flex',
               flexDirection: 'row',
               flexWrap: 'wrap',
-              rowGap:'10px'
+              rowGap: '10px'
             }}
           >
 
@@ -320,9 +396,9 @@ const Rate = () => {
                     borderRadius: '15px',
                     margin: 'auto'
 
-                    
+
                   }}
-                
+
                 >
 
                   {value}
@@ -336,7 +412,8 @@ const Rate = () => {
         <div
           className='d-flex flex-col'
           style={{
-            marginLeft: '-33%'
+            marginLeft: '-33%',
+            marginTop: '5%'
           }}
         >
           <h4>Leave a Comment:</h4>
@@ -366,8 +443,8 @@ const Rate = () => {
               style={{
                 marginLeft: '60%',
                 paddingBottom: '-5%',
-                borderRadius:'15px',
-                color:'white',
+                borderRadius: '15px',
+                color: 'white',
 
               }}
             >Submit</Button>

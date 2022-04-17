@@ -13,7 +13,12 @@ const labels =  ["F","C-","C","C+","B-","B","B+","A-","A","A+"];
 
 const  CompCard = (props) => {
     
-    const gradnum = ((props.overall)*2)-1;
+    let gradnum = Math.round(((props.overall)*2)-1);
+
+    if (gradnum < 0) {
+        gradnum = 0;
+    }
+    
     return (
         <Card sx={{ minWidth: 275 }} style={{ backgroundColor: "#319FA025", borderRadius: "15px" }}>
 
@@ -31,7 +36,7 @@ const  CompCard = (props) => {
                 
                 <div className={styles.rubber}>{labels[gradnum]}</div>
 
-                <Typography > Teaching Rating </Typography>
+                <Typography > Quality1 Rating </Typography>
 
                 <Rating 
                     value={props.teaching}
@@ -40,7 +45,7 @@ const  CompCard = (props) => {
                 />
                 
                 <Typography >
-                    Quality1 Rating:
+                    Quality2 Rating:
                 </Typography>
                 <Rating 
                     value={props.quality1}
@@ -48,16 +53,14 @@ const  CompCard = (props) => {
                     readOnly
                 />
                 <Typography >
-                    Quality2 Rating:
+                    Quality3 Rating:
                 </Typography>
                 <Rating 
                     value={props.quality2}
                     size="small"
                     readOnly
                 />
-                <Typography >
-                    Quality3 Rating:
-                </Typography>
+                
                 
             </CardContent>
             <div>

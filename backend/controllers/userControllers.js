@@ -93,6 +93,29 @@ const changePass = asyncHandler(async (req, res)=>{
   }
 });
 
+const forgotPassword = asyncHandler(async(req, res)=>{
+  const {email, Squestion, Sanswer, newPassword} = req.body;
+  await User.find({email:email}).then(async (result)=>{
+    userEmail =result[0].email
+    if(Squestion === result[0].Squestion){
+      if(Sanswer === result[0].Sanswer){
+        const salt = await bcrypt.genSalt(10);
+        const pass = await bcrypt.hash(newPassword, salt);
+        await User.updateOne({email:userEmail}, {$set:{password:pass}}).then((data)=>{
+          res.status(200).json(data)
+
+        }).catch((error)=>res.status(401).json(error))
+      }
+      else{
+        res.status(400).json({error:"Answer did not match"})
+      }
+    }
+    else{
+      res.status(400).json({error:"Question did not match"})
+    }
+  })
+})
 
 
-module.exports = { registerUser, login, changePass, };
+
+module.exports = { registerUser, login, changePass, forgotPassword};

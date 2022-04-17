@@ -8,6 +8,7 @@ router.route("/addLike/:n").post(addLike)
 router.route("/addDislike/:n").post(addDislike)
 router.route("/filterReviewsAdmin").get(filterReviewsAdmin);
 router.route("/showRatings").get(showRatings);
+// router.route("/approve/:n").post(approve);
 router.route("/getRatings/:n").get(getRatings);
 
 
