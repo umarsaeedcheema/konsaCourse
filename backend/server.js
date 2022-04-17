@@ -9,6 +9,8 @@ const instructorRoutes = require("./routes/instructorRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 const ratingRoutes = require("./routes/ratingRoutes");
 const reportRoutes = require("./routes/reportRoutes");
+const requestRoutes = require("./routes/requestRoutes");
+
 dotenv.config();
 
 connectDB();
@@ -23,6 +25,8 @@ app.use("/instructor", instructorRoutes);
 app.use("/course", courseRoutes);
 app.use("/rate", ratingRoutes);
 app.use("/report", reportRoutes)
+app.use("/request", requestRoutes)
+
 
 //direct APIs with out any routing
 

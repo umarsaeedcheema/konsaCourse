@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
 const ratingSchema = mongoose.Schema({
-  ratingID: {
-    type: Number,
-    require: true,
-  },
   instructorName: {
     type: String,
     require: true,
+  },
+  department:{
+    type:String,
+    require:true,
   },
   courseName: {
     type: String,
@@ -26,12 +26,12 @@ const ratingSchema = mongoose.Schema({
     require: false,
   },
   likes: {
-    type: Number,
+    type: Array,
     require: true,
     default: 0,
   },
   dislikes: {
-    type: Number,
+    type: Array,
     require: true,
     default: 0,
   },
@@ -78,6 +78,10 @@ const ratingSchema = mongoose.Schema({
     type: mongoose.Types.Decimal128,
     require: true,
     default: 0.0,
+  },
+  tags: {
+    type: Object,
+    require: true,
   },
   status: {
     type: Boolean,

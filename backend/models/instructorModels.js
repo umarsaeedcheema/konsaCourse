@@ -37,6 +37,10 @@ const instructorSchema = mongoose.Schema({
     require: true,
     default: 0.0,
   },
+  tags: {
+    type: Object,
+    require: true,
+  },
   numReviews: {
     type: Number,
     require: true,
