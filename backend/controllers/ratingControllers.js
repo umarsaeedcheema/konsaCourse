@@ -246,11 +246,6 @@ const addRating = asyncHandler(async (req, res) => {
       throw new Error("Error occured");
     }
   }
-  else {
-    console.log("ERROR")
-    res.status(400);
-    throw new Error("Course or Instructor does not exist. Please add.");
-  }
 
 });
 
