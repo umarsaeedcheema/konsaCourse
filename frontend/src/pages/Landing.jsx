@@ -4,7 +4,6 @@ import SearchBar from '../components/SearchBar';
 // import Data from '../Data.json'
 import { useState, useEffect } from 'react'
 import styles from './styles.module.css'
-import Bgimage from '../components/Bgimage';
 import pic from "../assets/Triangles.png";
 
 
@@ -84,7 +83,7 @@ const Landing = () => {
       </div>
       <img src={pic}
       style={{
-        
+        height : '99%', width : '50%', marginTop: "-51%", marginLeft: "50%"
       }}
       
       ></img>
