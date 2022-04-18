@@ -4,6 +4,10 @@ import SearchBar from '../components/SearchBar';
 // import Data from '../Data.json'
 import { useState, useEffect } from 'react'
 import styles from './styles.module.css'
+import pic from "../assets/Triangles.png";
+
+
+
 
 
 
@@ -53,7 +57,7 @@ const Landing = () => {
     //   // backgroundColor:"#000fff00"
     // }}
     >
-
+        
       <div>
         <NavbarComponent
           // style={{backgroundColor:"#000fff00",flex:1}}
@@ -77,6 +81,12 @@ const Landing = () => {
           </form>
         </div>
       </div>
+      <img src={pic}
+      style={{
+        height : '99%', width : '50%', marginTop: "-51%", marginLeft: "50%"
+      }}
+      
+      ></img>
     </div>
   )
 }

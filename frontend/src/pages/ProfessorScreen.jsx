@@ -4,6 +4,8 @@ import styles from './styles.module.css';
 import { Grid, } from '@mui/material';
 import ReviewCard from '../components/ReviewCard';
 import { Button } from '@mui/material';
+import { useNavigate } from "react-router-dom";
+
 
 import {  useLocation } from "react-router-dom";
 const axios = require('axios');
@@ -67,7 +69,7 @@ const ProfessorScreen = (proff) => {
  
 
 
-
+    let navigate = useNavigate()
     return (
 
         //<div className='d-flex flex-column justify-column-start'  >
@@ -108,7 +110,10 @@ const ProfessorScreen = (proff) => {
 
                     <div style={{ fontSize: "small", alignContent: "end" }}>Based on {profdata[0].numReviews} ratings</div>
 
-                    <button type="submit" className={styles.green_btn} style={{ fontSize: "20px", marginLeft: '-0.2%' }}>
+                    <button type="submit" className={styles.green_btn} style={{ fontSize: "20px", marginLeft: '-0.2%' }}
+                    onClick={()=>{
+                        navigate('/pages/rate')
+                    }}>
                         Rate Professor
                     </button>
 
