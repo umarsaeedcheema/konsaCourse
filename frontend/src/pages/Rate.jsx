@@ -34,6 +34,10 @@ const Rate = () => {
       loggedin = true;
     }
   }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+  }
 
   const [checkIconColor, setCheckIconColor] = useState()
   const [crossIconColor, setCrossIconColor] = useState()
@@ -438,6 +442,7 @@ const Rate = () => {
 
             ></textarea>
             <Button
+            onClick={handleSubmit}
               variant='contained'
               size='large'
               style={{
