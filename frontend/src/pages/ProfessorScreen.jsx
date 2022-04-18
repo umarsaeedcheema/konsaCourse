@@ -168,7 +168,8 @@ const ProfessorScreen = (proff) => {
                                                 description={value.comment}
                                                 tags={[]}
                                                 UpCount= {value.likes}
-                                                DownCount = {value.dislikes}      
+                                                DownCount = {value.dislikes}
+                                                id = {value._id}      
 
                                             />
 

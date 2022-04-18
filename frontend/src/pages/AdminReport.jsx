@@ -3,6 +3,7 @@ import ReportCard from '../components/ReportCard.jsx'
 import { Grid } from '@mui/material';
 import NavbarComponent from '../components/NavbarComponent.jsx';
 import styles from './styles.module.css'
+const axios = require('axios');
 
 
 
@@ -15,6 +16,8 @@ const AdminReport = () => {
   ["Software Engineering", "CS 412", "Mustafa Arshad", "Kamal course 10/10 would take again"]];
   const [loggedin, setLoggedin] = useState(false);
   const [adminin, setAdminin] = useState(false);
+
+  const [data, setData] = useState([null, false])
 
 
   useEffect(() => {
@@ -32,11 +35,28 @@ const AdminReport = () => {
   }, []);
 
 
+  const getData = async () => {
+    await axios.get('/admin/reports').then( (temp)=>{
+        
+        setData([temp, true]);
+
+         
+
+    }).catch((error)=> {
+        console.log("ERROR 2", error)
+    })
+}
+
+useEffect(()=>{
+    getData();
+},[])
+
+
 
 
   return (
-
-    <div style={{
+    <>
+    {data[1] && <div style={{
       width: 'auto'
     }}
       className={styles.gradient}
@@ -102,7 +122,8 @@ const AdminReport = () => {
         </Grid>
 
       </div>
-    </div>
+    </div>}
+    </>
 
   )
 }
