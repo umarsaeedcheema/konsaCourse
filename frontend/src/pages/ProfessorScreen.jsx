@@ -4,12 +4,9 @@ import styles from './styles.module.css';
 import { Grid, } from '@mui/material';
 import ReviewCard from '../components/ReviewCard';
 import { Button } from '@mui/material';
-<<<<<<< HEAD
 import NavbarComponent from '../components/NavbarComponent';
-=======
 import { useNavigate } from "react-router-dom";
 
->>>>>>> 475c4352c1883a948a7a5246e5572a70f6eadde0
 
 import {  useLocation } from "react-router-dom";
 const axios = require('axios');
