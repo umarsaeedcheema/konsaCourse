@@ -29,7 +29,8 @@ const  CompCard = (props) => {
 
                 <Rating
                     value={props.overall}
-                    size="large"                    
+                    size="large"
+                    precision={0.25}                    
                     readOnly
                 />
 
@@ -41,6 +42,7 @@ const  CompCard = (props) => {
                 <Rating 
                     value={props.teaching}
                     size="small"
+                    precision={0.25}
                     readOnly
                 />
                 
@@ -49,6 +51,7 @@ const  CompCard = (props) => {
                 </Typography>
                 <Rating 
                     value={props.quality1}
+                    precision={0.25}
                     size="small"
                     readOnly
                 />
@@ -57,6 +60,7 @@ const  CompCard = (props) => {
                 </Typography>
                 <Rating 
                     value={props.quality2}
+                    precision={0.25}
                     size="small"
                     readOnly
                 />
