@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import ReportCard from '../components/ReportCard.jsx'
 import { Grid } from '@mui/material';
 import NavbarComponent from '../components/NavbarComponent.jsx';
-import { useState, useEffect } from 'react'
 import styles from './styles.module.css'
 
 
@@ -24,7 +23,8 @@ const AdminReport = () => {
       const foundUser = JSON.parse(loggedInUser);
       if (foundUser.isAdmin) {
         setAdminin(true)
-      } else {
+      } 
+      if (localStorage.getItem("user")){
         setLoggedin(true)
       }
       console.log("Logged in User");
