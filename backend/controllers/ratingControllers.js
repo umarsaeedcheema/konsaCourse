@@ -52,24 +52,24 @@ const addRating = asyncHandler(async (req, res) => {
       value = ((oldRating * number) + newRating) / (number + 1)
       return value
     }
-    oldTags = getCourseTags
-    console.log("TAGS:",oldTags)
-    len = tags.length
-    console.log("NEW:",tags)
+    // oldTags = getCourseTags
+    // console.log("TAGS:",oldTags)
+    // len = tags.length
+    // console.log("NEW:",tags)
 
-    for (i = 0; i < len; i++) {
-      if (oldTags.hasOwnProperty(tags[i])) {
+    // for (i = 0; i < len; i++) {
+    //   if (oldTags.hasOwnProperty(tags[i])) {
 
-        oldTags[tags[i]] = oldTags[tags[i]] + 1
-      }
-      else {
-        oldTags[tags[i]] = 1
-        console.log("TAGS[i]:", tags[i])
-        console.log(oldTags[tags[i]])
-      }
-    }
+    //     oldTags[tags[i]] = oldTags[tags[i]] + 1
+    //   }
+    //   else {
+    //     oldTags[tags[i]] = 1
+    //     console.log("TAGS[i]:", tags[i])
+    //     console.log(oldTags[tags[i]])
+    //   }
+    // }
 
-    console.log("OLD TAGS:",oldTags)
+    // console.log("OLD TAGS:",oldTags)
 
 
     const rating = await Rating.create({
