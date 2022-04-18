@@ -41,8 +41,8 @@ const NavbarComponent = (props) => {
                                 {props.isLoggedIn && <a class="nav-link mr-5" href="/pages/addinstructor" style={{ color: "#000000" }} >Add</a>}
                                 {props.isLoggedIn && <a class="nav-link mr-5" href="/pages/rate" style={{ color: "#000000" }}>Rate</a>}
                                 {!props.isAdmin && <a class="nav-link mr-5" href="/pages/compare" style={{ color: "#000000" }}>Compare</a>}
-                                {props.isAdmin && <a class="nav-link mr-5" href="/pages/admin_requests" style={{ color: "#000000" }}>Requests</a>}
-                                {props.isAdmin && <a class="nav-link mr-5" href="/pages/admin_reports" style={{ color: "#000000" }}>Reports</a>}
+                                {props.isAdmin && <a class="nav-link mr-5" href="/pages/adminrequests" style={{ color: "#000000" }}>Requests</a>}
+                                {props.isAdmin && <a class="nav-link mr-5" href="/pages/adminreport" style={{ color: "#000000" }}>Reports</a>}
                             </div>
                         </div>
                         <GetButtons isLoggedIn={props.isLoggedIn} />
