@@ -23,7 +23,8 @@ const AdminReport = () => {
       const foundUser = JSON.parse(loggedInUser);
       if (foundUser.isAdmin) {
         setAdminin(true)
-      } else {
+      } 
+      if (localStorage.getItem("user")){
         setLoggedin(true)
       }
       console.log("Logged in User");
