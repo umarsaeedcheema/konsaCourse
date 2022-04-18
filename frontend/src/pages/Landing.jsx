@@ -2,7 +2,7 @@ import React from 'react'
 import NavbarComponent from '../components/NavbarComponent';
 import SearchBar from '../components/SearchBar';
 // import Data from '../Data.json'
-import {useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './styles.module.css'
 
 
@@ -37,14 +37,15 @@ const Landing = () => {
       const foundUser = JSON.parse(loggedInUser);
       if (foundUser.isAdmin) {
         setAdminin(true)
-      } else {
+      }
+      if (localStorage.getItem("user")) {
         setLoggedin(true)
       }
       console.log("Logged in User");
     }
   }, []);
 
-  
+
   return (
     <div className={styles.gradient}
     // style={{
@@ -66,9 +67,9 @@ const Landing = () => {
             <div >
               <div class="d-flex ">
                 <div class="col-8">
-                  <SearchBar placeholder={placer} url={url} style={{backgroundColor:"#3aafa020"}} />
+                  <SearchBar placeholder={placer} url={url} style={{ backgroundColor: "#3aafa020" }} />
                   <span id="myspan" style={{ color: '#3AAFA0', cursor: 'pointer' }}
-                  onClick={clickspan1}
+                    onClick={clickspan1}
                   > Search {altern} Instead</span>
                 </div>
               </div>
