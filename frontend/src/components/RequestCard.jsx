@@ -4,12 +4,56 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { useState } from 'react';
 import { Button } from '@mui/material';
-
+const axios = require('axios');
 
 
 const RequestCard = (props) => {
     const [approve, setApprove] = useState(false);
     const [decline, setDecline] = useState(false);
+
+    const approveRequest = async () => {
+        //e.preventDefault();
+      
+            const reportobject = {
+                ratingID:props.id
+                
+            }
+      
+        console.log("reportobject:", reportobject);
+      
+      
+        const url = `/request/approveRequest/`+props.id;
+        await axios.post(url).then((res) => {
+            console.log("Hello");
+            console.log(res);
+        })
+        .catch(function (error) {
+      
+            console.log(error);
+        });
+      }
+
+      const declineRequest = async () => {
+        //e.preventDefault();
+      
+            const reportobject = {
+                ratingID:props.id
+                
+            }
+      
+        console.log("reportobject:", reportobject);
+      
+      
+        const url = `/request/deleteRequest/`+props.id;
+        await axios.post(url).then((res) => {
+            console.log("Hello");
+            console.log(res);
+        })
+        .catch(function (error) {
+      
+            console.log(error);
+        });
+      }
 
 
     return (
@@ -68,6 +112,7 @@ const RequestCard = (props) => {
                 }}
                     onClick={() => {
                         setApprove(true)
+                        approveRequest()
                     }}
                 >
                     Approve
@@ -81,6 +126,7 @@ const RequestCard = (props) => {
                 }}
                     onClick={() => {
                         setDecline(true)
+                        declineRequest()
                     }}
                 >
                     Decline
