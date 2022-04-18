@@ -10,6 +10,7 @@ import FlagIcon from '@mui/icons-material/Flag';
 import { IconButton } from '@mui/material';
 import { useState } from 'react';
 import { Button } from '@mui/material';
+const axios = require('axios');
 
 const ReviewCard = (props) => {
     const [UpCount, setUpCount] = useState(parseInt(props.UpCount))
@@ -21,6 +22,34 @@ const ReviewCard = (props) => {
 
     const [thumbsUp, setThumbsUp] = useState(false)
     const [thumbsDown, setThumbsDown] = useState(false)
+
+    const handleReport = async () => {
+		//e.preventDefault();
+
+        const reportobject = {
+            ratingID:props.id
+            
+        }
+
+    console.log("reportobject:", reportobject);
+
+
+    const url = `/report/addReport`;
+    await axios.post(url, reportobject).then((res) => {
+        console.log("Hello");
+        console.log(res);
+    })
+    .catch(function (error) {
+
+        console.log(error);
+    });
+  }
+
+
+
+
+
+
     return (
         <Card sx={{ minWidth: 275 }}
             style={{
@@ -168,6 +197,7 @@ const ReviewCard = (props) => {
                                 }}
                                 onClick={() => {
                                     setFlagColor('red')
+                                    handleReport()
 
                                 }}>
 
