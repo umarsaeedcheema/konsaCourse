@@ -91,7 +91,7 @@ useEffect(()=>{
 
 
 
-          {reviews.map((value, key) => {
+          {data[0].data.map((value, key) => {
 
             return (
               <>
@@ -100,10 +100,11 @@ useEffect(()=>{
                   <Grid item xs={12} sm={8}>
 
                     <ReportCard
-                      coursename={value[0]}
-                      coursecode={value[1]}
-                      username={value[2]}
-                      description={value[3]}
+                      coursename={value[0].courseName}
+                      coursecode={value[0].courseCode}
+                      username={value[0].instructorName}
+                      description={value[0].comment}
+                      id={value[0]._id}
                     />
 
                   </Grid>

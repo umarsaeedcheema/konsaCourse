@@ -4,6 +4,7 @@ import styles from './styles.module.css';
 import { Grid, } from '@mui/material';
 import ReviewCard from '../components/ReviewCard';
 import { Button } from '@mui/material';
+import NavbarComponent from '../components/NavbarComponent';
 
 import {  useLocation } from "react-router-dom";
 const axios = require('axios');
@@ -23,6 +24,23 @@ const ProfessorScreen = (proff) => {
 
     const url = ("/instructor/searchInstructor/" + state.name).replaceAll(' ', '%20');
     console.log(state.name);
+    const [loggedin, setLoggedin] = useState(false);
+  const [adminin, setAdminin] = useState(false);
+
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      if (foundUser.isAdmin) {
+        setAdminin(true)
+      }
+      if (localStorage.getItem("user")) {
+        setLoggedin(true)
+      }
+      console.log("Logged in User");
+    }
+  }, []);
 // >>>>>>> main
 
     const getData = async () => {
@@ -73,11 +91,11 @@ const ProfessorScreen = (proff) => {
         //<div className='d-flex flex-column justify-column-start'  >
         <>
         {profdata[1] && <div className={styles.gradient}>
-            {/* <NavbarComponent
-                isAdmin={false}
-                isLoggedIn={true}
+            <NavbarComponent
+                isAdmin={adminin}
+                isLoggedIn={loggedin}
                 style={{flex:1}}
-            /> */}
+            />
 
             <div className="flex-column align-content-start justify-content-start" style={{ backgroundColor: "#00000000", flex: 9 }}>
                 <div style={{

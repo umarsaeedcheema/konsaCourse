@@ -16,6 +16,8 @@ const ReviewCard = (props) => {
     const [UpCount, setUpCount] = useState(parseInt(props.UpCount))
     const [DownCount, setDownCount] = useState(parseInt(props.DownCount))
 
+    const yesno = ['No','Yes']
+
     const [flagColor, setFlagColor] = useState()
     const [thumbsUpColor, setthumbsUpColor] = useState()
     const [thumbsDownColor, setthumbsDownColor] = useState()
@@ -85,9 +87,9 @@ const ReviewCard = (props) => {
 
 
                     <Typography flexBasis={'35%'}
-                    >Attendance: {props.attendance}</Typography>
-                    <Typography flexBasis={'26%'}>CP: {props.cp}</Typography>
-                    <Typography>Would Take Again: {props.takeagain}</Typography>
+                    >Attendance: {yesno[parseInt(props.attendance)]}</Typography>
+                    <Typography flexBasis={'26%'}>CP: {yesno[parseInt(props.cp)]}</Typography>
+                    <Typography>Would Take Again: {yesno[parseInt(props.takeagain)]}</Typography>
 
                     <Typography>{props.description}</Typography>
 
