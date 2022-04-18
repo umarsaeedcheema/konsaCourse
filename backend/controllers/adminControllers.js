@@ -1,7 +1,8 @@
 const {response} = require("express");
 const asyncHandler = require("express-async-handler");
 const Report = require("../models/reportModels");
-const Rating = require("../models/ratingModels")
+const Rating = require("../models/ratingModels");
+const Requests = require("../models/requestModels");
 
 const removeRating = asyncHandler(async (req, res)=>{
     const {ratingID} = req.body;
@@ -43,4 +44,16 @@ const viewReports = asyncHandler(async (req, res)=>{
     });
 })
 
-module.exports = {removeRating, restoreRating, viewReports};
+const getRequests = asyncHandler(async (req, res)=>{
+    console.log("getRequests");
+    await Requests.find().then((result)=>{
+        res.status(200).json(result);
+        console.log(result);
+    })
+    .catch((error)=>{
+        res.status(400).json(error);
+        console.log(error);
+    })
+})
+
+module.exports = {removeRating, restoreRating, viewReports, getRequests};
