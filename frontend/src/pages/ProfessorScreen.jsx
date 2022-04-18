@@ -97,7 +97,7 @@ const ProfessorScreen = (proff) => {
                             name="profStars"
                             value={profdata[0].overallRating['$numberDecimal']}
                             size="large"
-                            //precision={0.5}
+                            precision={0.25}
 
                             readOnly
                         />

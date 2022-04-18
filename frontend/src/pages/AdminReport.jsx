@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import ReportCard from '../components/ReportCard.jsx'
 import { Grid } from '@mui/material';
 import NavbarComponent from '../components/NavbarComponent.jsx';
@@ -6,6 +6,23 @@ import NavbarComponent from '../components/NavbarComponent.jsx';
 
 
 const AdminReport = () => {
+
+  const [loggedin, setLoggedin] = useState();
+    const [adminin, setAdminin] = useState();
+
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      if (foundUser.isAdmin) {
+        setAdminin(true)
+      } else {
+        setLoggedin(true)
+      }
+      console.log("Logged in User");
+    }
+  }, []);
 
   const reviews = [["Sociology", "SOC 100", "Usama Hameed", "This was a bad course"],
   ["Computer Science", "CS 100", "Umar Cheema", "I loved this course it was amazing"],
@@ -23,7 +40,10 @@ const AdminReport = () => {
       <div style={{
         height: 100,
       }}>
-        {/* <NavbarComponent /> */}
+        <NavbarComponent 
+          isAdmin={adminin}
+          isLoggedIn={loggedin}
+        />
       </div>
 
       <h1

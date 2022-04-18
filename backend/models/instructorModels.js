@@ -15,7 +15,8 @@ const instructorSchema = mongoose.Schema({
   },
   department:{
     type:String,
-    require:true,
+    require:false,
+    default:""
   },
   course: {
     type: Array,
@@ -43,7 +44,8 @@ const instructorSchema = mongoose.Schema({
   },
   tags: {
     type: Object,
-    require: true,
+    require: false,
+    default:[]
   },
   numReviews: {
     type: Number,
