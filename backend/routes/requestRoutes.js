@@ -5,7 +5,7 @@ const {addRequest, deleteRequest, approveRequest} = require("../controllers/requ
 
 
 router.route("/addRequest").post(addRequest);
-router.route("/deleteRequest/:n").get(deleteRequest);
+router.route("/deleteRequest/:n").post(deleteRequest);
 router.route("/approveRequest/:n").post(approveRequest);
 
 module.exports = router;

@@ -34,8 +34,14 @@ const restoreRating = asyncHandler(async (req, res)=>{
 
 const viewReports = asyncHandler(async (req, res)=>{
     console.log('hello');
-    await Report.find().then((result)=>{
-        res.status(200).json(result);
+    let arr = [];
+    await Report.find().then(async (result)=>{
+        for(let i=0; i<result.length; i++){
+            await Rating.find({_id:result[i].ratingID}).then((result2)=>{
+                arr.push(result2);
+            });
+        }
+        res.status(200).json(arr);
         console.log(result);
     })
     .catch((error)=>{
