@@ -27,28 +27,22 @@ const Landing = () => {
     setAlturl(tempurl);
   }
 
-  const [user, setUser] = useState();
+  const [loggedin, setLoggedin] = useState(false);
+  const [adminin, setAdminin] = useState(false);
 
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
-      setUser(foundUser);
+      if (foundUser.isAdmin) {
+        setAdminin(true)
+      } else {
+        setLoggedin(true)
+      }
       console.log("Logged in User");
     }
   }, []);
-
-  let loggedin = false;
-  let adminin = false;
-  
-  if (user) {
-    if (user.isAdmin) {
-      adminin = true;
-    } else {
-      loggedin = true;
-    }
-  }
 
   
   return (

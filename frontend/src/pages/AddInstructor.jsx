@@ -1,11 +1,32 @@
 import React from 'react'
 import styles from './styles.module.css'
 import NavbarComponent from '../components/NavbarComponent'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { Button } from '@mui/material'
+const axios = require('axios');
 
  const AddInstructor = () => {
-	const [data, setData] = useState({ fname: "",sname: "",cname: "", ccode: "",dnmae:'' });
+	
+    const [loggedin, setLoggedin] = useState();
+    const [adminin, setAdminin] = useState();
+
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      if (foundUser.isAdmin) {
+        setAdminin(true)
+      } else {
+        setLoggedin(true)
+      }
+      console.log("Logged in User");
+    }
+  }, []);
+    
+  
+    
+    const [data, setData] = useState({ fname: "",lname: "",cname: "", ccode: "",dname:'' });
 	const [error, setError] = useState("");
 
 	const handleChange = ({ currentTarget: input }) => {
@@ -13,12 +34,50 @@ import { Button } from '@mui/material'
 		console.log(input.value)
 	};
 
-    const handleSubmit = (event)=>{
-        console.log(event)
+    const handleSubmit = async (e) => {
+		e.preventDefault();
+
+        const inobject = {
+            firstName:data.fname,
+            lastName:data.lname,
+            department:data.dname,
+            courseName:data.cname,
+            courseCode:data.ccode
+        }
+
+        console.log(data.fname);
+        console.log(data.lname);
+        console.log(data.dname);
+        console.log(data.cname);
+        console.log(data.ccode);
+
+		
+        const url = `/request/addRequest`;
+        await axios.post(url, inobject).then((res) => {
+            console.log("Hello");
+            console.log(res);
+
+
+        })
+        .catch(function (error) {
+
+            setError(error);
+
+        });
     }
+
+    
+
+    
 
   return (
         <div className={styles.gradient} style={{justifyContent:"start"}}>
+            <div>
+        <NavbarComponent
+          // style={{backgroundColor:"#000fff00",flex:1}}
+          isLoggedIn={loggedin}
+          isAdmin={adminin} />
+      </div>
 
             <div className='justify-content-center'>
               <div className="d-flex align-items-center justify-content-center flex-column"
@@ -59,9 +118,9 @@ import { Button } from '@mui/material'
                      <input
                         type="text" 
                         placeholder="Enter Instructor's Second Name"
-                        name="sname"
+                        name="lname"
                         onChange={handleChange}
-                        value={data.sname}
+                        value={data.lname}
                         required
                         className={styles.input}
                      />   
@@ -98,14 +157,14 @@ import { Button } from '@mui/material'
                         width:'100%'
                     }}
                     >{error}</div>}
-                     <Button type="submit" variant='contained'
+                     <Button type="submit" variant='contained' onSubmit={handleSubmit}
                      style={{
                          borderRadius:'15px',
                          width:'35%',
                          marginTop:'5%'
                      }}
                      >
-                        Sign In
+                        Add Instructor
                     </Button>
                         </form>
                     </div>
