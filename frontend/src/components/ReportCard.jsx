@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { useState } from "react";
 import { Button } from '@mui/material';
-
+const axios = require('axios');
 
 
 const ReportCard = (props) => {
@@ -12,7 +12,49 @@ const ReportCard = (props) => {
     const [restore, setRestore] = useState(false);
     const [remove, setRemove] = useState(false);
 
+    const approveRequest = async () => {
+        //e.preventDefault();
+      
+            const reportobject = {
+                ratingID:props.id
+                
+            }
+      
+        console.log("reportobject:", reportobject);
+      
+      
+        const url = `/admin/restoreRating`;
+        await axios.post(url, reportobject).then((res) => {
+            console.log("Hello");
+            console.log(res);
+        })
+        .catch(function (error) {
+      
+            console.log(error);
+        });
+      }
 
+      const declineRequest = async () => {
+        //e.preventDefault();
+      
+            const reportobject = {
+                ratingID:props.id
+                
+            }
+      
+        console.log("reportobject:", reportobject);
+      
+      
+        const url = `/admin/removeRating`;
+        await axios.post(url, reportobject).then((res) => {
+            console.log("Hello");
+            console.log(res);
+        })
+        .catch(function (error) {
+      
+            console.log(error);
+        });
+      }
 
 
     return (
@@ -74,6 +116,7 @@ const ReportCard = (props) => {
                 }}
                     onClick={() => {
                         setRestore(true)
+                        approveRequest()
 
                     }}
                 >
@@ -88,6 +131,7 @@ const ReportCard = (props) => {
                 }}
                     onClick={() => {
                         setRemove(true)
+                        declineRequest()
                     }}
                 >
                     Remove
