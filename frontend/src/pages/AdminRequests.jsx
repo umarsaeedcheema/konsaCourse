@@ -3,19 +3,22 @@ import RequestCard from '../components/RequestCard.jsx';
 import { Grid } from '@mui/material';
 import { useEffect,useState } from 'react';
 import styles from './styles.module.css'
-
-
 import NavbarComponent from '../components/NavbarComponent.jsx';
+
+const axios = require('axios');
+
 
 
 const AdminRequests = () => {
   
   const [loggedin, setLoggedin] = useState(false);
-    const [adminin, setAdminin] = useState(false);
+  const [adminin, setAdminin] = useState(false);
   const reviews = [["Sociology", "SOC 100", "Usama Hameed"],
   ["Computer Science", "CS 100", "Umar Cheema"],
   ["Artificial Intelligence", "CS 300", "Saifullah Khan"],
   ["Software Engineering", "CS 412", "Mustafa Arshad"]];
+
+  const [data, setData] = useState([null, false])
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
@@ -31,11 +34,29 @@ const AdminRequests = () => {
     }
   }, []);
 
+  
+  const getData = async () => {
+    await axios.get('/admin/getRequests').then( (temp)=>{
+        
+        setData([temp, true]);
+
+         
+
+    }).catch((error)=> {
+        console.log("ERROR 2", error)
+    })
+}
+
+useEffect(()=>{
+    getData();
+},[])
+
 
 
 
   return (
-    <div 
+    <>
+    {data[1] && <div 
     className={styles.gradient}
     style={{
       width: 'auto'
@@ -71,8 +92,8 @@ const AdminRequests = () => {
           {/* <Grid item container>   */}
 
 
-
-          {reviews.map((value, key) => {
+          {console.log(data)}
+          {data[0].data.map((value, key) => {
 
             return (
               <>
@@ -84,9 +105,11 @@ const AdminRequests = () => {
                   <Grid item xs={12} sm={8}>
 
                     <RequestCard
-                      coursename={value[0]}
-                      coursecode={value[1]}
-                      profname={value[2]}
+                      coursename={value.courseName}
+                      coursecode={value.courseCode}
+                      profname={value.fullName}
+                      department={value.department}
+                      id={value._id}
                     />
 
                   </Grid>
@@ -106,7 +129,8 @@ const AdminRequests = () => {
 
 
       </div>
-    </div>
+    </div>}
+    </>
   )
 }
 
