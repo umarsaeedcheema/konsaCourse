@@ -13,7 +13,6 @@ const axios = require('axios');
 
 const Comparer = () => {
 
-
     const [course, setCourse] = useState("Course");
     const [instructor1, setInstructor1] = useState("Instructor 1");
     const [instructor2, setInstructor2] = useState("Instructor 2");
@@ -89,15 +88,30 @@ const Comparer = () => {
         // console.log(data1.)
     }
 
-    const lbool = true;
-    const abool = false;
+    const [loggedin, setLoggedin] = useState(false);
+  const [adminin, setAdminin] = useState(false);
+
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      if (foundUser.isAdmin) {
+        setAdminin(true)
+      }
+      if (localStorage.getItem("user")) {
+        setLoggedin(true)
+      }
+      console.log("Logged in User");
+    }
+  }, []);
     return (
 
         <div className={styles.gradient}>
             <div>
                 <NavbarComponent
-                    isLoggedIn={lbool}
-                    isAdmin={abool}
+                   isLoggedIn={loggedin}
+          isAdmin={adminin} 
                 />
             </div>
 
@@ -178,18 +192,7 @@ const Comparer = () => {
                 >Incorrect Selection</div>}
 
                 {/* {dbool && <GetData1 url1={u1} url2={u2} />} */}
-                {!cbool && <Content
-                    instructor1={data1.instructorName}
-                    instructor2={instructor2}
-                    overallrating1={data1.courseRating}
-                    teachingrating1={data1.learnRating}
-                    quality1rating1={data1.gradeRating}
-                    quality2rating1={data1.workRating}
-
-                    overallrating2={3}
-                    teachingrating2={2}
-                    quality1rating2={1}
-                    quality2rating2={4}></Content>}
+                
 
 
            

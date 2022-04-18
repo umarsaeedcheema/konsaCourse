@@ -3,6 +3,9 @@ import styles from './styles.module.css'
 import NavbarComponent from '../components/NavbarComponent'
 import {useState, useEffect} from 'react'
 import { Button } from '@mui/material'
+import { Navigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
+
 const axios = require('axios');
 
  const AddInstructor = () => {
@@ -56,11 +59,11 @@ const axios = require('axios');
         await axios.post(url, inobject).then((res) => {
             console.log("Hello");
             console.log(res);
-
-
+            navigate("/pages/landing");
+            
         })
         .catch(function (error) {
-
+            
             setError(error);
 
         });
@@ -69,8 +72,9 @@ const axios = require('axios');
     
 
     
-
-  return (
+    
+    const navigate = useNavigate()
+    return (
         <div className={styles.gradient} style={{justifyContent:"start"}}>
             <div>
         <NavbarComponent
@@ -164,7 +168,7 @@ const axios = require('axios');
                          marginTop:'5%'
                      }}
                      >
-                        Add Instructor
+                        Add
                     </Button>
                         </form>
                     </div>

@@ -9,31 +9,117 @@ import IconButton from '@mui/material/IconButton';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { Button } from '@mui/material'
+import CourseBar from '../components/CourseBar'
+import InstructorBar from '../components/InstructorBar';
+
+const axios = require('axios');
 
 
 const Rate = () => {
 
-  const [user, setUser] = useState();
+  const [loggedin, setLoggedin] = useState();
+  const [adminin, setAdminin] = useState();
+
+  //const [cbool, setCbool] = useState(false);
+  
+  const [course, setCourse] = useState("");
+
+  const [instructor1, setInstructor1] = useState("Instructor 1");
+
+  const [email, setEmail] = useState("email");
+  const [comment, setComment] = useState("comment");
+  //const [answers, setAnswers] = useState([0,0,0]);
+
+  const [inrating, setInrating] = useState(0);
+  const [crating, setCrating] = useState(0);
+  const [teaching, setTeaching] = useState(0);
+  const [comm, setComm] = useState(0);
+  const [accom, setAccom] = useState(0);
+  const [workload, setWorkload] = useState(0);
+  const [grading, setGrading] = useState(0);
+  const [learning, setLearning] = useState(0);
+
+
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       const foundUser = JSON.parse(loggedInUser);
-      setUser(foundUser);
+      //console.log(foundUser);
+      if (foundUser.isAdmin) {
+        setAdminin(true);
+      } else {
+        setLoggedin(true);
+        setEmail(foundUser.email);
+      }
       console.log("Logged in User");
     }
   }, []);
 
-  let loggedin = false;
-  let adminin = false;
+  const handleSubmit = async () => {
+		//e.preventDefault();
 
-  if (user) {
-    if (user.isAdmin) {
-      adminin = true;
+    console.log("IN SUBMIT");
+    let ansarray = [];
+
+    if (tick1) {
+      ansarray.push(1)
     } else {
-      loggedin = true;
+      ansarray.push(0)
     }
+    if (tick2) {
+      ansarray.push(1)
+    } else {
+      ansarray.push(0)
+    }
+    if (tick3) {
+      ansarray.push(1)
+    } else {
+      ansarray.push(0)
+    }
+
+
+
+    const rateobject = {
+        instructorName:instructor1,
+        courseName:course,
+        email:email,
+        comment:comment,
+        answers:ansarray,
+        courseRating:crating,
+        instructorRating:inrating,
+        individualTeachRating:teaching,
+        individualCommRating:comm,
+        individualAccommRating:accom,
+        individualWorkLoadRating:workload,
+        individualGradeRating:grading,
+        individualLearnRating:learning
+    }
+
+    console.log("RATE OBJECT IS:", rateobject);
+
+
+    const url = `/rate/addRating`;
+    await axios.post(url, rateobject).then((res) => {
+        console.log("Hello");
+        console.log(res);
+
+
+    })
+    .catch(function (error) {
+
+        console.log(error);
+
+    });
   }
+
+
+
+
+
+
+
+
 
   const [checkIconColor, setCheckIconColor] = useState()
   const [crossIconColor, setCrossIconColor] = useState()
@@ -88,21 +174,16 @@ const Rate = () => {
             style={{
               marginLeft: '14%'
             }}
-          >Search Instructor</h4>
-          <SearchBar placeholder={"Instructor"} />
+          >Search Course</h4>
+          <CourseBar updateValue={setCourse} />
           <h4
             style={{
               marginLeft: '12%'
             }}
 
-          >Search Course Code</h4>
-          <SearchBar placeholder={'Search Course Code'} />
-          <h4
-            style={{
-              marginLeft: '12%'
-            }}
-          >Search Course Name</h4>
-          <SearchBar placeholder={'Search Course Name'} />
+          >Search Instructor</h4>
+          {({course} !== "") && <InstructorBar updateValue={setInstructor1} coursevalue={course}/>}
+          
         </div>
 
         <div className="inline-block">
@@ -237,6 +318,10 @@ const Rate = () => {
               style={{
                 marginLeft: '1%'
               }}
+
+              onChange={(event, newValue)=> {
+                setInrating(newValue);
+              }}
             />
           </div>
 
@@ -251,6 +336,9 @@ const Rate = () => {
 
               Rate Course</h4>
             <Rating
+              onChange={(event, newValue)=> {
+                setCrating(newValue);
+              }}
             />
           </div>
 
@@ -272,10 +360,13 @@ const Rate = () => {
             }}>
               <p
 
-              >Teaching Methodology</p>
+              >Teaching</p>
               <Rating
                 style={{
                   marginTop: '-5%'
+                }}
+                onChange={(event, newValue)=> {
+                  setTeaching(newValue);
                 }} />
             </div>
 
@@ -288,6 +379,9 @@ const Rate = () => {
               <Rating
                 style={{
                   marginTop: '-5%'
+                }}
+                onChange={(event, newValue)=> {
+                  setComm(newValue);
                 }} />
             </div>
             <div
@@ -298,6 +392,9 @@ const Rate = () => {
               <Rating
                 style={{
                   marginTop: '-5%'
+                }}
+                onChange={(event, newValue)=> {
+                  setAccom(newValue);
                 }} />
             </div>
           </div>
@@ -325,6 +422,9 @@ const Rate = () => {
               <Rating
                 style={{
                   marginTop: '-12%'
+                }}
+                onChange={(event, newValue)=> {
+                  setGrading(newValue);
                 }} />
             </div>
             <div
@@ -340,6 +440,9 @@ const Rate = () => {
               <Rating
                 style={{
                   marginTop: '-12%'
+                }}
+                onChange={(event, newValue)=> {
+                  setLearning(newValue);
                 }} />
             </div>
             <div
@@ -351,10 +454,13 @@ const Rate = () => {
                 style={{
                   marginTop: '2%'
                 }}
-              >Course</p>
+              >Workload</p>
               <Rating
                 style={{
                   marginTop: '-8%'
+                }}
+                onChange={(event, newValue)=> {
+                  setWorkload(newValue);
                 }} />
             </div>
           </div>
@@ -432,12 +538,14 @@ const Rate = () => {
                 borderRadius: '15px',
                 backgroundColor: 'rgba(58, 175, 160, 0.1)'
               }}
-              onClick={() => {
-
+              onChange={(event)=>{
+                setComment(event.target.value);
               }}
 
             ></textarea>
             <Button
+              type="button"
+              
               variant='contained'
               size='large'
               style={{
@@ -447,6 +555,11 @@ const Rate = () => {
                 color: 'white',
 
               }}
+              onClick={(event)=>{
+                handleSubmit();
+              }}
+
+
             >Submit</Button>
           </div>
         </div>
