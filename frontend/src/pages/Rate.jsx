@@ -11,11 +11,13 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { Button } from '@mui/material'
 import CourseBar from '../components/CourseBar'
 import InstructorBar from '../components/InstructorBar';
+import { useNavigate } from 'react-router-dom'
 
 const axios = require('axios');
 
 
 const Rate = () => {
+  const navigate=useNavigate()
 
   const [loggedin, setLoggedin] = useState();
   const [adminin, setAdminin] = useState();
@@ -504,6 +506,7 @@ const Rate = () => {
 
 
                   }}
+                  
 
                 >
 
@@ -557,7 +560,10 @@ const Rate = () => {
               }}
               onClick={(event)=>{
                 handleSubmit();
+                navigate('/pages/landing')
               }}
+              // onClick={()=>{
+              // }}
 
 
             >Submit</Button>

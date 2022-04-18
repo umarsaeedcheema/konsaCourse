@@ -102,7 +102,7 @@ const ChangePassword = () => {
 			console.log("hello from inside")
 			console.log(res);
 			alert("Your password has been changed")
-			navigate('/pages/homepage');
+			navigate('/pages/landing');
 		})
 			.catch((error) => {
 
