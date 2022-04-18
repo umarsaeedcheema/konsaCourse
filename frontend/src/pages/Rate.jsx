@@ -120,6 +120,7 @@ const Rate = () => {
 
 
 
+
   const [checkIconColor, setCheckIconColor] = useState()
   const [crossIconColor, setCrossIconColor] = useState()
   const [participationIcon, setParticipationIcon] = useState()

@@ -2,13 +2,20 @@ import React, {useState, useEffect} from 'react'
 import ReportCard from '../components/ReportCard.jsx'
 import { Grid } from '@mui/material';
 import NavbarComponent from '../components/NavbarComponent.jsx';
+import { useState, useEffect } from 'react'
+import styles from './styles.module.css'
 
 
 
 const AdminReport = () => {
 
-  const [loggedin, setLoggedin] = useState();
-    const [adminin, setAdminin] = useState();
+
+  const reviews = [["Sociology", "SOC 100", "Usama Hameed", "This was a bad course"],
+  ["Computer Science", "CS 100", "Umar Cheema", "I loved this course it was amazing"],
+  ["Artificial Intelligence", "CS 300", "Saifullah Khan", "Ye kya ajeeb course tha kuch samajh nahin aya"],
+  ["Software Engineering", "CS 412", "Mustafa Arshad", "Kamal course 10/10 would take again"]];
+  const [loggedin, setLoggedin] = useState(false);
+  const [adminin, setAdminin] = useState(false);
 
 
   useEffect(() => {
@@ -24,11 +31,6 @@ const AdminReport = () => {
     }
   }, []);
 
-  const reviews = [["Sociology", "SOC 100", "Usama Hameed", "This was a bad course"],
-  ["Computer Science", "CS 100", "Umar Cheema", "I loved this course it was amazing"],
-  ["Artificial Intelligence", "CS 300", "Saifullah Khan", "Ye kya ajeeb course tha kuch samajh nahin aya"],
-  ["Software Engineering", "CS 412", "Mustafa Arshad", "Kamal course 10/10 would take again"]];
-
 
 
 
@@ -36,7 +38,9 @@ const AdminReport = () => {
 
     <div style={{
       width: 'auto'
-    }} >
+    }}
+      className={styles.gradient}
+    >
       <div style={{
         height: 100,
       }}>
