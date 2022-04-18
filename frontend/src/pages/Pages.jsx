@@ -16,6 +16,7 @@ import ProfessorScreen from './ProfessorScreen'
 import NavbarComponent from '../components/NavbarComponent'
 import AddInstructor from './AddInstructor'
 import Comparer from './Comparer'
+import Bgimage from '../components/Bgimage'
 
 const Pages = () => {
 
@@ -26,7 +27,7 @@ const Pages = () => {
         {/* <NavbarComponent/> */}
         <Routes >
             
-            
+            <Route path='/pages/bgImage' element={<Bgimage/>}/>
             <Route path='/pages/compare' element={<Comparer/>} />
             <Route path='/pages/comparefinal' element={<CompareFinal/>}></Route>
             <Route path ='/pages/course' element={<Course/>}/>

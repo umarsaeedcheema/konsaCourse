@@ -4,6 +4,11 @@ import SearchBar from '../components/SearchBar';
 // import Data from '../Data.json'
 import { useState, useEffect } from 'react'
 import styles from './styles.module.css'
+import Bgimage from '../components/Bgimage';
+import pic from "../assets/Triangles.png";
+
+
+
 
 
 
@@ -53,7 +58,7 @@ const Landing = () => {
     //   // backgroundColor:"#000fff00"
     // }}
     >
-
+        
       <div>
         <NavbarComponent
           // style={{backgroundColor:"#000fff00",flex:1}}
@@ -77,6 +82,12 @@ const Landing = () => {
           </form>
         </div>
       </div>
+      <img src={pic}
+      style={{
+        
+      }}
+      
+      ></img>
     </div>
   )
 }
