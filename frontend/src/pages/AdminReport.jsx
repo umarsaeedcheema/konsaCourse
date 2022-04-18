@@ -2,6 +2,8 @@ import React from 'react'
 import ReportCard from '../components/ReportCard.jsx'
 import { Grid } from '@mui/material';
 import NavbarComponent from '../components/NavbarComponent.jsx';
+import { useState, useEffect } from 'react'
+import styles from './styles.module.css'
 
 
 
@@ -11,6 +13,22 @@ const AdminReport = () => {
   ["Computer Science", "CS 100", "Umar Cheema", "I loved this course it was amazing"],
   ["Artificial Intelligence", "CS 300", "Saifullah Khan", "Ye kya ajeeb course tha kuch samajh nahin aya"],
   ["Software Engineering", "CS 412", "Mustafa Arshad", "Kamal course 10/10 would take again"]];
+  const [loggedin, setLoggedin] = useState(false);
+  const [adminin, setAdminin] = useState(false);
+
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      if (foundUser.isAdmin) {
+        setAdminin(true)
+      } else {
+        setLoggedin(true)
+      }
+      console.log("Logged in User");
+    }
+  }, []);
 
 
 
@@ -19,11 +37,16 @@ const AdminReport = () => {
 
     <div style={{
       width: 'auto'
-    }} >
+    }}
+      className={styles.gradient}
+    >
       <div style={{
         height: 100,
       }}>
-        {/* <NavbarComponent /> */}
+        <NavbarComponent
+          isLoggedIn={loggedin}
+          isAdmin={adminin}
+        />
       </div>
 
       <h1
