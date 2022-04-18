@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import ReportCard from '../components/ReportCard.jsx'
 import { Grid } from '@mui/material';
 import NavbarComponent from '../components/NavbarComponent.jsx';
-import { useState, useEffect } from 'react'
 import styles from './styles.module.css'
 
 

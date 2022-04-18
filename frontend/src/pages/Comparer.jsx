@@ -88,15 +88,30 @@ const Comparer = () => {
         // console.log(data1.)
     }
 
-    const lbool = true;
-    const abool = false;
+    const [loggedin, setLoggedin] = useState(false);
+  const [adminin, setAdminin] = useState(false);
+
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      if (foundUser.isAdmin) {
+        setAdminin(true)
+      }
+      if (localStorage.getItem("user")) {
+        setLoggedin(true)
+      }
+      console.log("Logged in User");
+    }
+  }, []);
     return (
 
         <div className={styles.gradient}>
             <div>
                 <NavbarComponent
-                    isLoggedIn={lbool}
-                    isAdmin={abool}
+                   isLoggedIn={loggedin}
+          isAdmin={adminin} 
                 />
             </div>
 
